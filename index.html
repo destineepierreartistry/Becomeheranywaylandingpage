@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --cream:     #F5F0E8;
       --parchment: #EDE4D0;
@@ -22,988 +21,521 @@
       --olive:     #6B6830;
       --olive-lt:  #8E8B42;
       --muted:     #7A6850;
-      --border:    rgba(212,196,160,.25);
+      --border:    rgba(92,51,24,.15);
     }
-
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
-
-    /* ── ANNOUNCEMENT ── */
-    .announcement {
-      background: var(--darkbrown);
-      color: var(--cream);
-      text-align: center;
-      padding: .7rem 1rem;
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-    }
-    .announcement em { color: var(--sand); font-style: normal; }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 200;
-      display: flex; justify-content: center; align-items: center;
-      padding: 1rem 5%;
-      background: rgba(13,10,6,.94);
-      backdrop-filter: blur(12px);
-    }
-    .nav-logo {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2rem;
-      color: var(--cream);
-      text-decoration: none;
-    }
-
-    /* ── REUSABLE ── */
-    .eyebrow {
-      font-size: .68rem; font-weight: 700; letter-spacing: .25em;
-      text-transform: uppercase; color: var(--olive-lt); display: block; margin-bottom: .8rem;
-    }
-    .eyebrow--light { color: var(--sand); }
-    .eyebrow--dark  { color: var(--muted); }
-
-    .script { font-family: 'Great Vibes', cursive; font-size: 1.5em; color: var(--chestnut); display: inline-block; transform: translateY(.12em); line-height: 1; }
-
-    .divider-bar { width: 50px; height: 2px; background: linear-gradient(90deg, var(--chestnut), var(--olive)); margin: 1.5rem auto; }
-    .divider-bar--left { margin-left: 0; }
-    .divider-line { width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, var(--sand), transparent); margin: 2rem auto; }
-
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-block; font-size: .8rem; font-weight: 700;
-      letter-spacing: .18em; text-transform: uppercase; text-decoration: none;
-      cursor: pointer; border: none; transition: all .25s; font-family: 'Inter', sans-serif;
-    }
-    .btn-ghost { background: transparent; color: var(--cream); border: 1.5px solid var(--cream); padding: 1.1rem 3rem; }
-    .btn-ghost:hover { background: var(--cream); color: var(--ink); }
-    .btn-solid { background: var(--brown); color: var(--cream); padding: 1.1rem 3rem; border: 1.5px solid var(--brown); }
-    .btn-solid:hover { background: var(--chestnut); border-color: var(--chestnut); transform: translateY(-1px); }
-    .btn-cta { background: var(--cream); color: var(--ink); padding: 1.2rem 3.5rem; }
-    .btn-cta:hover { background: var(--sand); }
-    .btn-wide { background: var(--brown); color: var(--cream); padding: 1.3rem 0; width: 100%; max-width: 560px; display: block; text-align: center; margin: 0 auto; font-size: .82rem; letter-spacing: .18em; }
-    .btn-wide:hover { background: var(--chestnut); }
-    .btn--full { width: 100%; text-align: center; display: block; }
-    .btn--lg { padding: 1.3rem 4rem; font-size: .85rem; }
-
-    /* ════════════════════════════════════════
-       HERO
-    ════════════════════════════════════════ */
-    .hero {
-      min-height: 100vh; background: var(--black);
-      position: relative; display: flex; align-items: flex-end; overflow: hidden;
-    }
-    .hero__photo {
-      position: absolute; inset: 0;
-      background: linear-gradient(170deg, #3A2515 0%, #1A1208 45%, #0D0A06 100%);
-      background-size: cover; background-position: center top;
-    }
-    .hero__photo::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(13,10,6,.25) 0%, rgba(13,10,6,.1) 30%, rgba(13,10,6,.7) 60%, rgba(13,10,6,.96) 100%);
-    }
-    .hero__content { position: relative; z-index: 2; width: 100%; padding: 4rem 8% 6rem; text-align: center; }
-    .hero__eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: rgba(245,240,232,.55); font-style: italic; margin-bottom: 1.5rem; display: block; }
-    .hero__headline { font-family: 'Playfair Display', serif; font-size: clamp(3.8rem, 10vw, 9rem); font-weight: 900; line-height: 1.0; color: var(--cream); margin-bottom: 1.8rem; }
-    .hero__headline em { font-style: italic; color: var(--sand); }
-    .hero__sub { font-family: 'Inter', sans-serif; font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 700; line-height: 1.55; color: var(--cream); max-width: 680px; margin: 0 auto 1.5rem; }
-    .hero__body { font-size: .95rem; line-height: 1.8; color: rgba(245,240,232,.68); max-width: 680px; margin: 0 auto 2.5rem; }
-    .hero__body em { font-style: italic; color: var(--sand); }
-    .hero__urgency { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(245,240,232,.38); margin-top: 1rem; display: block; }
-    .hero__urgency::before { content: '● '; color: #B5532A; font-size: .55rem; }
-
-    /* ════════════════════════════════════════
-       STATS BAR
-    ════════════════════════════════════════ */
-    .stats-bar { background: var(--parchment); padding: 4rem 5% 3rem; text-align: center; }
-    .stats-row { display: flex; justify-content: center; gap: 5rem; flex-wrap: wrap; margin-bottom: 3rem; }
-    .stat { }
-    .stat__num {
-      font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900;
-      color: var(--brown); line-height: 1; display: block;
-    }
-    .stat__label { font-size: .7rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: .4rem; display: block; }
-
-    /* ════════════════════════════════════════
-       "THIS IS FOR" + QUOTE
-    ════════════════════════════════════════ */
-    .for-who { background: var(--black); padding: 7rem 8%; text-align: center; }
-    .for-who__headline { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; color: var(--cream); max-width: 860px; margin: 0 auto 3rem; }
-    .for-who__headline em { font-style: italic; }
-    .for-who__photo { max-width: 760px; margin: 0 auto 4rem; border: 1.5px solid rgba(212,196,160,.15); aspect-ratio: 16/9; background: linear-gradient(135deg, #2D1E10 0%, #1A1208 60%, #2D2A14 100%); position: relative; display: flex; align-items: center; justify-content: center; }
-    .for-who__photo-label { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: rgba(245,240,232,.2); }
-    .for-who__quote blockquote { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3.5vw, 2.6rem); font-weight: 700; font-style: italic; line-height: 1.2; color: var(--cream); margin-bottom: 1.2rem; max-width: 720px; margin-left: auto; margin-right: auto; }
-    .for-who__quote cite { font-size: .75rem; font-style: normal; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,240,232,.35); }
-
-    /* ════════════════════════════════════════
-       SOCIAL PROOF WALL
-    ════════════════════════════════════════ */
-    .proof-wall { background: var(--parchment); padding: 6rem 5%; }
-    .proof-wall__header { text-align: center; margin-bottom: 3.5rem; }
-    .proof-wall__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--ink); line-height: 1.15; }
-    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; max-width: 1100px; margin: 0 auto; }
-    .dm-card { background: var(--cream); border-radius: 2px; overflow: hidden; box-shadow: 0 2px 20px rgba(26,18,8,.07); }
-    .dm-card__header { background: var(--ink); padding: .65rem 1rem; display: flex; align-items: center; gap: .6rem; }
-    .dm-card__avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--chestnut), var(--brown)); display: flex; align-items: center; justify-content: center; font-size: .65rem; font-weight: 700; color: var(--cream); flex-shrink: 0; }
-    .dm-card__name { font-size: .72rem; font-weight: 600; color: var(--cream); }
-    .dm-card__platform { font-size: .58rem; color: rgba(245,240,232,.38); margin-top: .05rem; }
-    .dm-card__body { padding: 1.2rem 1rem; }
-    .dm-bubble { display: block; background: rgba(107,104,48,.1); border-left: 3px solid var(--olive); padding: .65rem .9rem; margin-bottom: .7rem; font-size: .8rem; line-height: 1.6; color: var(--muted); }
-    .dm-result { display: inline-block; background: var(--brown); color: var(--cream); font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: .22rem .7rem; margin-bottom: .8rem; }
-    .dm-text { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; line-height: 1.65; color: var(--ink); }
-
-    .proof-cta { background: var(--brown); padding: 2.5rem 5%; text-align: center; }
-    .proof-cta p { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 900; color: var(--cream); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .5rem; }
-    .proof-cta small { display: block; font-size: .72rem; color: rgba(245,240,232,.45); letter-spacing: .15em; text-transform: uppercase; margin-bottom: 1.2rem; }
-
-    /* ════════════════════════════════════════
-       PATH A / PATH B
-    ════════════════════════════════════════ */
-    .paths { background: var(--cream); padding: 7rem 5%; }
-    .paths__header { text-align: center; margin-bottom: 1rem; }
-    .paths__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; color: var(--ink); margin-bottom: 1.2rem; }
-    .paths__which { font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-bottom: 3.5rem; display: block; }
-
-    .path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1000px; margin: 0 auto 3rem; align-items: start; }
-
-    .path__photo {
-      width: 100%; aspect-ratio: 4/3;
-      background: linear-gradient(135deg, var(--parchment) 0%, var(--sand) 100%);
-      border: 1.5px solid var(--border); position: relative;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .path__photo-label { font-family: 'Great Vibes', cursive; font-size: 1.5rem; color: rgba(26,18,8,.18); }
-
-    .path__label { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--ink); margin-bottom: 1.5rem; }
-    .path__list { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
-    .path__list li { font-size: .95rem; line-height: 1.65; color: var(--muted); padding-left: 1.6rem; position: relative; }
-    .path--a .path__list li::before { content: '✕'; position: absolute; left: 0; color: var(--chestnut); font-weight: 700; }
-    .path--b .path__list li::before { content: '✓'; position: absolute; left: 0; color: var(--olive); font-weight: 700; }
-
-    .path--a { display: grid; grid-template-columns: 1fr 1.3fr; gap: 2.5rem; align-items: start; }
-    .path--b { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; align-items: start; }
-
-    /* ════════════════════════════════════════
-       CHALLENGE / "IF SHE WAS GOING TO"
-    ════════════════════════════════════════ */
-    .challenge { background: var(--black); padding: 7rem 8%; text-align: center; position: relative; overflow: hidden; }
-    .challenge__headline { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; color: var(--cream); max-width: 820px; margin: 0 auto 1.5rem; }
-    .challenge__body { font-size: .97rem; line-height: 1.85; color: rgba(245,240,232,.62); max-width: 680px; margin: 0 auto 1.2rem; }
-    .challenge__body strong { color: var(--cream); font-style: italic; }
-    .challenge__bold { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2vw, 1.35rem); font-style: italic; font-weight: 700; color: rgba(245,240,232,.8); max-width: 680px; margin: 1.5rem auto; }
-    .not-boxes { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 2.5rem auto; max-width: 760px; }
-    .not-box { border: 1.5px solid var(--chestnut); padding: .9rem 1.6rem; font-size: .82rem; font-weight: 600; color: var(--cream); letter-spacing: .04em; min-width: 180px; text-align: center; flex: 1; }
-    .not-box span { color: var(--chestnut); font-weight: 700; }
-    .challenge__script { font-family: 'Great Vibes', cursive; font-size: 3rem; color: rgba(245,240,232,.22); margin: 2rem 0 1rem; display: block; }
-    .challenge__emphasis { font-family: 'Playfair Display', serif; font-size: clamp(.92rem, 1.8vw, 1.2rem); font-style: italic; color: rgba(245,240,232,.65); max-width: 680px; margin: 0 auto 2.5rem; }
-    .challenge__urgency { font-size: .7rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--sand); margin-top: 3rem; display: block; }
-
-    /* ════════════════════════════════════════
-       BIO
-    ════════════════════════════════════════ */
-    .bio { background: var(--parchment); padding: 7rem 5%; position: relative; }
-    .bio__header { text-align: center; margin-bottom: 4rem; }
-    .bio__eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: .8rem; }
-    .bio__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--ink); }
-    .bio__grid { display: grid; grid-template-columns: 400px 1fr; gap: 5rem; align-items: start; max-width: 1050px; margin: 0 auto; }
-    .bio__photo-wrap { position: sticky; top: 100px; }
-    .bio__photo { width: 100%; aspect-ratio: 3/4; background: linear-gradient(160deg, var(--sand) 0%, var(--chestnut) 50%, var(--darkbrown) 100%); border: 1.5px solid var(--border); position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 1.5rem; overflow: hidden; }
-    .bio__photo-placeholder { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: rgba(245,240,232,.28); }
-    .bio__photo-stat { position: absolute; bottom: 0; right: 0; background: var(--ink); padding: 1rem 1.5rem; text-align: center; }
-    .bio__photo-stat .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--cream); display: block; line-height: 1; }
-    .bio__photo-stat .lbl { font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(245,240,232,.4); margin-top: .3rem; display: block; }
-    .bio__hello { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; color: var(--ink); margin-bottom: 1.5rem; }
-    .bio__content p { font-size: .97rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.2rem; }
-    .bio__content p strong { color: var(--ink); font-weight: 600; }
-    .bio__content p em { font-style: italic; color: var(--brown); }
-    .bio__bullets { list-style: none; margin: 1rem 0; display: flex; flex-direction: column; gap: .7rem; }
-    .bio__bullets li { font-size: .95rem; color: var(--muted); padding-left: 1.8rem; position: relative; line-height: 1.5; }
-    .bio__bullets--arrow li::before { content: '→'; position: absolute; left: 0; color: var(--chestnut); font-weight: 700; }
-    .bio__bullets--check li::before { content: '✓'; position: absolute; left: 0; color: var(--olive); font-weight: 700; }
-    .bio__pull { border-left: 3px solid var(--chestnut); padding: 1.2rem 1.8rem; margin: 2rem 0; background: var(--cream); }
-    .bio__pull p { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; font-weight: 700; color: var(--brown); margin: 0 !important; line-height: 1.45; }
-
-    /* ════════════════════════════════════════
-       CURRICULUM
-    ════════════════════════════════════════ */
-    .curriculum { background: var(--ink); padding: 7rem 5%; }
-    .curriculum__header { text-align: center; margin-bottom: 4rem; }
-    .curriculum__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 900; color: var(--cream); line-height: 1.15; margin-bottom: .8rem; }
-    .curriculum__title em { font-style: italic; color: var(--sand); }
-    .curriculum__sub { font-size: .9rem; color: rgba(245,240,232,.5); max-width: 500px; margin: 0 auto; line-height: 1.75; }
-    .curriculum__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; max-width: 1050px; margin: 0 auto 0; background: rgba(245,240,232,.05); }
-    .pillar { background: var(--ink); padding: 3rem 2.5rem; border-top: 2px solid transparent; transition: border-color .3s; }
-    .pillar:hover { border-top-color: var(--chestnut); }
-    .pillar__num { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(245,240,232,.06); line-height: 1; margin-bottom: .3rem; }
-    .pillar__title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--cream); margin-bottom: .8rem; }
-    .pillar__body { font-size: .87rem; line-height: 1.75; color: rgba(245,240,232,.52); margin-bottom: 1.2rem; }
-    .pillar__list { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
-    .pillar__list li { font-size: .82rem; color: rgba(245,240,232,.45); padding-left: 1.1rem; position: relative; line-height: 1.5; }
-    .pillar__list li::before { content: '—'; position: absolute; left: 0; color: var(--olive-lt); }
-    .curriculum__deliverables { background: var(--darkbrown); border: 1px solid rgba(212,196,160,.1); max-width: 760px; margin: 0 auto; padding: 3rem; margin-top: 1.5px; }
-    .curriculum__deliverables h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--cream); text-align: center; margin-bottom: 2rem; }
-    .deliver-list { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; list-style: none; }
-    .deliver-list li { font-size: .87rem; color: rgba(245,240,232,.62); padding-left: 1.5rem; position: relative; line-height: 1.5; }
-    .deliver-list li::before { content: '✓'; position: absolute; left: 0; color: var(--olive-lt); font-weight: 700; }
-    .deliver-list li strong { color: var(--cream); font-weight: 600; }
-
-    /* ════════════════════════════════════════
-       FOR / NOT FOR (dark, centered, full bleed)
-    ════════════════════════════════════════ */
-    .qualify-dark {
-      background: var(--black);
-      position: relative;
-      padding: 7rem 8%;
-      text-align: center;
-      overflow: hidden;
-    }
-    .qualify-dark::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(170deg, rgba(45,22,8,.6) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .qualify-dark__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 900; line-height: 1.1; color: var(--cream); margin-bottom: 3rem; }
-    .qualify-dark__title em { font-style: italic; }
-
-    .qualify-section-label { font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--sand); display: block; margin-bottom: 1.5rem; }
-    .qualify-dark__label--not em { color: var(--chestnut); font-style: normal; }
-
-    .qualify-dark__list { list-style: none; max-width: 620px; margin: 0 auto 3.5rem; display: flex; flex-direction: column; gap: .9rem; text-align: center; }
-    .qualify-dark__list li { font-size: 1rem; line-height: 1.65; color: rgba(245,240,232,.75); }
-    .qualify-dark__list--yes li::before { content: '✓  '; color: var(--olive-lt); font-weight: 700; }
-    .qualify-dark__list--no  li::before { content: '✕  '; color: var(--chestnut); font-weight: 700; }
-
-    /* ════════════════════════════════════════
-       HOW I WORK WITH YOU
-    ════════════════════════════════════════ */
-    .how-i-work { background: var(--parchment); padding: 7rem 5%; text-align: center; position: relative; }
-    .how-i-work__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 900; line-height: 1.1; color: var(--ink); margin-bottom: 1.5rem; max-width: 780px; margin-left: auto; margin-right: auto; }
-    .how-i-work__tags { display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-    .how-i-work__tag { font-size: .88rem; color: var(--muted); }
-    .how-i-work__tag::before { content: '✓  '; color: var(--olive); font-weight: 700; }
-    .how-i-work__body { font-size: .97rem; line-height: 1.85; color: var(--muted); max-width: 600px; margin: 0 auto 1rem; }
-    .how-i-work__body strong { color: var(--brown); }
-    .how-i-work__close { font-size: .97rem; line-height: 1.75; color: var(--muted); max-width: 580px; margin: 0 auto 2.5rem; }
-    .how-i-work__close em { color: var(--brown); font-style: normal; font-weight: 700; }
-    .how-i-work__photo { max-width: 560px; margin: 3rem auto 0; aspect-ratio: 3/4; background: linear-gradient(160deg, var(--sand) 0%, var(--chestnut) 50%, var(--darkbrown) 100%); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; }
-    .how-i-work__photo-label { font-family: 'Great Vibes', cursive; font-size: 2rem; color: rgba(245,240,232,.22); }
-
-    /* ════════════════════════════════════════
-       INVESTMENT
-    ════════════════════════════════════════ */
-    .investment { background: var(--cream); padding: 6rem 5%; text-align: center; }
-    .investment__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; color: var(--ink); margin-bottom: .5rem; }
-    .investment__title em { font-style: italic; color: var(--brown); }
-    .investment__sub { font-size: .95rem; color: var(--muted); max-width: 520px; margin: 1rem auto 3rem; line-height: 1.75; }
-    .invest-card { max-width: 620px; margin: 0 auto; background: var(--parchment); border: 1.5px solid var(--border); padding: 3.5rem 3rem; position: relative; }
-    .invest-card::before { content: 'By Application Only'; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--brown); color: var(--cream); font-size: .6rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; padding: .3rem 1.2rem; white-space: nowrap; }
-    .invest-card__name { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--brown); margin-bottom: .5rem; }
-    .invest-card__desc { font-size: .88rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.65; }
-    .invest-card__list { list-style: none; display: flex; flex-direction: column; gap: .8rem; margin-bottom: 2.5rem; text-align: left; }
-    .invest-card__list li { font-size: .9rem; color: var(--ink); padding-left: 1.8rem; position: relative; line-height: 1.5; }
-    .invest-card__list li::before { content: '✓'; position: absolute; left: 0; color: var(--olive); font-weight: 700; }
-    .invest-card__list li strong { color: var(--brown); font-weight: 700; }
-    .invest-card__price { border-top: 1px solid var(--border); padding-top: 2rem; margin-bottom: 1.5rem; }
-    .invest-card__price .from { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
-    .invest-card__price .amount { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: var(--brown); line-height: 1; }
-    .invest-card__price .period { font-size: .82rem; color: var(--muted); }
-
-    /* ════════════════════════════════════════
-       APPLICATION
-    ════════════════════════════════════════ */
-    .apply-section { background: var(--cream); padding: 7rem 5%; }
-    .apply-section__header { text-align: center; margin-bottom: 3rem; }
-    .apply-section__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 900; line-height: 1.1; color: var(--ink); margin-bottom: 1rem; }
-    .apply-section__title em { color: var(--brown); font-style: normal; }
-    .apply-section__sub { font-size: .95rem; color: var(--muted); max-width: 580px; margin: 0 auto; line-height: 1.75; }
-    .apply-form { background: var(--parchment); max-width: 640px; margin: 0 auto; padding: 3.5rem; border: 1px solid var(--border); }
-    .apply-form h3 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 900; color: var(--brown); margin-bottom: .5rem; }
-    .apply-form .form-sub { font-size: .86rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.65; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
-    .form-group label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-    .form-group input, .form-group select, .form-group textarea { padding: .9rem 1.1rem; border: 1.5px solid rgba(107,88,64,.25); background: var(--cream); font-size: .92rem; font-family: 'Inter', sans-serif; color: var(--ink); outline: none; transition: border-color .2s; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brown); }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-group select { appearance: none; cursor: pointer; }
-    .form-consent { font-size: .72rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; text-align: center; }
-
-    /* ════════════════════════════════════════
-       FAQ
-    ════════════════════════════════════════ */
-    .faq { background: var(--parchment); padding: 6rem 5%; }
-    .faq__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: var(--ink); text-align: center; margin-bottom: 3rem; }
-    .faq__list { max-width: 760px; margin: 0 auto 3rem; }
-    .faq-item { border-bottom: 1px solid rgba(107,88,64,.2); }
-    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 1.5rem 3rem 1.5rem 0; font-size: .97rem; font-weight: 600; color: var(--ink); cursor: pointer; position: relative; font-family: 'Inter', sans-serif; line-height: 1.45; }
-    .faq-q::after { content: '∨'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 1.1rem; color: var(--chestnut); transition: transform .25s; }
-    .faq-item.open .faq-q::after { transform: translateY(-50%) rotate(180deg); }
-    .faq-a { font-size: .92rem; line-height: 1.8; color: var(--muted); max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; }
-    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 1.5rem; }
-
-    /* ════════════════════════════════════════
-       PRIVATE & EXCLUSIVE
-    ════════════════════════════════════════ */
-    .exclusive { background: var(--black); padding: 7rem 5%; text-align: center; }
-    .exclusive__title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; color: var(--cream); line-height: 1.1; margin-bottom: 2rem; }
-    .exclusive__body { font-size: .97rem; line-height: 1.85; color: rgba(245,240,232,.62); max-width: 660px; margin: 0 auto 1.2rem; }
-    .exclusive__body strong { color: var(--cream); }
-    .exclusive__close { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2vw, 1.35rem); font-style: italic; color: rgba(245,240,232,.5); max-width: 500px; margin: 2rem auto; }
-    .exclusive__photo { max-width: 480px; margin: 3rem auto 0; aspect-ratio: 3/4; background: linear-gradient(160deg, #2D1E10 0%, #1A1208 50%, #2D2A14 100%); border: 1px solid rgba(212,196,160,.1); display: flex; align-items: center; justify-content: center; }
-    .exclusive__photo-label { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: rgba(245,240,232,.18); }
-
-    /* ════════════════════════════════════════
-       FINAL CTA BAR
-    ════════════════════════════════════════ */
-    .final-bar { background: var(--brown); padding: 5rem 5%; text-align: center; }
-    .final-bar blockquote { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2.2rem); font-style: italic; font-weight: 700; color: var(--cream); max-width: 680px; margin: 0 auto 2rem; line-height: 1.3; }
-
-    /* ════════════════════════════════════════
-       FOOTER
-    ════════════════════════════════════════ */
-    footer { background: var(--black); padding: 3rem 5%; text-align: center; }
-    .footer-logo { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--cream); display: block; margin-bottom: 1rem; }
-    .footer-links { display: flex; justify-content: center; gap: 2rem; margin: 1rem 0; flex-wrap: wrap; }
-    .footer-links a { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,240,232,.28); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: var(--sand); }
-    footer p { font-size: .73rem; color: rgba(245,240,232,.22); line-height: 1.7; }
-
-    /* ════════════════════════════════════════
-       STICKY BAR
-    ════════════════════════════════════════ */
-    .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 300; background: var(--darkbrown); border-top: 1px solid rgba(212,196,160,.1); padding: .9rem 5%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; transform: translateY(100%); transition: transform .4s ease; box-shadow: 0 -4px 30px rgba(13,10,6,.5); }
-    .sticky-bar.visible { transform: translateY(0); }
-    .sticky-bar p { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: var(--cream); }
-    .sticky-bar .urgency { font-size: .62rem; color: var(--sand); letter-spacing: .12em; text-transform: uppercase; }
-
-    /* ════════════════════════════════════════
-       SCROLL REVEAL
-    ════════════════════════════════════════ */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; }
-
-    /* ════════════════════════════════════════
-       RESPONSIVE
-    ════════════════════════════════════════ */
-    @media (max-width: 960px) {
-      .bio__grid { grid-template-columns: 1fr; gap: 3rem; }
-      .bio__photo-wrap { position: static; }
-      .bio__photo { aspect-ratio: 4/3; }
-      .curriculum__grid { grid-template-columns: 1fr; }
-      .path--a, .path--b { grid-template-columns: 1fr; }
-      .path-grid { grid-template-columns: 1fr; }
-      .proof-grid { grid-template-columns: 1fr 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .deliver-list { grid-template-columns: 1fr; }
-      .stats-row { gap: 2.5rem; }
-    }
-    @media (max-width: 640px) {
-      .hero__content { padding: 3rem 6% 5rem; }
-      .hero__headline { font-size: 3.5rem; }
-      .not-boxes { flex-direction: column; }
-      .not-box { min-width: 0; }
-      .proof-grid { grid-template-columns: 1fr; }
-      .apply-form { padding: 2rem 1.5rem; }
-      .sticky-bar p { font-size: .85rem; }
-      .stat__num { font-size: 2.8rem; }
-      .stats-row { gap: 1.8rem; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; cursor: none; }
+    .cursor      { position:fixed;width:10px;height:10px;border-radius:50%;background:var(--chestnut);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s; }
+    .cursor-ring { position:fixed;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--chestnut);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.45;transition:width .3s,height .3s,opacity .3s; }
+    .cursor.big      { width:18px;height:18px; }
+    .cursor-ring.big { width:56px;height:56px;opacity:.22; }
+    #scrollBar { position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--chestnut),var(--olive-lt));z-index:1000;transition:width .08s linear; }
+    .ticker-wrap { background:var(--darkbrown);overflow:hidden;padding:.75rem 0;border-bottom:1px solid rgba(212,196,160,.08); }
+    .ticker { display:flex;white-space:nowrap;animation:ticker 32s linear infinite; }
+    .ticker:hover { animation-play-state:paused; }
+    .ticker-item { font-size:.66rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--sand);padding:0 2.8rem;flex-shrink:0; }
+    .ticker-item em { color:var(--chestnut);font-style:normal; }
+    @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    nav { position:sticky;top:0;z-index:200;display:flex;justify-content:center;align-items:center;padding:1.1rem 5%;background:rgba(245,240,232,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:padding .4s,box-shadow .4s; }
+    nav.scrolled { padding:.65rem 5%;box-shadow:0 2px 30px rgba(92,51,24,.1); }
+    .nav-logo { font-family:'Great Vibes',cursive;font-size:2rem;color:var(--brown);text-decoration:none;transition:color .3s; }
+    .nav-logo:hover { color:var(--chestnut); }
+    [data-r] { opacity:0;transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1); }
+    [data-r="up"]    { transform:translateY(48px); }
+    [data-r="left"]  { transform:translateX(-48px); }
+    [data-r="right"] { transform:translateX(48px); }
+    [data-r="scale"] { transform:scale(.93); }
+    [data-r].on      { opacity:1;transform:none; }
+    .sg [data-r]:nth-child(1){transition-delay:0s}
+    .sg [data-r]:nth-child(2){transition-delay:.1s}
+    .sg [data-r]:nth-child(3){transition-delay:.2s}
+    .sg [data-r]:nth-child(4){transition-delay:.3s}
+    .sg [data-r]:nth-child(5){transition-delay:.4s}
+    .hero { background:var(--cream);padding:6rem 5% 4rem;text-align:center; }
+    .hero-eyebrow { font-size:.66rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--chestnut);margin-bottom:2rem;opacity:0;animation:fadeUp .8s ease .2s forwards; }
+    .hero-title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.8rem,8vw,6.5rem);line-height:1.06;color:var(--brown);margin-bottom:1.8rem; }
+    .hero-title .word { display:inline-block;overflow:hidden;vertical-align:bottom;margin-right:.14em; }
+    .hero-title .word span { display:inline-block;transform:translateY(110%);animation:wordUp .7s cubic-bezier(.16,1,.3,1) forwards; }
+    .hero-title .highlight { color:var(--chestnut);font-style:italic; }
+    .hero-desc { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--muted);line-height:1.65;max-width:640px;margin:0 auto 2.8rem;opacity:0;animation:fadeUp .8s ease 1.1s forwards; }
+    .hero-actions { display:flex;flex-direction:column;align-items:center;gap:.8rem;opacity:0;animation:fadeUp .8s ease 1.4s forwards; }
+    .hero-fine { font-size:.72rem;color:var(--muted);letter-spacing:.06em; }
+    @keyframes wordUp  { to{transform:translateY(0)} }
+    @keyframes fadeUp  { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+    .video-block { background:var(--cream);padding:0 5% 6rem; }
+    .video-frame { max-width:800px;margin:0 auto;aspect-ratio:16/9;border-radius:2px;overflow:hidden;background:var(--darkbrown);box-shadow:0 8px 50px rgba(92,51,24,.18);display:flex;align-items:center;justify-content:center;transition:box-shadow .4s ease; }
+    .video-frame:hover { box-shadow:0 16px 70px rgba(92,51,24,.28); }
+    .video-placeholder { text-align:center; }
+    .v-play { width:68px;height:68px;border-radius:50%;border:2px solid rgba(212,196,160,.4);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;color:var(--sand);transition:transform .3s,border-color .3s; }
+    .video-placeholder:hover .v-play { transform:scale(1.1);border-color:var(--chestnut); }
+    .v-label { font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sand); }
+    .btn-primary { display:block;width:100%;max-width:560px;text-align:center;text-decoration:none;font-family:'Inter',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;padding:1.15rem 2rem;background:var(--darkbrown);color:var(--cream);border-radius:1px;border:none;cursor:none;transition:background .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden; }
+    .btn-primary::after { content:'';position:absolute;inset:0;background:rgba(255,255,255,.06);transform:translateX(-101%);transition:transform .4s ease; }
+    .btn-primary:hover::after { transform:translateX(0); }
+    .btn-primary:hover { background:var(--brown);transform:translateY(-3px);box-shadow:0 10px 40px rgba(92,51,24,.35); }
+    .btn-outline { display:inline-block;text-decoration:none;font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;padding:1rem 2.8rem;border:1.5px solid rgba(245,240,232,.35);color:var(--cream);border-radius:1px;cursor:none;transition:border-color .3s,background .3s,transform .3s; }
+    .btn-outline:hover { border-color:var(--sand);background:rgba(245,240,232,.06);transform:translateY(-3px); }
+    .btn-dark-outline { display:block;width:100%;max-width:400px;margin:0 auto;text-align:center;text-decoration:none;font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;padding:1.1rem 2rem;border:1.5px solid rgba(92,51,24,.4);color:var(--brown);border-radius:1px;cursor:none;transition:background .3s,transform .3s,border-color .3s; }
+    .btn-dark-outline:hover { background:var(--brown);color:var(--cream);border-color:var(--brown);transform:translateY(-3px); }
+    .testimonial-split { background:var(--parchment);padding:6rem 5%;border-top:1px solid var(--border); }
+    .testimonial-split__inner { max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center; }
+    .testimonial-label { display:inline-block;background:var(--darkbrown);color:var(--sand);font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:.4rem .9rem;margin-bottom:1rem; }
+    .testimonial-media { aspect-ratio:4/5;border-radius:2px;overflow:hidden;background:linear-gradient(145deg,#3d2010 0%,#2d1608 100%);display:flex;align-items:flex-end;padding:1.5rem;box-shadow:0 8px 40px rgba(26,18,8,.15);transition:box-shadow .4s; }
+    .testimonial-media:hover { box-shadow:0 16px 60px rgba(26,18,8,.22); }
+    .testimonial-quote { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.5rem,3.5vw,2.4rem);color:var(--brown);line-height:1.35;margin-bottom:1.5rem; }
+    .testimonial-attr { font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted); }
+    .editorial-dark { background:var(--darkbrown);display:grid;grid-template-columns:1fr 1fr;min-height:100vh; }
+    .editorial-dark__photo { position:sticky;top:0;height:100vh;overflow:hidden;background:linear-gradient(160deg,#1a0d06 0%,#3d2010 60%,#2d1608 100%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:3rem; }
+    .editorial-dark__content { padding:7rem 5rem 7rem 4rem;display:flex;flex-direction:column;justify-content:flex-start; }
+    .editorial-dark__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.4rem,4.5vw,4rem);color:var(--cream);line-height:1.1;margin-bottom:2.5rem; }
+    .editorial-dark__title em { color:var(--chestnut);font-style:italic; }
+    .editorial-dark__body p { color:var(--sand);font-size:.97rem;line-height:1.9;margin-bottom:1.4rem; }
+    .editorial-dark__body p strong { color:var(--cream);font-weight:700; }
+    .editorial-dark__statement { font-family:'Playfair Display',serif;font-weight:900;font-style:italic;font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--cream);line-height:1.35;border-left:3px solid var(--chestnut);padding-left:1.4rem;margin:2rem 0; }
+    .bio-editorial { display:grid;grid-template-columns:1fr 1fr;min-height:100vh; }
+    .bio-editorial__content { background:var(--cream);padding:7rem 4rem 7rem 5%;display:flex;flex-direction:column;justify-content:flex-start; }
+    .bio-editorial__photo { position:sticky;top:0;height:100vh;overflow:hidden;background:linear-gradient(170deg,#3d2010 0%,#1a0d06 100%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:3rem; }
+    .photo-hint { font-family:'Great Vibes',cursive;font-size:1.8rem;color:rgba(212,196,160,.35);text-align:center; }
+    .bio-editorial__name { font-family:'Great Vibes',cursive;font-size:2.6rem;color:var(--chestnut);margin-bottom:.3rem; }
+    .bio-editorial__title-lg { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);color:var(--brown);line-height:1.1;margin-bottom:2.5rem; }
+    .bio-editorial__title-lg em { color:var(--chestnut);font-style:italic; }
+    .bio-editorial__body p { font-size:.95rem;color:var(--ink);line-height:1.9;margin-bottom:1.3rem; }
+    .bio-pull { font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--brown);line-height:1.5;border-left:3px solid var(--chestnut);padding-left:1.3rem;margin:2rem 0; }
+    .features { background:var(--cream);padding:7rem 5%; }
+    .features__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,5vw,3.8rem);color:var(--brown);text-align:center;margin-bottom:.8rem;line-height:1.1; }
+    .features__title em { color:var(--chestnut);font-style:italic; }
+    .features__sub { text-align:center;font-size:.9rem;color:var(--muted);margin-bottom:3rem; }
+    .features__grid { display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:1060px;margin:0 auto 3rem; }
+    .feat { background:var(--parchment);padding:1.6rem 1.8rem;border:1px solid var(--border);transition:transform .35s ease,box-shadow .35s ease; }
+    .feat:hover { transform:translateY(-4px);box-shadow:0 12px 40px rgba(92,51,24,.1); }
+    .feat__head { display:flex;gap:.6rem;align-items:flex-start;margin-bottom:.6rem; }
+    .feat__check { color:var(--chestnut);font-size:1rem;flex-shrink:0;margin-top:.1rem; }
+    .feat__title { font-size:.9rem;font-weight:700;font-style:italic;color:var(--brown);line-height:1.3; }
+    .feat__body { font-size:.85rem;line-height:1.75;color:var(--muted);padding-left:1.6rem; }
+    .outcomes { background:var(--darkbrown);padding:7rem 5%; }
+    .outcomes__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.6rem,3.5vw,2.8rem);color:var(--cream);text-align:center;margin-bottom:.8rem; }
+    .outcomes__sub { text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:3rem; }
+    .outcomes__grid { display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:1060px;margin:0 auto 3rem; }
+    .outcome { background:rgba(245,240,232,.05);border:1px solid rgba(212,196,160,.12);padding:1.3rem 1.6rem;display:flex;gap:.8rem;align-items:flex-start;transition:background .3s; }
+    .outcome:hover { background:rgba(245,240,232,.08); }
+    .outcome__check { color:var(--olive-lt);flex-shrink:0;font-size:.9rem;margin-top:.15rem; }
+    .outcome__text { font-size:.88rem;color:var(--sand);line-height:1.65; }
+    .portal { background:var(--ink);padding:7rem 5%; }
+    .portal__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.2rem,5vw,4rem);color:var(--cream);text-align:center;line-height:1.1;margin-bottom:1.5rem; }
+    .portal__title em { font-style:italic;color:var(--sand); }
+    .portal__body { max-width:760px;margin:0 auto 3.5rem;text-align:center;font-size:.97rem;color:var(--sand);line-height:1.85;font-weight:600; }
+    .community { background:var(--cream);padding:7rem 5%; }
+    .community__header { max-width:800px;margin:0 auto 3rem;text-align:center; }
+    .community__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3rem);color:var(--brown);line-height:1.15;margin-bottom:1.2rem; }
+    .community__p { font-size:.93rem;color:var(--muted);line-height:1.85;margin-bottom:.8rem; }
+    .community__grid { display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:1060px;margin:0 auto 3rem; }
+    .fit-section { background:var(--darkbrown);padding:7rem 5%; }
+    .fit-section__grid { display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1060px;margin:0 auto 5rem;align-items:start; }
+    .fit-section__photo { aspect-ratio:3/4;border-radius:1px;overflow:hidden;background:linear-gradient(145deg,#1a0d06 0%,#3d2010 100%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:2rem; }
+    .fit-section__card { background:var(--cream);padding:2.5rem; }
+    .fit-section__card-title { font-size:.65rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;display:block; }
+    .fit-list { list-style:none; }
+    .fit-list li { font-size:.9rem;color:var(--ink);line-height:1.65;padding:.6rem 0;border-bottom:1px solid var(--border);display:flex;gap:.8rem; }
+    .fit-list li:last-child { border-bottom:none; }
+    .fit-list--yes li::before { content:'\25C6';color:var(--chestnut);font-size:.55rem;flex-shrink:0;margin-top:.4rem; }
+    .fit-list--no  li::before { content:'\2715';color:#c09080;flex-shrink:0;font-weight:700; }
+    .fit-section__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);color:var(--cream);line-height:1.1;margin-bottom:2.5rem; }
+    .fit-section__title em { color:var(--chestnut);font-style:italic; }
+    .objections { background:var(--parchment);padding:7rem 5%; }
+    .objections__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);color:var(--brown);text-align:center;line-height:1.15;margin-bottom:.8rem; }
+    .objections__title em { color:var(--chestnut);font-style:italic; }
+    .objections__sub { text-align:center;font-size:.9rem;color:var(--muted);max-width:580px;margin:0 auto 3rem;line-height:1.7; }
+    .objections__grid { display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1060px;margin:0 auto; }
+    .obj-card { background:var(--cream);border:1px solid var(--border);overflow:hidden;transition:transform .35s ease,box-shadow .35s ease; }
+    .obj-card:hover { transform:translateY(-5px);box-shadow:0 14px 40px rgba(92,51,24,.12); }
+    .obj-card__q { background:var(--darkbrown);padding:.75rem 1.2rem;font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:var(--cream);line-height:1.4; }
+    .obj-card__a { padding:1.3rem 1.4rem;font-size:.86rem;color:var(--muted);line-height:1.8; }
+    .final-testimonial { background:var(--cream);padding:7rem 5%;display:grid;grid-template-columns:1fr 280px;gap:4rem;align-items:center; }
+    .final-testimonial__quote { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.8rem,4vw,3rem);color:var(--brown);line-height:1.3; }
+    .final-testimonial__media { aspect-ratio:1/1;border-radius:1px;overflow:hidden;position:relative; }
+    .final-testimonial__media-inner { width:100%;height:100%;background:linear-gradient(145deg,#3d2010 0%,#2d1608 100%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:1rem; }
+    .final-testimonial__media-label { display:inline-block;background:var(--darkbrown);color:var(--sand);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.35rem .8rem;position:absolute;top:0;left:0; }
+    .closing-overlap { position:relative;overflow:hidden; }
+    .closing-overlap__photo { width:100%;aspect-ratio:16/6;display:block;background:linear-gradient(135deg,#1a0d06 0%,#3d2010 50%,#2d1608 100%);min-height:340px; }
+    .closing-overlap__card { position:absolute;right:5%;bottom:-4rem;width:min(600px,80%);background:var(--darkbrown);padding:3.5rem; }
+    .closing-overlap__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--cream);line-height:1.1;margin-bottom:1.5rem; }
+    .closing-overlap__title em { color:var(--chestnut);font-style:italic; }
+    .closing-overlap__body { font-size:.92rem;color:var(--sand);line-height:1.85;margin-bottom:2rem; }
+    .closing-overlap__body strong { color:var(--cream);font-weight:700; }
+    .closing-spacer { background:var(--darkbrown);height:5rem; }
+    .curriculum { background:var(--darkbrown);padding:7rem 5%; }
+    .curriculum__header { text-align:center;margin-bottom:4rem; }
+    .curriculum__script { font-family:'Great Vibes',cursive;font-size:clamp(2.5rem,6vw,4.5rem);color:var(--cream);display:block;margin-bottom:.5rem; }
+    .curriculum__sub { font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted); }
+    .curriculum__cards { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1060px;margin:0 auto 3rem; }
+    .c-card { background:var(--cream);padding:2.5rem 2rem;border-radius:1px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s; }
+    .c-card:hover { transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.35); }
+    .c-card__check { font-size:1rem;color:var(--chestnut);margin-bottom:.8rem;display:block; }
+    .c-card__title { font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--brown);margin-bottom:.3rem; }
+    .c-card__weeks { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--muted);margin-bottom:1rem; }
+    .c-card__body { font-size:.87rem;color:var(--ink);line-height:1.75; }
+    .curriculum__manifesto { max-width:780px;margin:0 auto 3rem;text-align:center; }
+    .curriculum__manifesto p { font-size:.97rem;color:var(--sand);line-height:1.85;font-weight:600; }
+    .qualify { background:var(--cream);padding:7rem 5%; }
+    .qualify__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3rem);color:var(--brown);text-align:center;margin-bottom:3rem; }
+    .qualify__grid { display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:880px;margin:0 auto 4rem; }
+    .q-col__label { font-size:.66rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:block; }
+    .q-list { list-style:none; }
+    .q-list li { font-size:.9rem;color:var(--ink);line-height:1.65;padding:.6rem 0;border-bottom:1px solid var(--border);display:flex;gap:.8rem;transition:padding-left .25s; }
+    .q-list li:hover { padding-left:.3rem; }
+    .q-list--yes li::before { content:'\2713';color:var(--olive);flex-shrink:0;font-weight:700; }
+    .q-list--no  li::before { content:'\2715';color:#c09080;flex-shrink:0;font-weight:700; }
+    .apply { background:var(--parchment);padding:7rem 5%; }
+    .apply__header { text-align:center;max-width:640px;margin:0 auto 3rem; }
+    .apply__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--brown);margin-bottom:.8rem; }
+    .apply__title em { font-style:italic;color:var(--chestnut); }
+    .apply__sub { color:var(--muted);font-size:.9rem;line-height:1.75; }
+    .apply__card { max-width:600px;margin:0 auto;background:var(--cream);border:1px solid var(--border);padding:2.5rem;border-radius:1px;transition:box-shadow .4s; }
+    .apply__card:hover { box-shadow:0 12px 50px rgba(92,51,24,.1); }
+    .apply__card h3 { font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:var(--brown);margin-bottom:.4rem; }
+    .form-hint { font-size:.82rem;color:var(--muted);margin-bottom:1.8rem; }
+    .form-row { display:grid;grid-template-columns:1fr 1fr;gap:1rem; }
+    .fg { display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem; }
+    .fg label { font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted); }
+    .fg input,.fg select,.fg textarea { padding:.75rem 1rem;background:var(--parchment);border:1px solid var(--border);font-family:'Inter',sans-serif;font-size:.88rem;color:var(--ink);border-radius:1px;transition:border-color .25s,box-shadow .25s;cursor:none; }
+    .fg input:focus,.fg select:focus,.fg textarea:focus { outline:none;border-color:var(--chestnut);box-shadow:0 0 0 3px rgba(139,94,60,.1); }
+    .fg textarea { resize:vertical;min-height:88px; }
+    .invest { background:var(--cream);padding:5rem 5%;border-top:1px solid var(--border); }
+    .invest__card { max-width:580px;margin:0 auto;border:1.5px solid var(--border);padding:2.5rem;border-radius:1px;transition:box-shadow .4s; }
+    .invest__card:hover { box-shadow:0 12px 50px rgba(92,51,24,.1); }
+    .invest__tag { display:inline-block;background:var(--darkbrown);color:var(--sand);font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:.4rem .9rem;margin-bottom:1.5rem; }
+    .invest__name { font-family:'Playfair Display',serif;font-weight:900;font-size:1.7rem;color:var(--brown);margin-bottom:1.5rem; }
+    .invest__list { list-style:none;margin-bottom:2rem; }
+    .invest__list li { font-size:.87rem;color:var(--muted);padding:.48rem 0;border-bottom:1px solid var(--border);display:flex;gap:.6rem; }
+    .invest__list li::before { content:'\2713';color:var(--olive);flex-shrink:0; }
+    .invest__price-from { font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted); }
+    .invest__amount { font-family:'Playfair Display',serif;font-weight:900;font-size:3.5rem;color:var(--brown);line-height:1;margin:.3rem 0; }
+    .invest__period { font-size:.8rem;color:var(--muted);margin-bottom:2rem; }
+    .faq { background:var(--parchment);padding:7rem 5%; }
+    .faq__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.2rem,4.5vw,4rem);color:var(--brown);text-align:center;margin-bottom:3rem; }
+    .faq__list { max-width:720px;margin:0 auto; }
+    .faq-item { border-bottom:1px solid var(--border); }
+    .faq-q { width:100%;background:none;border:none;cursor:none;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;font-family:'Inter',sans-serif;font-size:.93rem;font-weight:600;color:var(--brown);text-align:left;gap:1rem;transition:color .25s; }
+    .faq-q:hover { color:var(--chestnut); }
+    .faq-v { transition:transform .4s cubic-bezier(.16,1,.3,1);flex-shrink:0; }
+    .faq-item.open .faq-v { transform:rotate(180deg); }
+    .faq-a { max-height:0;overflow:hidden;font-size:.88rem;color:var(--muted);line-height:1.8;transition:max-height .5s cubic-bezier(.16,1,.3,1),padding .35s; }
+    .faq-item.open .faq-a { max-height:400px;padding-bottom:1.3rem; }
+    .final { background:var(--darkbrown);padding:9rem 5%;text-align:center;position:relative;overflow:hidden; }
+    .final__ghost { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(6rem,20vw,20rem);color:rgba(255,255,255,.018);white-space:nowrap;pointer-events:none;line-height:1; }
+    .final__script { font-family:'Great Vibes',cursive;font-size:clamp(2.5rem,6vw,4rem);color:var(--sand);margin-bottom:1.5rem;display:block;position:relative;z-index:1; }
+    .final__quote { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.3rem,3vw,2rem);color:var(--cream);max-width:680px;margin:0 auto 2.5rem;line-height:1.5;position:relative;z-index:1; }
+    footer { background:var(--black);padding:3rem 5%;text-align:center; }
+    .footer-logo { font-family:'Great Vibes',cursive;font-size:2.4rem;color:var(--cream);text-decoration:none;display:block;margin-bottom:1rem; }
+    .footer-links { display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem; }
+    .footer-links a { font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s; }
+    .footer-links a:hover { color:var(--sand); }
+    .footer-copy { font-size:.65rem;color:rgba(122,104,80,.4); }
+    .sticky { position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(13,10,6,.96);backdrop-filter:blur(16px);border-top:1px solid rgba(212,196,160,.1);display:flex;align-items:center;justify-content:space-between;padding:.9rem 5%;gap:1rem;transform:translateY(100%);transition:transform .5s cubic-bezier(.16,1,.3,1); }
+    .sticky.on { transform:translateY(0); }
+    .sticky__text { font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream); }
+    .sticky__text em { color:var(--sand);font-style:normal; }
+    .sticky__close { background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:none;transition:color .2s; }
+    .sticky__close:hover { color:var(--cream); }
+    .sticky__btn { flex-shrink:0;text-decoration:none;font-family:'Inter',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:.6rem 1.5rem;background:var(--chestnut);color:var(--cream);border-radius:1px;transition:background .25s,transform .25s;cursor:none; }
+    .sticky__btn:hover { background:var(--brown);transform:translateY(-2px); }
+    .eyebrow { display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--chestnut);margin-bottom:1.2rem; }
+    @media (max-width:900px) {
+      .editorial-dark,.bio-editorial { grid-template-columns:1fr; }
+      .editorial-dark__photo,.bio-editorial__photo { position:relative;height:60vw;min-height:300px; }
+      .editorial-dark__content,.bio-editorial__content { padding:4rem 5%; }
+      .curriculum__cards,.features__grid,.outcomes__grid,.community__grid,.objections__grid { grid-template-columns:1fr; }
+      .qualify__grid,.fit-section__grid { grid-template-columns:1fr; }
+      .testimonial-split__inner { grid-template-columns:1fr; }
+      .form-row { grid-template-columns:1fr; }
+      .final-testimonial { grid-template-columns:1fr;padding:5rem 5%; }
+      .closing-overlap__card { position:relative;right:auto;bottom:auto;width:100%; }
     }
   </style>
 </head>
 <body>
-
-  <!-- ANNOUNCEMENT -->
-  <div class="announcement">
-    <em>⚡ Limited Spots</em> — Applications Close When This Cohort Fills — Do Not Wait
+<div id="scrollBar"></div>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+<div class="ticker-wrap"><div class="ticker"><span class="ticker-item"><em>✦ Now Accepting Applications</em></span><span class="ticker-item">Become Her Anyway</span><span class="ticker-item">12-Week Intensive</span><span class="ticker-item"><em>Limited Spots</em></span><span class="ticker-item">By Application Only</span><span class="ticker-item">Identity Transformation</span><span class="ticker-item"><em>✦ Now Accepting Applications</em></span><span class="ticker-item">Become Her Anyway</span><span class="ticker-item">12-Week Intensive</span><span class="ticker-item"><em>Limited Spots</em></span><span class="ticker-item">By Application Only</span><span class="ticker-item">Identity Transformation</span></div></div>
+<nav id="nav"><a href="#" class="nav-logo">Become Her Anyway</a></nav>
+<section class="hero">
+  <p class="hero-eyebrow">Become Her Anyway™ &nbsp;·&nbsp; Applications Now Open</p>
+  <h1 class="hero-title" id="heroH1">Stop being the woman you <span class="highlight">almost</span> are.</h1>
+  <p class="hero-desc">A 12-week private coaching intensive for women who are done closing the gap between who they are and who they were always meant to be.</p>
+  <div class="hero-actions">
+    <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary">Apply Now →</a>
+    <span class="hero-fine">Application only · Reviewed within 48 hours · Limited spots per cohort</span>
   </div>
-
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">Become Her Anyway</a>
-  </nav>
-
-  <!-- ═══════════════════ HERO ═══════════════════ -->
-  <section class="hero">
-    <div class="hero__photo"></div><!-- Replace with: <img src="your-photo.jpg" ...> -->
-    <div class="hero__content">
-      <span class="hero__eyebrow">1:1 &amp; Group Coaching · Limited Enrollment</span>
-      <h1 class="hero__headline reveal">
-        Become<br/><em>Her</em><br/>Anyway.
-      </h1>
-      <p class="hero__sub reveal">
-        For the Women Who Know Exactly Who She Is —<br/>
-        and Are Done Waiting to Become Her
-      </p>
-      <p class="hero__body reveal">
-        12 weeks working directly with me to break the identity patterns keeping you stuck, step into embodied
-        confidence, and build a life that actually feels like yours. Together we close the gap between
-        who you are now and the woman you already know you are meant to be — and we do it <em>anyway.</em>
-      </p>
-      <div class="reveal">
-        <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn btn-ghost btn--lg">Apply Now →</a>
-        <span class="hero__urgency">Only 8 spots remaining in this cohort</span>
-      </div>
+</section>
+<div class="video-block">
+  <span style="display:block;text-align:center;margin-bottom:.8rem;letter-spacing:.18em;font-size:.66rem;font-weight:700;text-transform:uppercase;color:var(--muted)" data-r="up">Watch This Before You Apply.</span>
+  <div class="video-frame" data-r="scale">
+    <!-- TO ADD YOUR VIDEO: replace this div with an iframe or video tag -->
+    <div class="video-placeholder">
+      <div class="v-play">▶</div>
+      <p class="v-label">Add Your Video Here</p>
+      <p style="font-size:.72rem;color:rgba(212,196,160,.4);margin-top:.4rem">YouTube · Vimeo · or local video file</p>
     </div>
-  </section>
-
-  <!-- ═══════════════════ STATS BAR ═══════════════════ -->
-  <section class="stats-bar">
-    <div class="stats-row reveal">
-      <div class="stat">
-        <span class="stat__num">12K+</span>
-        <span class="stat__label">Women in Community</span>
-      </div>
-      <div class="stat">
-        <span class="stat__num">94%</span>
-        <span class="stat__label">Report a Mindset Shift</span>
-      </div>
-      <div class="stat">
-        <span class="stat__num">12</span>
-        <span class="stat__label">Weeks to Transform</span>
-      </div>
-    </div>
-    <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-wide reveal">Apply for Become Her Anyway Now →</a>
-  </section>
-
-  <!-- ═══════════════════ THIS IS FOR ═══════════════════ -->
-  <section class="for-who">
-    <div class="reveal">
-      <h2 class="for-who__headline">
-        This Is for Women Who Refuse to Keep<br/>
-        <em>Waiting for Permission to Be Themselves</em><br/>
-        — and Are Ready to Do the Real Work
-      </h2>
-    </div>
-    <div class="for-who__photo reveal">
-      <span class="for-who__photo-label">Become Her Anyway Community</span>
-    </div>
-    <div class="for-who__quote reveal">
-      <blockquote>"She is not a future version of you. She is the real you — underneath everything you were taught to be for everyone else."</blockquote>
-      <cite>— The Become Her Anyway Manifesto</cite>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ SOCIAL PROOF WALL ═══════════════════ -->
-  <section class="proof-wall">
-    <div class="proof-wall__header reveal">
-      <span class="eyebrow">Real Women. Real Shifts.</span>
-      <h2 class="proof-wall__title">They Stopped Waiting.<br/>Here Is <span class="script">what happened.</span></h2>
-      <div class="divider-bar"></div>
-    </div>
-    <div class="proof-grid">
-      <div class="dm-card reveal">
-        <div class="dm-card__header">
-          <div class="dm-card__avatar">M</div>
-          <div><div class="dm-card__name">Maya T.</div><div class="dm-card__platform">Instagram DM</div></div>
-        </div>
-        <div class="dm-card__body">
-          <div class="dm-result">Identity Shift</div>
-          <p class="dm-text">"I came in thinking I had a confidence problem. I left knowing I had an identity problem — and it was completely solved. Within week four I made a decision I had been avoiding for three years. I finally stopped apologizing for who I am."</p>
-        </div>
-      </div>
-      <div class="dm-card reveal d1">
-        <div class="dm-card__header">
-          <div class="dm-card__avatar">J</div>
-          <div><div class="dm-card__name">Jordan W.</div><div class="dm-card__platform">Email</div></div>
-        </div>
-        <div class="dm-card__body">
-          <div class="dm-bubble">"Just had the conversation with my mother I'd been avoiding for a decade. Week 3. I am in shock."</div>
-          <p class="dm-text">"The identity work goes deeper than anything I've tried. It actually sticks because it's not about strategy — it's about who you believe you are."</p>
-        </div>
-      </div>
-      <div class="dm-card reveal d2">
-        <div class="dm-card__header">
-          <div class="dm-card__avatar">A</div>
-          <div><div class="dm-card__name">Aisha K.</div><div class="dm-card__platform">Instagram DM</div></div>
-        </div>
-        <div class="dm-card__body">
-          <div class="dm-result">Tripled Her Rates</div>
-          <div class="dm-bubble">"I raised my rates 3x during the program. Every single client said yes. THE OUTER RESULTS FOLLOWED THE INNER SHIFT 🙌"</div>
-          <p class="dm-text">"The embodied confidence module changed how I walk into rooms. I am not the same woman."</p>
-        </div>
-      </div>
-      <div class="dm-card reveal">
-        <div class="dm-card__header">
-          <div class="dm-card__avatar">R</div>
-          <div><div class="dm-card__name">Renée D.</div><div class="dm-card__platform">Voice Memo Recap</div></div>
-        </div>
-        <div class="dm-card__body">
-          <div class="dm-bubble">"Week 2 I sat on the floor and cried because I realized I had never — not once — asked myself what I actually wanted."</div>
-          <p class="dm-text">"This program gave me language for things I had felt my entire life but could never say out loud. I am a completely different woman."</p>
-        </div>
-      </div>
-      <div class="dm-card reveal d1">
-        <div class="dm-card__header">
-          <div class="dm-card__avatar">T</div>
-          <div><div class="dm-card__name">Tara M.</div><div class="dm-card__platform">Text Message</div></div>
-        </div>
-        <div class="dm-card__body">
-          <div class="dm-result">Finally Herself</div>
-          <div class="dm-bubble">"I feel PRESENT in my own life for the first time in years. Like I came home to myself."</div>
-          <p class="dm-text">"I had done therapy, retreats, every course. Nothing cracked me open like this. This is the work."</p>
-        </div>
-      </div>
-      <div class="dm-card reveal d2">
-        <div class="dm-card__header">
-          <div class="dm-card__avatar">N</div>
-          <div><div class="dm-card__name">Nicole S.</div><div class="dm-card__platform">Email</div></div>
-        </div>
-        <div class="dm-card__body">
-          <div class="dm-bubble">"I didn't know what direction to go. I felt so stuck. And for the first time in a while I can actually see things clearly again."</div>
-          <p class="dm-text">"Thank you for helping me see through things. I feel like I can actually move forward now."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="proof-cta reveal">
-    <p>I Want These Kinds of Shifts Too.</p>
-    <small>Apply for Become Her Anyway Now →</small>
-    <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn btn-cta btn--lg">Apply Now</a>
   </div>
-
-  <!-- ═══════════════════ PATH A / PATH B ═══════════════════ -->
-  <section class="paths">
-    <div class="paths__header reveal">
-      <h2 class="paths__title">Are You Going to Keep Living a Life<br/>That "Kinda Works"… or Finally<br/>Become the Woman You Know You Are?</h2>
-      <span class="paths__which">Which path will you choose?</span>
+</div>
+<section class="testimonial-split">
+  <div class="testimonial-split__inner">
+    <div data-r="left">
+      <span class="testimonial-label">♥ Client Love</span>
+      <div class="testimonial-media"><span style="font-family:'Great Vibes',cursive;font-size:1.5rem;color:rgba(212,196,160,.3)">Client Photo / Video Here</span></div>
     </div>
-
-    <!-- PATH A -->
-    <div class="path--a reveal" style="max-width:960px; margin:0 auto 4rem;">
-      <div>
-        <div class="path__photo"><span class="path__photo-label">Path A</span></div>
+    <div data-r="right">
+      <blockquote class="testimonial-quote">"I walked into this program knowing who I was <em>supposed</em> to be. I walked out actually being her."</blockquote>
+      <p class="testimonial-attr">— Replace with your client's name &amp; result</p>
+    </div>
+  </div>
+</section>
+<section class="editorial-dark">
+  <div class="editorial-dark__photo"><span class="photo-hint">Your Photo Here</span></div>
+  <div class="editorial-dark__content">
+    <h2 class="editorial-dark__title" data-r="up">You are <em>already</em> her.</h2>
+    <div class="editorial-dark__body">
+      <p data-r="up">Your closest people see it. Anyone who has spent real time with you knows it. The version of you that shows up in private — the clarity, the confidence, the woman who doesn't shrink, doesn't apologize, doesn't second-guess every room she walks into — she is real.</p>
+      <p data-r="up">And yet? You keep choosing the smaller version.</p>
+      <p data-r="up">Not because you're not ready. Not because you don't have what it takes.</p>
+      <p data-r="up">Because <strong>no one has ever helped you close that gap</strong> — the distance between the woman you know yourself to be and the one you actually show up as in your relationships, your decisions, your life every single day.</p>
+      <blockquote class="editorial-dark__statement" data-r="up">That is the identity gap. And it is costing you more than you realize.</blockquote>
+      <p data-r="up">Every month you live in that gap is another month she waits. Another relationship where you play small. Another opportunity where you hedge. Another version of your life that is almost yours — but not quite.</p>
+      <p data-r="up"><strong>People don't change when they learn more. They change when they finally believe something different about themselves.</strong> That is what we do in 12 weeks.</p>
+    </div>
+    <div style="margin-top:3rem" data-r="up"><a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline">Apply Now →</a></div>
+  </div>
+</section>
+<section class="bio-editorial">
+  <div class="bio-editorial__content">
+    <p class="bio-editorial__name" data-r="up">Destinee Pierre</p>
+    <h2 class="bio-editorial__title-lg" data-r="up">For a long time, I performed who I thought I was <em>supposed</em> to be.</h2>
+    <div class="bio-editorial__body">
+      <p data-r="up">Which is funny, because in private I was always her. The woman I wanted to be — she showed up in the quiet moments, in the conversations no one else heard, in the decisions I made when no one was watching. But the moment it counted, I gave people the smaller version.</p>
+      <p data-r="up">I thought I needed to earn the right to be her fully. I thought I needed a title, a number, an achievement that gave me permission. What I didn't know was that the performance was the problem — not the absence of proof.</p>
+      <blockquote class="bio-pull" data-r="up">"The work isn't becoming someone new. It's finally letting yourself be who you already are."</blockquote>
+      <p data-r="up">I built Become Her Anyway because this is the work I actually did. Not the version I packaged up and made palatable — the real work of deconstructing every story I had about what I needed to be allowed to take up space. And then choosing, every day, to be her anyway.</p>
+      <p data-r="up">That is the work I want to do with you. And it is the work I was made for.</p>
+    </div>
+    <div style="margin-top:2.5rem" data-r="up"><a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-dark-outline">Apply to Work With Me →</a></div>
+  </div>
+  <div class="bio-editorial__photo"><span class="photo-hint">Your Headshot Here</span></div>
+</section>
+<section class="curriculum">
+  <div class="curriculum__header">
+    <span class="curriculum__script" data-r="up">Become Her Anyway™</span>
+    <p class="curriculum__sub" data-r="up">A 12-week identity intensive built on three pillars.</p>
+  </div>
+  <div class="curriculum__cards sg">
+    <div class="c-card" data-r="up"><span class="c-card__check">◆</span><p class="c-card__title">Deconstruct</p><p class="c-card__weeks">Weeks 1–4</p><p class="c-card__body">We dismantle the stories, beliefs, and patterns you inherited or built out of survival. Every identity ceiling you've been living under gets examined. Nothing that is keeping you small survives this phase.</p></div>
+    <div class="c-card" data-r="up"><span class="c-card__check">◆</span><p class="c-card__title">Become</p><p class="c-card__weeks">Weeks 5–9</p><p class="c-card__body">We build the new self-concept from the inside out. Not affirmations — actual embodied identity shifts that change how you show up in every room you enter. She stops being a goal and starts being a felt reality.</p></div>
+    <div class="c-card" data-r="up"><span class="c-card__check">◆</span><p class="c-card__title">Live as Her</p><p class="c-card__weeks">Weeks 10–12</p><p class="c-card__body">Integration. We make the new identity your default — in your relationships, your decisions, your presence. The gap closes. She isn't who you're working toward. She's who you are.</p></div>
+  </div>
+  <div class="curriculum__manifesto" data-r="up"><p>Most women trying to change their lives are hiding the very thing that would set them free. They have more information than they could ever use, and still feel stuck in who they've always been. Become Her Anyway teaches you to close the gap at the root — not with more strategy, but with a complete reconstruction of your self-concept, sustained by a community of women doing the same work.</p></div>
+  <div style="text-align:center" data-r="up"><a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline">Apply Now →</a></div>
+</section>
+<section class="features">
+  <h2 class="features__title" data-r="up"><em>Everything</em> you need. <em>Nothing</em> you don't.</h2>
+  <p class="features__sub" data-r="up">Here is exactly what is included when you are accepted into Become Her Anyway.</p>
+  <div class="features__grid sg">
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">24 Live Group Coaching Calls</p></div><p class="feat__body">Two sessions per week for 12 weeks. You show up, do the work, and get coached in real time. Not pre-recorded. Not passive. Live.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Voice Memo Support Between Sessions</p></div><p class="feat__body">Between calls, questions don't wait. Neither does your growth. Send a voice memo and receive a real response — not an auto-reply.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Weekly Identity Exercises</p></div><p class="feat__body">Designed to be done, not just read. Each exercise moves you one layer closer to her. The work happens between calls, and these make sure it does.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Private Community Access</p></div><p class="feat__body">A curated room full of women doing the same work at the same level. The accountability of being seen by people who understand the journey is something you cannot manufacture.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Your Becoming Her Blueprint</p></div><p class="feat__body">A personalized identity document built over the 12 weeks — specific to you, your patterns, your self-concept. Yours permanently. Return to it every time you need to remember who she is.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Integration Workbooks</p></div><p class="feat__body">Everything we cover, captured and organized. Not a PDF you never open. A working document you return to throughout the 12 weeks and long after.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Lifetime Replay Access</p></div><p class="feat__body">Every call recorded and uploaded within 24 hours. Every resource housed in your private portal. Revisit anything, anytime, for as long as you need.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Graduate Community Invitation</p></div><p class="feat__body">When the 12 weeks end, the community does not. Invite only. Women who have done this work, holding each other to the standard they built inside the container. Yours permanently.</p></div>
+  </div>
+  <div style="text-align:center" data-r="up"><a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">Apply Now →</a></div>
+</section>
+<section class="outcomes">
+  <h2 class="outcomes__title" data-r="up">By the end of 12 weeks, you will have</h2>
+  <p class="outcomes__sub" data-r="up">These are not aspirations. These are outcomes.</p>
+  <div class="outcomes__grid sg">
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">A self-concept that no longer apologizes for who you are</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">Your Becoming Her Blueprint — a permanent record of who she is and how to return to her</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">The ability to walk into any room as the fullest version of yourself — not a performance of her</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">Relationships that reflect who you actually are, not who you thought you needed to be</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">A clarity about your own identity that doesn't waver under pressure or other people's expectations</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">The internal authority to make decisions from her — not from fear, people-pleasing, or old patterns</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">Every self-sabotage pattern named, interrupted, and replaced with something that serves who she is</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">A community of women who will hold you to the version of you that showed up inside this container</p></div>
+  </div>
+  <div style="text-align:center" data-r="up"><a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline">Apply Now →</a></div>
+</section>
+<section class="portal">
+  <h2 class="portal__title" data-r="up">Everything lives in one place.<br>And it is yours <em>forever</em>.</h2>
+  <p class="portal__body" data-r="up">From the moment you are accepted, you have access to your private online portal. Three modules that house all the frameworks, exercises, and materials we work through together. Revisit anything, anytime, for as long as you need.</p>
+  <div class="curriculum__cards sg" style="max-width:1060px;margin:0 auto 3rem">
+    <div class="c-card" data-r="up"><span class="c-card__check">◆</span><p class="c-card__title">Deconstruct Module</p><p class="c-card__weeks">Weeks 1–4</p><p class="c-card__body">The identity ceiling audit, belief system mapping, the inherited story framework, the pattern interrupt exercises, and your original self-concept deconstruction workbook.</p></div>
+    <div class="c-card" data-r="up"><span class="c-card__check">◆</span><p class="c-card__title">Become Module</p><p class="c-card__weeks">Weeks 5–9</p><p class="c-card__body">The new identity architecture framework, embodiment practices, the self-concept installation exercises, and every tool we use to make her your felt reality — not just your intention.</p></div>
+    <div class="c-card" data-r="up"><span class="c-card__check">◆</span><p class="c-card__title">Live as Her Module</p><p class="c-card__weeks">Weeks 10–12</p><p class="c-card__body">Integration frameworks, the relationship redesign exercises, the default identity protocol, and the Becoming Her Blueprint template — personalized across the full 12 weeks.</p></div>
+  </div>
+  <div style="text-align:center" data-r="up"><a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline">Apply Now →</a></div>
+</section>
+<section class="community">
+  <div class="community__header">
+    <span class="eyebrow" data-r="up">The Container</span>
+    <h2 class="community__title" data-r="up">The room matters as much as the work.</h2>
+    <p class="community__p" data-r="up">The women in this cohort are not beginners. They are accomplished, self-aware women who are choosing — for the first time — to stop managing themselves and start becoming themselves. You are not just getting access to Destinee for 12 weeks. You are getting access to each other.</p>
+    <p class="community__p" data-r="up">Peer-level community — women doing the same work at the same altitude — is something you cannot manufacture. It only happens when the room is curated on purpose.</p>
+  </div>
+  <div class="community__grid sg">
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Collective Witnessing</p></div><p class="feat__body">Being truly seen by other women doing this exact work is a fundamental part of the transformation. The container creates conditions for that to happen — consistently, over 12 weeks.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Peer Support &amp; Accountability</p></div><p class="feat__body">Women doing the same work, at the same altitude, at the same time. The accountability of being surrounded by women who genuinely understand the journey is something you cannot replicate.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Live Coaching Twice a Week</p></div><p class="feat__body">Two sessions every week where we work together in real time on what is actually coming up — not on what we planned to cover. Real coaching meets real life.</p></div>
+    <div class="feat" data-r="up"><div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Graduate Access Forever</p></div><p class="feat__body">When your 12 weeks end, the community does not. Graduate access is invite only and stays with you permanently. The relationships built inside this container outlast the program.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:1rem" data-r="up"><a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">Apply Now →</a></div>
+</section>
+<section class="fit-section">
+  <div style="max-width:1060px;margin:0 auto">
+    <div class="fit-section__grid">
+      <div data-r="left"><h2 class="fit-section__title">This program was built for you if</h2><div class="fit-section__photo"><span class="photo-hint">Your Photo Here</span></div></div>
+      <div class="fit-section__card" data-r="right"><span class="fit-section__card-title">You are the right fit if…</span><ul class="fit-list fit-list--yes"><li>You know who she is. You're done waiting for permission to be her.</li><li>You feel the gap between who you are in private and who you show up as publicly</li><li>You've tried to change before and you know the approach has to be fundamentally different this time</li><li>You're done consuming content about becoming someone. You want to actually become her.</li><li>You are ready for the work to be uncomfortable — and you're ready anyway</li><li>You want transformation that holds, not a temporary mindset shift that fades when life gets hard</li><li>You are ready to invest in yourself at the level that actually changes things</li><li>You want to be in a room with women who are taking themselves seriously</li></ul></div>
+    </div>
+    <div class="fit-section__grid" style="margin-top:4rem">
+      <div class="fit-section__card" data-r="left"><span class="fit-section__card-title">This is not the right fit if…</span><ul class="fit-list fit-list--no"><li>You are looking for a quick fix or a shortcut — this program requires real work between sessions</li><li>You expect to be given tools without doing the internal work to use them</li><li>You are not in a position to make a meaningful investment in yourself right now</li><li>You want a formula that works for everyone — this is a personalized transformation, not a template</li><li>You're not yet willing to be honest about what is actually keeping you stuck</li><li>You treat coaching programs as content to consume rather than containers to show up in</li></ul></div>
+      <div data-r="right"><h2 class="fit-section__title">This is <em>not the right fit</em> if</h2><div class="fit-section__photo"><span class="photo-hint">Your Photo Here</span></div></div>
+    </div>
+  </div>
+</section>
+<section class="qualify">
+  <div style="max-width:1060px;margin:0 auto">
+    <h2 class="qualify__title" data-r="up">This Is — and Isn't — for Everyone</h2>
+    <div class="qualify__grid sg">
+      <div data-r="left"><span class="q-col__label">This IS for you if…</span><ul class="q-list q-list--yes"><li>You're done performing the version others need you to be</li><li>You can commit fully and consistently for 12 weeks</li><li>You take radical ownership of your outcomes</li><li>You're willing to be uncomfortable to grow</li><li>You want transformation at the root — not a temporary mindset shift</li><li>You invest in yourself when it actually matters</li></ul></div>
+      <div data-r="right"><span class="q-col__label">This is NOT for you if…</span><ul class="q-list q-list--no"><li>You want someone to do the work for you</li><li>You're looking for a quick motivation boost</li><li>You treat coaching programs as content to consume</li><li>You're not ready to challenge your own beliefs</li><li>You won't show up consistently when it gets uncomfortable</li><li>You expect transformation without discomfort</li></ul></div>
+    </div>
+    <div data-r="up" style="text-align:center"><a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">Apply for Become Her Anyway Now →</a></div>
+  </div>
+</section>
+<section class="objections">
+  <h2 class="objections__title" data-r="up">The questions <em>sitting</em> with you right now.</h2>
+  <p class="objections__sub" data-r="up">If something is holding you back from applying, it's probably one of these. Here's the honest answer.</p>
+  <div class="objections__grid sg">
+    <div class="obj-card" data-r="up"><div class="obj-card__q">"I don't know if I'm ready."</div><p class="obj-card__a">Readiness is the story. The women who have done the most transformational work inside this container were not ready. They were willing. Those are different things. You don't need to be ready. You need to be honest that you can't keep doing this the same way.</p></div>
+    <div class="obj-card" data-r="up"><div class="obj-card__q">"I've tried coaching before and it didn't stick."</div><p class="obj-card__a">Most coaching works at the strategy layer — what you do. This works at the identity layer — who you believe you are. If your foundation hasn't changed, no strategy built on top of it will hold. That is why this is different. We go to the root.</p></div>
+    <div class="obj-card" data-r="up"><div class="obj-card__q">"I don't have time right now."</div><p class="obj-card__a">The time you don't have is the time you're spending managing the gap. The overthinking. The self-editing. The performing. This work does not add more to your plate. It removes what's been weighing it down. When is there ever a perfect time to become yourself?</p></div>
+    <div class="obj-card" data-r="up"><div class="obj-card__q">"How is this different from every other program?"</div><p class="obj-card__a">Most programs assume you have the wrong strategy. This one assumes you have the wrong story about who you are. We are not teaching you techniques. We are changing the self-concept that every decision you make comes from. That is a fundamentally different intervention.</p></div>
+    <div class="obj-card" data-r="up"><div class="obj-card__q">"What if I'm approved but can't quite afford it?"</div><p class="obj-card__a">There is a payment plan. Apply first and we will discuss options. The investment is real, and it is meant to be. Women who invest at a level that stretches them show up differently. That's not a coincidence. It's a commitment to themselves.</p></div>
+    <div class="obj-card" data-r="up"><div class="obj-card__q">"What if I'm not the right fit?"</div><p class="obj-card__a">Apply and let's find out. The application process exists precisely so you know before you invest — not after. If this isn't the right fit or the right time, I'll tell you honestly and point you somewhere that actually serves you. No pressure. Real clarity.</p></div>
+  </div>
+</section>
+<section class="invest">
+  <div>
+    <span style="display:block;text-align:center;font-size:.66rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--chestnut);margin-bottom:2.5rem" data-r="up">The Investment</span>
+    <div class="invest__card" data-r="scale">
+      <span class="invest__tag">By Application Only</span>
+      <h3 class="invest__name">Become Her Anyway — 12-Week Intensive</h3>
+      <ul class="invest__list"><li>24 Live Group Coaching Calls (2× per week)</li><li>Private Community + Accountability Pod</li><li>Weekly Identity Exercises &amp; Workbooks</li><li>Voice Memo Support Between Sessions</li><li>Your Becoming Her Blueprint — personalized</li><li>Lifetime Access to all replays &amp; materials</li><li>Guest Expert Sessions</li></ul>
+      <p class="invest__price-from">Starting at</p>
+      <p class="invest__amount">$2,997</p>
+      <p class="invest__period">Pay in full · or 3 monthly payments of $1,099</p>
+      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">Apply Now — Spots Are Limited</a>
+      <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:.8rem">Investment confirmed only after your application is reviewed and approved</p>
+    </div>
+  </div>
+</section>
+<section class="apply" id="apply">
+  <div class="apply__header" data-r="up">
+    <h2 class="apply__title">Fill Out the Form Below to <em>Apply</em></h2>
+    <p class="apply__sub">This application is designed to see if this is the right next step for you, and if you're the right fit for the container. If you're approved, you'll receive next steps within 48 hours.</p>
+  </div>
+  <div class="apply__card" data-r="scale">
+    <h3>Apply for Become Her Anyway</h3>
+    <p class="form-hint">Tell us about you. Be honest. The more real you are here, the better we can serve you.</p>
+    <form id="appForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="fg"><label for="fn">First Name</label><input type="text" id="fn" placeholder="First name" required /></div>
+        <div class="fg"><label for="ln">Last Name</label><input type="text" id="ln" placeholder="Last name" required /></div>
       </div>
-      <div>
-        <div class="path__label">Path A</div>
-        <ul class="path__list">
-          <li>You keep waiting to feel ready — and another year slips by exactly as the last one did.</li>
-          <li>You keep shrinking in rooms, in relationships, in your own reflection.</li>
-          <li>You keep living a life built for other people's comfort, wondering why it feels so hollow.</li>
-          <li>You keep saying "someday" while secretly watching other women become who you know you are meant to be.</li>
-        </ul>
-      </div>
+      <div class="fg"><label for="em">Email Address</label><input type="email" id="em" placeholder="your@email.com" required /></div>
+      <div class="fg"><label for="ig">Instagram Handle</label><input type="text" id="ig" placeholder="@yourhandle" /></div>
+      <div class="fg"><label for="where">Where are you right now?</label><select id="where" required><option value="" disabled selected>Select the statement that fits most</option><option>I'm successful on paper but feel empty inside</option><option>I know who I want to be but can't seem to become her</option><option>I keep self-sabotaging and I'm ready to stop</option><option>I'm stuck in patterns I can't seem to break</option><option>I'm ready for a complete identity transformation</option></select></div>
+      <div class="fg"><label for="block">What's your biggest block right now?</label><textarea id="block" placeholder="Be honest — this is where the real work starts." required></textarea></div>
+      <div class="fg"><label for="why">Why now? What's shifted?</label><textarea id="why" placeholder="Tell us what brought you here…"></textarea></div>
+      <div class="fg"><label for="inv">Are you ready and able to make this investment?</label><select id="inv" required><option value="" disabled selected>Select one</option><option>Yes — I'm ready to invest in my transformation</option><option>I need to understand the payment options first</option><option>I'm not sure yet</option></select></div>
+      <button type="submit" class="btn-primary" style="margin-top:.5rem">Submit My Application →</button>
+    </form>
+    <div id="success" style="display:none;text-align:center;padding:2rem 0">
+      <div style="font-family:'Great Vibes',cursive;font-size:3rem;color:var(--brown);margin-bottom:1rem">She showed up.</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--brown);margin-bottom:.8rem">Your application is in.</h3>
+      <p style="color:var(--muted);font-size:.93rem;line-height:1.75;margin-bottom:1.5rem">Check your inbox — we'll be in touch within 48 hours. The fact that you hit submit? That's already her showing up.</p>
+      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto;max-width:320px">Visit My Stan Store →</a>
     </div>
-
-    <!-- PATH B -->
-    <div class="path--b reveal" style="max-width:960px; margin:0 auto 3rem;">
-      <div>
-        <div class="path__label">Path B</div>
-        <ul class="path__list">
-          <li>You do the identity work and finally understand who you actually are outside of who you were told to be.</li>
-          <li>You walk into rooms differently — present, grounded, and unapologetically yourself.</li>
-          <li>Your relationships shift because you stop negotiating your worth.</li>
-          <li>You surround yourself with women who see you, challenge you, and refuse to let you play small.</li>
-        </ul>
-      </div>
-      <div>
-        <div class="path__photo"><span class="path__photo-label">Path B</span></div>
-      </div>
-    </div>
-
-    <div style="text-align:center" class="reveal">
-      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-wide">Apply for Become Her Anyway Now →</a>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ CHALLENGE ═══════════════════ -->
-  <section class="challenge">
-    <div class="reveal">
-      <h2 class="challenge__headline">If She Was Going to Show Up<br/>on Her Own… She Would Have<br/>by Now.</h2>
-    </div>
-    <p class="challenge__body reveal">There is nothing worse than knowing — deeply, in your bones — exactly who you are capable of being… and watching yourself play small anyway. Waiting until you feel ready. Until the timing is right. Until you have <strong>enough</strong> of everything to finally start becoming her.</p>
-    <p class="challenge__bold reveal">You've built a life that looks right on paper. So why does it still feel like something is missing?<br/>If that's you — keep reading.</p>
-    <div class="not-boxes reveal">
-      <div class="not-box"><span>✕</span> This is NOT a course.</div>
-      <div class="not-box"><span>✕</span> This is NOT open enrollment.</div>
-      <div class="not-box"><span>✕</span> This is NOT for everyone.</div>
-    </div>
-    <span class="challenge__script">Become Her Anyway</span>
-    <p class="challenge__emphasis reveal">is for women who are done doing this alone — who want real coaching, real accountability, and a real community of women who actually see them. Not another program you buy and forget. A container that changes who you believe you are.</p>
-    <div class="divider-line"></div>
-    <span class="challenge__urgency reveal">Spots are limited to action-takers only</span>
-  </section>
-
-  <!-- ═══════════════════ BIO ═══════════════════ -->
-  <section class="bio">
-    <div class="bio__header reveal">
-      <span class="bio__eyebrow">1 on 1 + Group Coaching</span>
-      <h2 class="bio__title">Meet Your <span class="script">coach</span></h2>
-    </div>
-    <div class="bio__grid">
-      <div class="bio__photo-wrap reveal">
-        <div class="bio__photo">
-          <span class="bio__photo-placeholder">Your photo here</span>
-          <div class="bio__photo-stat">
-            <span class="num">12K+</span>
-            <span class="lbl">Women in Community</span>
-          </div>
-        </div>
-      </div>
-      <div class="bio__content reveal">
-        <h3 class="bio__hello">Hey, I'm Destinee!</h3>
-        <p>Before I built the life and the identity I actually wanted, I was exactly where so many of the women reading this are right now:</p>
-        <ul class="bio__bullets bio__bullets--arrow">
-          <li>I knew who I was meant to be — I just couldn't seem to get there.</li>
-          <li>I was showing up for everyone except myself.</li>
-          <li>I was successful on paper and hollow on the inside.</li>
-        </ul>
-        <p>I was waiting. Waiting to feel ready. Waiting for someone to give me permission. Waiting until I had <em>enough</em> of everything to finally start becoming her.</p>
-        <div class="bio__pull">
-          <p>"The turning point wasn't when I 'arrived.' It was the moment I decided to become her anyway — before I felt ready, before I had proof, before anyone gave me permission."</p>
-        </div>
-        <p>That decision changed everything. <strong>And I have spent the last several years building a framework to help other women make that same decision — on purpose, with support, without wasting another year of their lives waiting.</strong></p>
-        <p>Today I work with women who are done performing a version of themselves built for everyone else's comfort. Women who are ready to go from <em>knowing</em> who they are, to actually <em>being</em> her — in their relationships, their work, their body, and their presence.</p>
-        <ul class="bio__bullets bio__bullets--check">
-          <li>The waiting stopped.</li>
-          <li>The shrinking stopped.</li>
-          <li>The apologizing stopped.</li>
-        </ul>
-        <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn btn-solid" style="margin-top:1.5rem">Apply to Work With Me →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ CURRICULUM ═══════════════════ -->
-  <section class="curriculum">
-    <div class="curriculum__header reveal">
-      <span class="eyebrow eyebrow--light">What's Inside</span>
-      <h2 class="curriculum__title">12 Weeks. 3 Pillars.<br/><em>One Complete Transformation.</em></h2>
-      <p class="curriculum__sub">This is not a passive program. You will be seen, challenged, and held accountable every single week.</p>
-      <div class="divider-bar" style="margin-top:1.5rem"></div>
-    </div>
-    <div class="curriculum__grid">
-      <div class="pillar reveal d1">
-        <div class="pillar__num">01</div>
-        <h3 class="pillar__title">Identity Reclamation</h3>
-        <p class="pillar__body">Weeks 1–4. We go to the root. Excavate the stories, roles, and conditioning running your life on autopilot — and consciously choose who you actually are.</p>
-        <ul class="pillar__list">
-          <li>Core identity audit + belief mapping</li>
-          <li>Releasing inherited roles and conditioning</li>
-          <li>Defining your values from the inside out</li>
-          <li>Building your authentic identity blueprint</li>
-        </ul>
-      </div>
-      <div class="pillar reveal d2">
-        <div class="pillar__num">02</div>
-        <h3 class="pillar__title">Embodied Confidence</h3>
-        <p class="pillar__body">Weeks 5–8. Confidence is not a feeling you wait for — it is a practice you build in your body, your voice, and your presence. We make it a daily lived experience.</p>
-        <ul class="pillar__list">
-          <li>Somatic tools for nervous system regulation</li>
-          <li>Presence practices for every room you enter</li>
-          <li>Boundary-setting from self-worth, not fear</li>
-          <li>Voice work and visibility practices</li>
-        </ul>
-      </div>
-      <div class="pillar reveal d3">
-        <div class="pillar__num">03</div>
-        <h3 class="pillar__title">Aligned Action</h3>
-        <p class="pillar__body">Weeks 9–12. You know who she is. Now we build the life, habits, relationships, and vision that match. Not from hustle — from alignment.</p>
-        <ul class="pillar__list">
-          <li>Vision architecture from your true north</li>
-          <li>Decision-making frameworks for clarity</li>
-          <li>Designing your environment and relationships</li>
-          <li>Your personal Becoming Her Blueprint</li>
-        </ul>
-      </div>
-    </div>
-    <div class="curriculum__deliverables reveal">
-      <h3>Everything You Get</h3>
-      <ul class="deliver-list">
-        <li><strong>12 weeks</strong> of live group coaching — 2 calls/week</li>
-        <li><strong>Private 1:1 kickoff</strong> session with Destinee</li>
-        <li><strong>Full curriculum vault</strong> — all modules + workbooks</li>
-        <li><strong>Private community</strong> of women in the container</li>
-        <li><strong>Weekly exercises</strong> — identity + embodiment work</li>
-        <li><strong>Voice memo support</strong> between sessions</li>
-        <li><strong>Becoming Her Blueprint</strong> — personalized to you</li>
-        <li><strong>Lifetime access</strong> — all replays + future updates</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ FOR / NOT FOR (dark centered) ═══════════════════ -->
-  <section class="qualify-dark">
-    <div class="reveal">
-      <h2 class="qualify-dark__title">
-        This Program <em>Rewards</em><br/>Women Who Are Ready<br/>to Show Up.
-      </h2>
-    </div>
-
-    <span class="qualify-section-label reveal">This is for you if:</span>
-    <ul class="qualify-dark__list qualify-dark__list--yes reveal">
-      <li>You are done playing small and you actually mean it this time</li>
-      <li>You want to feel like yourself — maybe for the first time in years</li>
-      <li>You are willing to do the inner work, not just the outer work</li>
-      <li>You are ready to invest at the level your transformation requires</li>
-      <li>You want a community of women who truly see and challenge you</li>
-      <li>You believe, somewhere deep down, that you are meant for more</li>
-    </ul>
-
-    <div class="divider-line"></div>
-
-    <span class="qualify-section-label qualify-dark__label--not reveal">This is <em>NOT</em> for you if:</span>
-    <ul class="qualify-dark__list qualify-dark__list--no reveal">
-      <li>You are looking for a quick fix or overnight transformation</li>
-      <li>You are not ready to be challenged on your stories and excuses</li>
-      <li>You are in a current mental health crisis — please seek clinical support first</li>
-      <li>You are not willing to show up consistently for 12 weeks</li>
-      <li>You believe nothing will ever change for you</li>
-    </ul>
-
-    <div style="margin-top:3rem" class="reveal">
-      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn btn-ghost btn--lg">Apply Now →</a>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ HOW I WORK WITH YOU ═══════════════════ -->
-  <section class="how-i-work">
-    <div class="reveal">
-      <span class="eyebrow eyebrow--dark">Here's How I Work With You</span>
-      <h2 class="how-i-work__title">Here's How I Work With Women Who Are Ready to Become Her Anyway</h2>
-      <div class="how-i-work__tags">
-        <span class="how-i-work__tag">1 on 1 Kickoff &amp; Support</span>
-        <span class="how-i-work__tag">Live Group Coaching</span>
-        <span class="how-i-work__tag">Personalized Blueprint</span>
-      </div>
-    </div>
-    <p class="how-i-work__body reveal">I give you hands-on coaching, proven frameworks, real feedback, and personal support — so you stop feeling stuck trying to figure out who you are and what you want on your own.</p>
-    <p class="how-i-work__close reveal">Because of that, I only accept women who are ready to do the work <em>NOW</em>, not "someday."</p>
-    <div class="reveal">
-      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-wide">Apply Now →</a>
-    </div>
-    <div class="how-i-work__photo reveal">
-      <span class="how-i-work__photo-label">Destinee Pierre</span>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ INVESTMENT ═══════════════════ -->
-  <section class="investment">
-    <div class="investment__header reveal">
-      <span class="eyebrow">The Investment</span>
-      <h2 class="investment__title">What it costs to<br/><em>Become Her Anyway</em></h2>
-      <div class="divider-bar"></div>
-      <p class="investment__sub">This is not an expense. This is the most important investment you will ever make — in the woman who creates everything else in your life.</p>
-    </div>
-    <div class="invest-card reveal">
-      <div class="invest-card__name">Become Her Anyway</div>
-      <p class="invest-card__desc">The full 12-week signature coaching experience with live calls, 1:1 access, community, and lifetime access to everything.</p>
-      <ul class="invest-card__list">
-        <li><strong>12 weeks</strong> of live group coaching — 2 calls per week</li>
-        <li><strong>Private 1:1 kickoff</strong> call with Destinee</li>
-        <li><strong>Full curriculum vault</strong> — all modules, workbooks, exercises</li>
-        <li><strong>Private community</strong> — women doing the work alongside you</li>
-        <li><strong>Voice memo support</strong> between sessions</li>
-        <li><strong>Your Becoming Her Blueprint</strong> — personalized to you</li>
-        <li><strong>Lifetime access</strong> — all replays, materials, future updates</li>
-      </ul>
-      <div class="invest-card__price">
-        <div class="from">Starting at</div>
-        <div class="amount">$2,997</div>
-        <div class="period">Pay in full · or 3 monthly payments of $1,099</div>
-      </div>
-      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn btn-solid btn--full btn--lg">Apply Now — Spots Are Limited</a>
-      <p style="font-size:.72rem; color:var(--muted); text-align:center; margin-top:.8rem">Investment confirmed only after your application is reviewed and approved</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ APPLICATION ═══════════════════ -->
-  <section class="apply-section" id="apply">
-    <div class="apply-section__header reveal">
-      <h2 class="apply-section__title">Fill Out the Form Below to <em>Apply</em> for Become Her Anyway</h2>
-      <p class="apply-section__sub">The application is designed to see if this is the right next step for you, and if you're the right fit for the container. If you're approved, you'll receive next steps within 48 hours.</p>
-    </div>
-    <div class="apply-form reveal">
-      <h3>Apply for Become Her Anyway</h3>
-      <p class="form-sub">Tell us about you. Be honest. The more real you are here, the better we can serve you.</p>
-      <form id="applicationForm" onsubmit="submitApplication(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" placeholder="Your first name" required />
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" placeholder="Your last name" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="you@email.com" required />
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" placeholder="+1 (000) 000-0000" />
-        </div>
-        <div class="form-group">
-          <label for="instagram">Instagram Handle</label>
-          <input type="text" id="instagram" placeholder="@yourhandle" />
-        </div>
-        <div class="form-group">
-          <label for="where">Where are you right now?</label>
-          <select id="where" required>
-            <option value="" disabled selected>Choose what fits most</option>
-            <option>I feel completely lost and don't know who I am anymore</option>
-            <option>I know who I want to be but I can't seem to get there</option>
-            <option>I'm successful on paper but feel empty inside</option>
-            <option>I'm ready to level up but fear keeps stopping me</option>
-            <option>I've been waiting my whole life to feel ready and I'm done</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="biggest">What is the biggest thing keeping you stuck right now?</label>
-          <textarea id="biggest" placeholder="Be as honest as you can. This is a safe space." required></textarea>
-        </div>
-        <div class="form-group">
-          <label for="ready">Why are you ready now? What has changed?</label>
-          <textarea id="ready" placeholder="Something shifted. What was it?" required></textarea>
-        </div>
-        <div class="form-group">
-          <label for="invest">Are you ready and able to invest at this level?</label>
-          <select id="invest" required>
-            <option value="" disabled selected>Select one</option>
-            <option>Yes — I am ready to invest in full</option>
-            <option>Yes — I would need the payment plan</option>
-            <option>I'm not sure yet — I'd like to discuss on a call</option>
-          </select>
-        </div>
-        <p class="form-consent">By submitting you agree to be contacted by the Become Her Anyway team. Your information is never shared or sold. This application does not obligate you to purchase.</p>
-        <button type="submit" class="btn btn-solid btn--full btn--lg" id="submitBtn">Submit My Application →</button>
-        <p style="font-size:.72rem; color:var(--muted); text-align:center; margin-top:.8rem">We review every application and respond within 48 hours</p>
-      </form>
-      <div id="successState" style="display:none; text-align:center; padding:2rem 0">
-        <div style="font-family:'Great Vibes',cursive; font-size:3rem; color:var(--brown); margin-bottom:1rem">She showed up.</div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:900; color:var(--brown); margin-bottom:.8rem">Your application is in.</h3>
-        <p style="color:var(--muted); font-size:.93rem; line-height:1.75; margin-bottom:1.5rem">Check your inbox — we'll be in touch within 48 hours. The fact that you hit submit? That's already her showing up. We'll see you soon.</p>
-        <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn btn-solid" style="margin:0 auto">Visit My Stan Store →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ FAQ ═══════════════════ -->
-  <section class="faq">
-    <h2 class="faq__title reveal">Frequently Asked Questions</h2>
+  </div>
+</section>
+<section class="faq">
+  <div style="max-width:1060px;margin:0 auto">
+    <h2 class="faq__title" data-r="up">Frequently Asked Questions</h2>
     <div class="faq__list">
-      <div class="faq-item">
-        <button class="faq-q">I've tried programs before and they didn't work. Why is this different?</button>
-        <div class="faq-a">Most programs give you strategy without touching identity. If the foundation — your self-concept — is built on fear, people-pleasing, or inherited beliefs, no strategy will stick. We go to the root. This works where other things haven't because we are not giving you more information. We are changing who you believe you are.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Is this for beginners?</button>
-        <div class="faq-a">This is for women who are fundamentally okay but ready to go from okay to fully themselves. You do not need to have everything figured out. You need to be willing to look honestly at what is keeping you stuck and do the work to change it.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">How much time do I need each week?</button>
-        <div class="faq-a">Plan for 4–6 hours per week — two live group coaching calls (90 minutes each), integration work between sessions, and your weekly exercises. The women who get the most out of this treat it as a non-negotiable. If you are not ready to prioritize yourself for 12 weeks, this is not the right time.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What if I can't make a live call?</button>
-        <div class="faq-a">All calls are recorded and uploaded to the vault within 24 hours. We still ask you to attend live as much as possible — the energy of a live call is core to the transformation. But life happens, and you are covered.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Is this therapy or coaching?</button>
-        <div class="faq-a">This is coaching, not therapy and not a substitute for clinical mental health support. If you are in acute crisis, please seek clinical support first. Become Her Anyway is for women who are fundamentally okay and ready to go from okay to fully themselves.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What if I apply and I'm not accepted?</button>
-        <div class="faq-a">Applications are reviewed to ensure this is the right fit for you and for the cohort. If it is not the right time or right program, we will let you know and may direct you to something more appropriate. We do not accept everyone — fit matters and we protect the container for every woman in it.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Is there a payment plan?</button>
-        <div class="faq-a">Yes. Pay in full at $2,997 or choose 3 monthly payments of $1,099. Payment details are provided in your acceptance email after your application is reviewed.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">How do I know if now is the right time?</button>
-        <div class="faq-a">The right time is not when everything is perfect. The right time is when you are honest with yourself that continuing to wait is costing you more than investing would. If you have been reading this page and nodding — now is the time.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">When does the next cohort start?</button>
-        <div class="faq-a">The next cohort is enrolling now with the program starting in 3 weeks. We cap enrollment to protect the intimacy of the group. Once it fills, the application closes. If you are reading this there are still spots — but they will not last.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What kind of results can I realistically expect?</button>
-        <div class="faq-a">Women in this program report feeling more present in their lives, making decisions from clarity instead of fear, improving their relationships, stepping into higher earning potential, and — most importantly — feeling like themselves for the first time in years. Results vary based on commitment and effort.</div>
-      </div>
+      <div class="faq-item"><button class="faq-q">I've tried programs before and they didn't work. Why is this different? <span class="faq-v">∨</span></button><div class="faq-a">Most programs give you strategy without touching identity. If the foundation — your self-concept — is built on fear, people-pleasing, or inherited beliefs, no strategy will stick. We go to the root.</div></div>
+      <div class="faq-item"><button class="faq-q">Is this for beginners? <span class="faq-v">∨</span></button><div class="faq-a">This is for women who are fundamentally okay but ready to go from okay to fully themselves. You need to be willing to look honestly at what is keeping you stuck and do the work to change it.</div></div>
+      <div class="faq-item"><button class="faq-q">How much time do I need each week? <span class="faq-v">∨</span></button><div class="faq-a">Plan for 4–6 hours per week — two live group coaching calls (90 minutes each), integration work between sessions, and your weekly exercises.</div></div>
+      <div class="faq-item"><button class="faq-q">What if I can't make a live call? <span class="faq-v">∨</span></button><div class="faq-a">All calls are recorded and uploaded within 24 hours. We still ask you to attend live as much as possible — the energy of a live call is core to the transformation.</div></div>
+      <div class="faq-item"><button class="faq-q">Is this therapy or coaching? <span class="faq-v">∨</span></button><div class="faq-a">This is coaching — focused on the present and future, not processing the past. If you need trauma-specific support, I'll always recommend a licensed therapist alongside this program.</div></div>
+      <div class="faq-item"><button class="faq-q">How many women are in the group? <span class="faq-v">∨</span></button><div class="faq-a">Intentionally small. I keep cohort sizes limited so every woman in the room gets real presence, real accountability, and real transformation.</div></div>
+      <div class="faq-item"><button class="faq-q">Can I pay in installments? <span class="faq-v">∨</span></button><div class="faq-a">Yes. There is a pay-in-full option and a 3-month payment plan. Payment details are shared after your application is approved.</div></div>
+      <div class="faq-item"><button class="faq-q">When does the next cohort start? <span class="faq-v">∨</span></button><div class="faq-a">Next cohort dates are shared with approved applicants. Apply now to be considered — spots are limited and applications close when the cohort is full.</div></div>
     </div>
-    <div style="text-align:center; margin-top:2.5rem" class="reveal">
-      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-wide">Apply for Become Her Anyway Now →</a>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ PRIVATE & EXCLUSIVE ═══════════════════ -->
-  <section class="exclusive">
-    <div class="reveal">
-      <h2 class="exclusive__title">Private<br/>&amp; Exclusive</h2>
-    </div>
-    <p class="exclusive__body reveal">This program is intentionally limited to women who are ready to do the real work — who are done performing a version of themselves built for everyone else's comfort and are ready to claim the version of themselves they have always known was possible.</p>
-    <p class="exclusive__body reveal">There are a lot of coaching programs out there. But only <strong>a few</strong> are willing to go to the root — to the identity, the embodiment, the deep inner shift that makes everything else possible.</p>
-    <p class="exclusive__close reveal">Access is limited. Transformation is expected.</p>
-    <div class="exclusive__photo reveal">
-      <span class="exclusive__photo-label">Become Her Anyway</span>
-    </div>
-  </section>
-
-  <!-- FINAL CTA BAR -->
-  <section class="final-bar">
-    <blockquote class="reveal">"The only difference between the woman you are and the woman you want to be is the decision to stop waiting."</blockquote>
-    <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn btn-cta btn--lg reveal">Become Her Anyway — Apply Now</a>
-    <p style="font-size:.7rem; color:rgba(245,240,232,.35); margin-top:1rem; letter-spacing:.12em" class="reveal">LIMITED SPOTS · THIS COHORT CLOSES WHEN FULL</p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <span class="footer-logo">Become Her Anyway</span>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms</a>
-      <a href="#">Contact</a>
-      <a href="#">Instagram</a>
-      <a href="#">Podcast</a>
-    </div>
-    <p>© 2026 Become Her Anyway. All rights reserved.<br/>
-    Results shared are not typical. Individual results vary based on commitment, effort, and circumstance.</p>
-  </footer>
-
-  <!-- STICKY BAR -->
-  <div class="sticky-bar" id="stickyBar">
-    <div>
-      <p>Ready to become her?</p>
-      <div class="urgency">⚡ Only 8 spots remaining in this cohort</div>
-    </div>
-    <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn btn-cta">Apply Now</a>
   </div>
-
-  <script>
-    const ro = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.07 });
-    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-    const heroEl = document.querySelector('.hero');
-    const bar = document.getElementById('stickyBar');
-    window.addEventListener('scroll', () => { bar.classList.toggle('visible', heroEl.getBoundingClientRect().bottom < 0); });
-
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const open = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-        if (!open) item.classList.add('open');
-      });
-    });
-
-    function submitApplication(e) {
-      e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      btn.textContent = 'Submitting…'; btn.disabled = true;
-      setTimeout(() => {
-        document.getElementById('applicationForm').style.display = 'none';
-        document.getElementById('successState').style.display = 'block';
-        window.scrollTo({ top: document.getElementById('apply').offsetTop - 80, behavior: 'smooth' });
-      }, 1200);
-    }
-  </script>
+</section>
+<div style="background:var(--cream);padding:7rem 5%">
+  <div class="final-testimonial" style="max-width:1060px;margin:0 auto">
+    <blockquote class="final-testimonial__quote" data-r="left">"She was speaking directly to what I had been carrying for years. I knew immediately this was the thing I had been waiting for."</blockquote>
+    <div data-r="right">
+      <div class="final-testimonial__media">
+        <div class="final-testimonial__media-inner"><span class="photo-hint" style="font-size:1rem">Client Photo / Video</span></div>
+        <span class="final-testimonial__media-label">♥ Client Love</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="closing-overlap">
+  <div class="closing-overlap__photo"></div>
+  <div class="closing-overlap__card" data-r="right">
+    <h2 class="closing-overlap__title">You already know you are meant for <em>more than this.</em></h2>
+    <p class="closing-overlap__body">You know who she is. You know you have something real inside you. You feel the gap between how you move through the world today and who you were always meant to be. And you are tired of living in that gap.</p>
+    <p class="closing-overlap__body"><strong>Become Her Anyway was built for the woman who is done waiting to feel ready.</strong> Who is done watching other women — women who are no more capable or worthy than she is — step into the life she knows is hers.</p>
+    <p class="closing-overlap__body">Your story is not the thing keeping you back. Your story, honestly told, is the whole thing. Stop waiting. Become her anyway.</p>
+    <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline">Apply Now →</a>
+  </div>
+</div>
+<div class="closing-spacer"></div>
+<section class="final">
+  <div class="final__ghost">HER</div>
+  <span class="final__script" data-r="up">She's waiting.</span>
+  <blockquote class="final__quote" data-r="up">"You've been becoming her your entire life. The question is whether you'll let yourself arrive."</blockquote>
+  <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline" data-r="up">Become Her Anyway — Apply Now</a>
+</section>
+<footer>
+  <a href="#" class="footer-logo">Become Her Anyway</a>
+  <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Contact</a><a href="https://stan.store/DestineePierreArtistry" target="_blank">Stan Store</a><a href="#">Instagram</a><a href="#">Podcast</a></div>
+  <p class="footer-copy">© 2026 Become Her Anyway. All rights reserved.</p>
+</footer>
+<div class="sticky" id="sticky">
+  <span class="sticky__text">Limited spots · <em>Become Her Anyway</em></span>
+  <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="sticky__btn">Apply Now →</a>
+  <button class="sticky__close" onclick="document.getElementById('sticky').style.display='none'">×</button>
+</div>
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function loop(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.classList.add('big');ring.classList.add('big');});el.addEventListener('mouseleave',()=>{cur.classList.remove('big');ring.classList.remove('big');});});
+const bar=document.getElementById('scrollBar'),nav=document.getElementById('nav'),sticky=document.getElementById('sticky');
+const heroH=document.querySelector('.hero').offsetHeight;
+window.addEventListener('scroll',()=>{const s=window.scrollY,h=document.body.scrollHeight-window.innerHeight;bar.style.width=(s/h*100)+'%';nav.classList.toggle('scrolled',s>40);sticky.classList.toggle('on',s>heroH*.9);},{passive:true});
+(function(){const h1=document.getElementById('heroH1');const txt=h1.innerHTML;let out='',delay=.5;txt.split(/(<[^>]+>|[^<]+)/g).forEach(part=>{if(!part)return;if(part.startsWith('<')){out+=part;return;}part.split(' ').forEach(w=>{if(!w.trim())return;out+=`<span class="word" style="animation-delay:${delay.toFixed(2)}s"><span>${w}</span></span> `;delay+=.07;});});h1.innerHTML=out;})();
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('[data-r]').forEach(el=>obs.observe(el));
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement,isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');});});
+function handleSubmit(e){e.preventDefault();document.getElementById('appForm').style.display='none';document.getElementById('success').style.display='block';document.getElementById('apply').scrollIntoView({behavior:'smooth',block:'start'});}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+</script>
 </body>
 </html>
