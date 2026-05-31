@@ -646,6 +646,115 @@
     .method__step-body { font-size:.88rem;color:var(--muted);line-height:1.88; }
     @media(max-width:900px) { .method__steps { grid-template-columns:1fr; } }
 
+    /* ─── MANIFESTO ─── */
+    .manifesto { background:var(--darkbrown);padding:8rem 5%;position:relative;overflow:hidden; }
+    .manifesto::before {
+      content:'NO.';position:absolute;top:50%;left:-1%;transform:translateY(-50%);
+      font-family:'Playfair Display',serif;font-weight:900;
+      font-size:clamp(8rem,22vw,18rem);color:rgba(160,80,112,.035);
+      pointer-events:none;line-height:1;letter-spacing:-.04em;white-space:nowrap;
+    }
+    .manifesto__inner { max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1.35fr;gap:6rem;align-items:start; }
+    @media(max-width:900px) { .manifesto__inner { grid-template-columns:1fr;gap:3.5rem; } }
+    .manifesto__label { font-size:.62rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--chestnut);display:block;margin-bottom:1.6rem; }
+    .manifesto__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4.5vw,3.6rem);color:var(--cream);line-height:1.08;letter-spacing:-.01em; }
+    .manifesto__title em { color:var(--chestnut);font-style:italic; }
+    .manifesto__right { display:flex;flex-direction:column;gap:2.8rem; }
+    .manifesto__col-label { font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;display:block;margin-bottom:1rem; }
+    .manifesto__against .manifesto__col-label { color:rgba(216,192,168,.35); }
+    .manifesto__for .manifesto__col-label { color:var(--gold); }
+    .manifesto__against ul,.manifesto__for ul { list-style:none; }
+    .manifesto__against ul li {
+      font-size:.88rem;color:rgba(216,192,168,.4);padding:.55rem 0;
+      border-bottom:1px solid rgba(110,40,72,.1);display:flex;gap:.75rem;line-height:1.62;
+      transition:color .3s;
+    }
+    .manifesto__against ul li:hover { color:rgba(216,192,168,.65); }
+    .manifesto__against ul li::before { content:'✕';color:rgba(160,80,112,.38);flex-shrink:0;font-size:.78rem;font-weight:700;margin-top:.12rem; }
+    .manifesto__for ul li {
+      font-size:.88rem;color:var(--sand);padding:.55rem 0;
+      border-bottom:1px solid rgba(110,40,72,.15);display:flex;gap:.75rem;line-height:1.62;
+      transition:color .3s;
+    }
+    .manifesto__for ul li:hover { color:var(--cream); }
+    .manifesto__for ul li::before { content:'◆';color:var(--gold);flex-shrink:0;font-size:.48rem;margin-top:.48rem; }
+    .manifesto__against ul li:last-child,.manifesto__for ul li:last-child { border-bottom:none; }
+    .manifesto__close {
+      font-family:'Cormorant Garamond',serif;font-style:italic;
+      font-size:clamp(1rem,2vw,1.2rem);color:rgba(216,192,168,.45);
+      border-top:1px solid rgba(110,40,72,.15);padding-top:1.4rem;margin-top:1rem;
+      line-height:1.68;
+    }
+
+    /* ─── LIVE COUNTER ─── */
+    .live-dot {
+      display:inline-block;width:7px;height:7px;border-radius:50%;
+      background:#7DC87D;margin-bottom:.35rem;
+      animation:livePulse 2.4s ease infinite;
+    }
+    @keyframes livePulse {
+      0%,100%{box-shadow:0 0 0 0 rgba(125,200,125,.5)}
+      55%{box-shadow:0 0 0 6px rgba(125,200,125,0)}
+    }
+
+    /* ─── IDENTITY QUIZ MODAL ─── */
+    .quiz-overlay {
+      position:fixed;inset:0;z-index:11000;
+      background:rgba(12,5,10,.96);backdrop-filter:blur(14px);
+      display:flex;align-items:center;justify-content:center;padding:2rem;
+      opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s;
+    }
+    .quiz-overlay.open { opacity:1;visibility:visible; }
+    .quiz-modal {
+      background:var(--darkbrown);border:1px solid rgba(160,80,112,.2);
+      max-width:680px;width:100%;padding:3.5rem;position:relative;
+      max-height:90vh;overflow-y:auto;
+    }
+    @media(max-width:600px) { .quiz-modal { padding:2.2rem 1.6rem; } }
+    .quiz-close {
+      position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;
+      color:var(--muted);font-size:1.4rem;cursor:none;transition:color .2s;line-height:1;
+    }
+    .quiz-close:hover { color:var(--cream); }
+    .quiz-progress { display:flex;gap:.4rem;margin-bottom:3rem; }
+    .quiz-progress__dot { width:28px;height:2px;background:rgba(160,80,112,.2);transition:background .4s; }
+    .quiz-progress__dot.active { background:var(--chestnut); }
+    .quiz-progress__dot.done { background:var(--gold); }
+    .quiz-eyebrow { font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--chestnut);display:block;margin-bottom:1rem; }
+    .quiz-question {
+      font-family:'Playfair Display',serif;font-weight:900;
+      font-size:clamp(1.3rem,3vw,1.9rem);color:var(--cream);line-height:1.18;margin-bottom:2.2rem;
+    }
+    .quiz-opts { display:flex;flex-direction:column;gap:.7rem; }
+    .quiz-opt {
+      background:rgba(160,80,112,.05);border:1px solid rgba(160,80,112,.14);
+      padding:1.1rem 1.4rem;cursor:none;text-align:left;
+      font-family:'Inter',sans-serif;font-size:.86rem;color:var(--sand);line-height:1.55;
+      transition:background .22s,border-color .22s,color .22s,transform .18s;
+      position:relative;overflow:hidden;
+    }
+    .quiz-opt:hover { background:rgba(160,80,112,.11);border-color:rgba(160,80,112,.32);color:var(--cream);transform:translateX(4px); }
+    .quiz-opt.selected { background:rgba(160,80,112,.14);border-color:var(--chestnut);color:var(--cream); }
+    .quiz-opt::before { content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--chestnut);transition:width .3s; }
+    .quiz-opt.selected::before { width:3px; }
+    .quiz-result { text-align:center; }
+    .quiz-result__type { font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem; }
+    .quiz-result__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--cream);line-height:1.08;margin-bottom:1.5rem; }
+    .quiz-result__desc {
+      font-family:'Cormorant Garamond',serif;font-style:italic;
+      font-size:clamp(1rem,2vw,1.22rem);color:var(--sand);line-height:1.72;
+      max-width:500px;margin:0 auto 2.5rem;
+    }
+    .quiz-result__note { font-size:.72rem;color:var(--muted);margin-top:.8rem;letter-spacing:.05em; }
+
+    /* ─── ASYMMETRIC ACCENT ─── */
+    .section-rotated-tag {
+      writing-mode:vertical-rl;text-orientation:mixed;
+      font-size:.55rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+      color:var(--chestnut);opacity:.45;
+      position:absolute;left:2rem;top:50%;transform:translateY(-50%) rotate(180deg);
+    }
+
     /* ─── INSIDE THE PROGRAM ─── */
     .inside-program { background:var(--cream);padding:8rem 5%; }
     .inside-program__inner { max-width:1060px;margin:0 auto; }
@@ -729,9 +838,9 @@
     <p class="hero-desc">A 12-week private coaching intensive for the woman who is done living like the smaller version of herself is the permanent version.</p>
     <p class="hero-transform">In 12 weeks, she will be your default. Not your aspiration.</p>
     <div class="hero-actions">
-      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary">Apply Now →</a>
+      <a href="#" class="btn-primary" onclick="openQuiz();return false;">Find Your Identity Bottleneck →</a>
       <a href="#method" class="hero-scroll-link">↓ See exactly how this works</a>
-      <span class="hero-fine">Application only · Reviewed within 48 hours · Limited spots per cohort</span>
+      <span class="hero-fine">3-question diagnostic · Free · Takes 2 minutes</span>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true">
@@ -749,7 +858,47 @@
   <div class="proof-item" data-r="up"><strong>3</strong><span>Core Pillars</span></div>
   <div class="proof-divider"></div>
   <div class="proof-item" data-r="up"><strong>1</strong><span>New Identity</span></div>
+  <div class="proof-divider"></div>
+  <div class="proof-item" data-r="up">
+    <span class="live-dot"></span>
+    <strong id="liveCount">63</strong>
+    <span>Community Members</span>
+  </div>
 </div>
+
+<!-- ══ MANIFESTO ══ -->
+<section class="manifesto" style="position:relative">
+  <span class="section-rotated-tag" aria-hidden="true">Our Philosophy</span>
+  <div class="manifesto__inner">
+    <div data-r="left">
+      <span class="manifesto__label">Our Stance</span>
+      <h2 class="manifesto__title">The coaching industry is<br>selling you the <em>wrong</em> fix.</h2>
+    </div>
+    <div class="manifesto__right">
+      <div class="manifesto__against" data-r="up">
+        <span class="manifesto__col-label">We don't believe in</span>
+        <ul>
+          <li>Strategy built on top of an identity that hasn't changed</li>
+          <li>Affirmations that skip the root story keeping you small</li>
+          <li>Programs that teach you what to do without changing who you believe you are</li>
+          <li>Coaching that treats behavior as the problem instead of the symptom</li>
+          <li>Waiting until you feel qualified to become the version you already know you are</li>
+        </ul>
+      </div>
+      <div class="manifesto__for" data-r="up">
+        <span class="manifesto__col-label">We believe in</span>
+        <ul>
+          <li>Identity as the only foundation that actually holds</li>
+          <li>Going to the root story, not the surface behavior</li>
+          <li>Transformation that doesn't require your circumstances to change first</li>
+          <li>The version of you that exists in private being the version you show the world</li>
+          <li>Becoming her anyway. Before you feel ready. Before you have the proof.</li>
+        </ul>
+      </div>
+      <p class="manifesto__close" data-r="up">If you have tried everything and nothing has lasted, the problem was never strategy. It was always identity. That is the only thing we work on here.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ══ VIDEO ══ -->
 <div class="video-block">
@@ -1390,6 +1539,14 @@
   <p class="footer-copy">© 2026 Become Her Anyway. All rights reserved.</p>
 </footer>
 
+<!-- ══ IDENTITY BOTTLENECK QUIZ ══ -->
+<div class="quiz-overlay" id="quizOverlay" role="dialog" aria-modal="true" aria-label="Identity Bottleneck Quiz">
+  <div class="quiz-modal">
+    <button class="quiz-close" onclick="closeQuiz()" aria-label="Close quiz">×</button>
+    <div id="quizContent"></div>
+  </div>
+</div>
+
 <!-- ══ STICKY BAR ══ -->
 <div class="sticky" id="sticky">
   <span class="sticky__text">Limited spots · <em>Become Her Anyway</em></span>
@@ -1572,6 +1729,149 @@ function handleSubmit(e) {
     document.getElementById('apply').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 800);
 }
+
+/* ─── IDENTITY BOTTLENECK QUIZ ─── */
+const QUIZ_DATA = {
+  questions: [
+    {
+      eyebrow: "Question 1 of 3",
+      q: "Which feels most true right now?",
+      opts: [
+        { t: "I can see who she is. I just can't seem to hold her consistently.", type: "PERFORMER" },
+        { t: "I keep getting close, then pull back. Every single time.", type: "SABOTEUR" },
+        { t: "I've done so much work. I still feel like the same person.", type: "SEEKER" },
+        { t: "Honestly? I've lost touch with who I'm even trying to become.", type: "DISCONNECTED" }
+      ]
+    },
+    {
+      eyebrow: "Question 2 of 3",
+      q: "Where does the gap show up most?",
+      opts: [
+        { t: "My relationships. I show up smaller than I am with people who matter most.", type: "PERFORMER" },
+        { t: "My decisions. I keep asking for approval I should be giving myself.", type: "SABOTEUR" },
+        { t: "My internal voice. It still sounds like the version I'm trying to leave.", type: "SEEKER" },
+        { t: "My presence. I know exactly what she would do. I still choose the safe version.", type: "PERFORMER" }
+      ]
+    },
+    {
+      eyebrow: "Question 3 of 3",
+      q: "What have you already tried?",
+      opts: [
+        { t: "Therapy, mindset work, courses. None of it has lasted long-term.", type: "SEEKER" },
+        { t: "Business or career coaching. It helps on the surface, not at the root.", type: "PERFORMER" },
+        { t: "Affirmations, journals, vision boards. I revert within weeks.", type: "SABOTEUR" },
+        { t: "Nothing structured yet. I've been waiting until I feel ready.", type: "DISCONNECTED" }
+      ]
+    }
+  ],
+  results: {
+    PERFORMER: {
+      label: "Your Identity Bottleneck",
+      title: "The Visibility Gap",
+      desc: "You know exactly who she is. You have been her in private. The gap is not in your vision of her. It is in your permission to be her publicly, consistently, without shrinking the moment it counts. That is the specific thing we close in 12 weeks."
+    },
+    SABOTEUR: {
+      label: "Your Identity Bottleneck",
+      title: "The Proximity Block",
+      desc: "You get close, then something pulls you back to the old version. Every time. This is not a discipline problem or a motivation problem. It is an identity problem. We go to the root story underneath the pattern and permanently end its authority over you."
+    },
+    SEEKER: {
+      label: "Your Identity Bottleneck",
+      title: "The Information Trap",
+      desc: "You have done the work. You have the knowledge. What you don't have is a reconstructed self-concept underneath all of it. More tools will not solve this. A new foundation will. That is what the 12 weeks builds."
+    },
+    DISCONNECTED: {
+      label: "Your Identity Bottleneck",
+      title: "The Identity Drift",
+      desc: "You have been so focused on becoming someone that you have lost touch with who you already are. We do not add a new identity on top of the confusion. We excavate what is already there, name it clearly, and build from solid ground."
+    }
+  }
+};
+
+let quizStep = 0;
+let quizScores = { PERFORMER: 0, SABOTEUR: 0, SEEKER: 0, DISCONNECTED: 0 };
+const quizOverlay = document.getElementById('quizOverlay');
+
+function openQuiz() {
+  quizStep = 0;
+  quizScores = { PERFORMER: 0, SABOTEUR: 0, SEEKER: 0, DISCONNECTED: 0 };
+  renderQuizStep();
+  quizOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQuiz() {
+  quizOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderQuizStep() {
+  const content = document.getElementById('quizContent');
+  if (quizStep < 3) {
+    const q = QUIZ_DATA.questions[quizStep];
+    const dots = [0,1,2].map(i =>
+      `<div class="quiz-progress__dot ${i < quizStep ? 'done' : i === quizStep ? 'active' : ''}"></div>`
+    ).join('');
+    content.innerHTML = `
+      <div class="quiz-progress">${dots}</div>
+      <span class="quiz-eyebrow">${q.eyebrow}</span>
+      <h3 class="quiz-question">${q.q}</h3>
+      <div class="quiz-opts">
+        ${q.opts.map(o => `<button class="quiz-opt" data-type="${o.type}">${o.t}</button>`).join('')}
+      </div>`;
+    content.querySelectorAll('.quiz-opt').forEach(btn => {
+      btn.addEventListener('click', () => selectQuizOpt(btn));
+      btn.addEventListener('mouseenter', () => { cur.classList.add('big'); ring.classList.add('big'); });
+      btn.addEventListener('mouseleave', () => { cur.classList.remove('big'); ring.classList.remove('big'); });
+    });
+  } else {
+    showQuizResult();
+  }
+}
+
+function selectQuizOpt(btn) {
+  if (btn.classList.contains('selected')) return;
+  document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  quizScores[btn.dataset.type]++;
+  setTimeout(() => { quizStep++; renderQuizStep(); }, 340);
+}
+
+function showQuizResult() {
+  const top = Object.entries(quizScores).sort((a,b) => b[1]-a[1])[0][0];
+  const r = QUIZ_DATA.results[top];
+  document.getElementById('quizContent').innerHTML = `
+    <div class="quiz-result">
+      <div class="quiz-progress">
+        <div class="quiz-progress__dot done"></div>
+        <div class="quiz-progress__dot done"></div>
+        <div class="quiz-progress__dot done"></div>
+      </div>
+      <span class="quiz-result__type">${r.label}</span>
+      <h3 class="quiz-result__title">${r.title}</h3>
+      <p class="quiz-result__desc">${r.desc}</p>
+      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener"
+         class="btn-primary" style="margin:0 auto;max-width:460px" onclick="closeQuiz()">
+        I'm Ready to Apply →
+      </a>
+      <p class="quiz-result__note">Application is free · Reviewed within 48 hours · Limited spots</p>
+    </div>`;
+}
+
+quizOverlay.addEventListener('click', e => { if (e.target === quizOverlay) closeQuiz(); });
+
+/* ─── LIVE COUNTER ─── */
+(function() {
+  const el = document.getElementById('liveCount');
+  if (!el) return;
+  let n = 63;
+  setInterval(() => {
+    const d = Math.random();
+    if (d > .78) n = Math.min(68, n + 1);
+    else if (d < .14) n = Math.max(58, n - 1);
+    el.textContent = n;
+  }, 6000);
+})();
 
 /* ─── SMOOTH ANCHORS ─── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
