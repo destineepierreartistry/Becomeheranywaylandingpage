@@ -10,18 +10,19 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --cream:     #F5F0E8;
-      --parchment: #EDE4D0;
-      --sand:      #D4C4A0;
-      --chestnut:  #8B5E3C;
-      --brown:     #5C3318;
-      --darkbrown: #2D1608;
-      --ink:       #1A1208;
-      --black:     #0D0A06;
-      --olive:     #6B6830;
-      --olive-lt:  #8E8B42;
-      --muted:     #7A6850;
-      --border:    rgba(92,51,24,.15);
+      --cream:     #FAF6F0;
+      --parchment: #F0E4D4;
+      --sand:      #D8C0A8;
+      --chestnut:  #A05070;
+      --brown:     #6E2848;
+      --darkbrown: #1E0A1A;
+      --ink:       #180810;
+      --black:     #0C050A;
+      --gold:      #C4A86A;
+      --olive:     #7A7035;
+      --olive-lt:  #9E9245;
+      --muted:     #7A5E68;
+      --border:    rgba(110,40,72,.13);
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; cursor: none; }
@@ -72,7 +73,7 @@
     /* ─── SCROLL PROGRESS ─── */
     #scrollBar {
       position:fixed;top:0;left:0;height:2px;width:0;z-index:9500;
-      background:linear-gradient(90deg,var(--chestnut),var(--olive-lt),var(--chestnut));
+      background:linear-gradient(90deg,var(--chestnut),var(--gold),var(--brown),var(--gold),var(--chestnut));
       background-size:200% 100%;
       animation:shimmerBar 3s linear infinite;
       transition:width .1s linear;
@@ -137,7 +138,11 @@
     }
     .hero-title .word { display:inline-block;overflow:hidden;vertical-align:bottom;margin-right:.14em; }
     .hero-title .word span { display:inline-block;transform:translateY(110%);animation:wordUp .75s cubic-bezier(.16,1,.3,1) forwards; }
-    .hero-title .highlight { color:var(--chestnut);font-style:italic; }
+    .hero-title .highlight {
+      background:linear-gradient(135deg,var(--chestnut) 0%,var(--gold) 55%,var(--chestnut) 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;font-style:italic;
+    }
     .hero-desc {
       font-family:'Cormorant Garamond',serif;font-style:italic;
       font-size:clamp(1.15rem,2.5vw,1.55rem);color:var(--muted);line-height:1.68;
@@ -225,7 +230,7 @@
     .testimonial-label { display:inline-block;background:var(--darkbrown);color:var(--sand);font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;padding:.45rem 1rem;margin-bottom:1.2rem; }
     .testimonial-media {
       aspect-ratio:4/5;border-radius:2px;overflow:hidden;
-      background:linear-gradient(145deg,#3d2010 0%,#2d1608 100%);
+      background:linear-gradient(145deg,#3D1535 0%,#280E22 100%);
       display:flex;align-items:flex-end;padding:1.5rem;
       box-shadow:0 12px 50px rgba(26,18,8,.2);
       transition:box-shadow .5s,transform .5s;
@@ -250,7 +255,7 @@
     }
     .editorial-dark__photo {
       position:sticky;top:0;height:100vh;overflow:hidden;
-      background:linear-gradient(160deg,#1a0d06 0%,#3d2010 55%,#2d1608 100%);
+      background:linear-gradient(160deg,#120610 0%,#3D1535 55%,#280E22 100%);
       display:flex;align-items:flex-end;justify-content:center;padding-bottom:3rem;
     }
     .editorial-dark__photo::after {
@@ -279,7 +284,7 @@
     .bio-editorial__content { background:var(--cream);padding:8rem 4rem 8rem 5%;display:flex;flex-direction:column;justify-content:flex-start; }
     .bio-editorial__photo {
       position:sticky;top:0;height:100vh;overflow:hidden;
-      background:linear-gradient(170deg,#3d2010 0%,#1a0d06 100%);
+      background:linear-gradient(170deg,#3D1535 0%,#120610 100%);
       display:flex;align-items:flex-end;justify-content:center;padding-bottom:3rem;
     }
     .photo-hint { font-family:'Great Vibes',cursive;font-size:1.8rem;color:rgba(212,196,160,.3);text-align:center; }
@@ -384,7 +389,7 @@
     .fit-section__grid { display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1060px;margin:0 auto 5rem;align-items:start; }
     .fit-section__photo {
       aspect-ratio:3/4;border-radius:1px;overflow:hidden;
-      background:linear-gradient(145deg,#1a0d06 0%,#3d2010 100%);
+      background:linear-gradient(145deg,#120610 0%,#3D1535 100%);
       display:flex;align-items:flex-end;justify-content:center;padding-bottom:2rem;
       transition:box-shadow .4s;
     }
@@ -507,7 +512,7 @@
     .final-testimonial__media { aspect-ratio:1/1;border-radius:1px;overflow:hidden;position:relative; }
     .final-testimonial__media-inner {
       width:100%;height:100%;
-      background:linear-gradient(145deg,#3d2010 0%,#2d1608 100%);
+      background:linear-gradient(145deg,#3D1535 0%,#280E22 100%);
       display:flex;align-items:flex-end;justify-content:center;padding-bottom:1rem;
       transition:transform .5s;
     }
@@ -518,7 +523,7 @@
     .closing-overlap { position:relative;overflow:hidden; }
     .closing-overlap__photo {
       width:100%;aspect-ratio:16/6;display:block;min-height:340px;
-      background:linear-gradient(135deg,#1a0d06 0%,#3d2010 50%,#2d1608 100%);
+      background:linear-gradient(135deg,#120610 0%,#3D1535 50%,#280E22 100%);
     }
     .closing-overlap__card { position:absolute;right:5%;bottom:-4rem;width:min(620px,82%);background:var(--darkbrown);padding:3.8rem; }
     .closing-overlap__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.9rem);color:var(--cream);line-height:1.08;margin-bottom:1.6rem; }
@@ -641,6 +646,33 @@
     .method__step-body { font-size:.88rem;color:var(--muted);line-height:1.88; }
     @media(max-width:900px) { .method__steps { grid-template-columns:1fr; } }
 
+    /* ─── INSIDE THE PROGRAM ─── */
+    .inside-program { background:var(--cream);padding:8rem 5%; }
+    .inside-program__inner { max-width:1060px;margin:0 auto; }
+    .inside-program__header { text-align:center;max-width:720px;margin:0 auto 5rem; }
+    .inside-phases { display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:4rem; }
+    @media(max-width:900px) { .inside-phases { grid-template-columns:1fr; } }
+    .inside-phase {
+      padding:2.4rem;border-top:3px solid var(--chestnut);background:var(--parchment);
+      transition:box-shadow .4s,transform .4s;
+    }
+    .inside-phase:hover { box-shadow:0 14px 45px rgba(110,40,72,.1);transform:translateY(-4px); }
+    .inside-phase__label { font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem; }
+    .inside-phase__title { font-family:'Playfair Display',serif;font-weight:900;font-size:1.55rem;color:var(--brown);margin-bottom:.9rem; }
+    .inside-phase__desc { font-size:.86rem;color:var(--muted);line-height:1.82;margin-bottom:1.4rem; }
+    .inside-list { list-style:none; }
+    .inside-list li { font-size:.82rem;color:var(--ink);line-height:1.7;padding:.45rem 0;border-bottom:1px solid var(--border);display:flex;gap:.7rem; }
+    .inside-list li:last-child { border-bottom:none; }
+    .inside-list li::before { content:'◆';color:var(--chestnut);font-size:.45rem;flex-shrink:0;margin-top:.52rem; }
+    .inside-tools { background:var(--parchment);padding:3rem;border:1px solid var(--border); }
+    .inside-tools__title { font-family:'Playfair Display',serif;font-weight:900;font-size:1.45rem;color:var(--brown);margin-bottom:2rem; }
+    .inside-tools__grid { display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem; }
+    @media(max-width:620px) { .inside-tools__grid { grid-template-columns:1fr; } }
+    .inside-tool { display:flex;flex-direction:column;gap:.45rem; }
+    .inside-tool__icon { color:var(--gold);font-size:.9rem; }
+    .inside-tool strong { font-size:.9rem;color:var(--brown);font-weight:700; }
+    .inside-tool p { font-size:.82rem;color:var(--muted);line-height:1.75; }
+
     /* ─── WHAT HAPPENS NEXT ─── */
     .next-steps { max-width:600px;margin:0 auto 3rem;padding:2rem 2.2rem;background:rgba(139,94,60,.05);border:1px solid var(--border); }
     .next-steps__label { font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--chestnut);margin-bottom:1.5rem;display:block; }
@@ -694,8 +726,8 @@
     <h1 class="hero-title" id="heroH1">
       Stop being the woman you <span class="highlight">almost</span> are.
     </h1>
-    <p class="hero-desc">A 12-week private coaching intensive for women who are done closing the gap between who they are and who they were always meant to be.</p>
-    <p class="hero-transform">In 12 weeks, she will be your default — not your aspiration.</p>
+    <p class="hero-desc">A 12-week private coaching intensive for the woman who is done living like the smaller version of herself is the permanent version.</p>
+    <p class="hero-transform">In 12 weeks, she will be your default. Not your aspiration.</p>
     <div class="hero-actions">
       <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary">Apply Now →</a>
       <a href="#method" class="hero-scroll-link">↓ See exactly how this works</a>
@@ -754,11 +786,11 @@
     <div data-r="right">
       <div class="testi-before">
         <span class="testi-before__label">Before she started</span>
-        <p class="testi-before__text">Replace this with your client's starting point — e.g., "I knew exactly who I wanted to be. I just couldn't seem to become her in the rooms that mattered."</p>
+        <p class="testi-before__text">Replace this with your client's starting point, e.g., "I knew exactly who I wanted to be. I just couldn't seem to become her in the rooms that mattered."</p>
       </div>
       <span class="testi-after-label">After 12 weeks</span>
       <blockquote class="testimonial-quote">"I walked into this program knowing who I was <em>supposed</em> to be. I walked out actually being her."</blockquote>
-      <p class="testimonial-attr">— Replace with your client's name &amp; result</p>
+      <p class="testimonial-attr">· Replace with your client's name &amp; result</p>
     </div>
   </div>
 </section>
@@ -775,12 +807,12 @@
   <div class="editorial-dark__content">
     <h2 class="editorial-dark__title" data-r="up">You are <em>already</em> her.</h2>
     <div class="editorial-dark__body">
-      <p data-r="up">Your closest people see it. Anyone who has spent real time with you knows it. The version of you that shows up in private — the clarity, the confidence, the woman who doesn't shrink, doesn't apologize, doesn't second-guess every room she walks into — she is real.</p>
+      <p data-r="up">Your closest people see it. Anyone who has spent real time with you knows it. The version of you that shows up in private: the clarity, the confidence, the woman who doesn't shrink, doesn't apologize, doesn't second-guess every room she walks into. She is real.</p>
       <p data-r="up">And yet? You keep choosing the smaller version.</p>
       <p data-r="up">Not because you're not ready. Not because you don't have what it takes.</p>
-      <p data-r="up">Because <strong>no one has ever helped you close that gap</strong> — the distance between the woman you know yourself to be and the one you actually show up as in your relationships, your decisions, your life every single day.</p>
+      <p data-r="up">Because <strong>no one has ever helped you close that gap.</strong> The distance between the woman you know yourself to be and the one you actually show up as in your relationships, your decisions, your life every single day.</p>
       <blockquote class="editorial-dark__statement" data-r="up">That is the identity gap. And it is costing you more than you realize.</blockquote>
-      <p data-r="up">Every month you live in that gap is another month she waits. Another relationship where you play small. Another opportunity where you hedge. Another version of your life that is almost yours — but not quite.</p>
+      <p data-r="up">Every month you live in that gap is another month she waits. Another relationship where you play small. Another opportunity where you hedge. Another version of your life that is almost yours. But not quite.</p>
       <p data-r="up"><strong>People don't change when they learn more. They change when they finally believe something different about themselves.</strong> That is what we do in 12 weeks.</p>
     </div>
     <div style="margin-top:3.5rem" data-r="up">
@@ -795,10 +827,10 @@
     <p class="bio-editorial__name" data-r="up">Destinee Pierre</p>
     <h2 class="bio-editorial__title-lg" data-r="up">For a long time, I performed who I thought I was <em>supposed</em> to be.</h2>
     <div class="bio-editorial__body">
-      <p data-r="up">Which is funny, because in private I was always her. The woman I wanted to be — she showed up in the quiet moments, in the conversations no one else heard, in the decisions I made when no one was watching. But the moment it counted, I gave people the smaller version.</p>
-      <p data-r="up">I thought I needed to earn the right to be her fully. I thought I needed a title, a number, an achievement that gave me permission. What I didn't know was that the performance was the problem — not the absence of proof.</p>
+      <p data-r="up">Which is funny, because in private I was always her. The woman I wanted to be. She showed up in the quiet moments, in the conversations no one else heard, in the decisions I made when no one was watching. But the moment it counted, I gave people the smaller version.</p>
+      <p data-r="up">I thought I needed to earn the right to be her fully. I thought I needed a title, a number, an achievement that gave me permission. What I didn't know was that the performance was the problem. Not the absence of proof.</p>
       <blockquote class="bio-pull" data-r="up">"The work isn't becoming someone new. It's finally letting yourself be who you already are."</blockquote>
-      <p data-r="up">I built Become Her Anyway because this is the work I actually did. Not the version I packaged up and made palatable — the real work of deconstructing every story I had about what I needed to be allowed to take up space. And then choosing, every day, to be her anyway.</p>
+      <p data-r="up">I built Become Her Anyway because this is the work I actually did. Not the version I packaged up and made palatable. The actual work of deconstructing every story I had about what I needed to be allowed to take up space. And then choosing, every day, to be her anyway.</p>
       <p data-r="up">That is the work I want to do with you. And it is the work I was made for.</p>
     </div>
     <div style="margin-top:2.8rem" data-r="up">
@@ -820,27 +852,101 @@
     <div class="method__header">
       <span class="method__eyebrow" data-r="up">The Framework</span>
       <h2 class="method__title" data-r="up">The Identity Architect Method</h2>
-      <p class="method__sub" data-r="up">Most coaching changes what you do. This changes who you believe you are. Three phases. One outcome: her — as your permanent default, not your best day.</p>
+      <p class="method__sub" data-r="up">Most coaching changes what you do. This changes who you believe you are. Three phases. One outcome: her as your permanent default, not your best day.</p>
     </div>
     <div class="method__steps sg">
       <div class="method__step" data-r="up">
         <div class="method__num">01</div>
         <h3 class="method__step-title">Excavate the Gap</h3>
-        <p class="method__step-body">We go beneath the behavior to the belief. Every pattern keeping you in the smaller version has a root story — an inherited narrative about what you are allowed to be. We find it, name it, and end its authority over your life. Weeks 1–4.</p>
+        <p class="method__step-body">We go beneath the behavior to the belief. Every pattern keeping you in the smaller version has a root story. An inherited narrative about what you are allowed to be. We find it, name it, and end its authority over your life. Weeks 1–4.</p>
       </div>
       <div class="method__step" data-r="up">
         <div class="method__num">02</div>
         <h3 class="method__step-title">Install the New Self-Concept</h3>
-        <p class="method__step-body">We don't set goals. We build identity. Through embodied exercises, live coaching, and a structured framework, we make "her" your default orientation — the woman you wake up as, not the one you're trying to become by end of day. Weeks 5–9.</p>
+        <p class="method__step-body">We don't set goals. We build identity. Through embodied exercises, live coaching, and a structured framework, we make "her" your default orientation. The woman you wake up as, not the one you're trying to become by end of day. Weeks 5–9.</p>
       </div>
       <div class="method__step" data-r="up">
         <div class="method__num">03</div>
         <h3 class="method__step-title">Lock It In for Life</h3>
-        <p class="method__step-body">Identity work only counts if it holds under pressure. The final phase is integration — taking everything you've built and making it structurally permanent, so life's inevitable disruptions don't pull you back to who you were. Weeks 10–12.</p>
+        <p class="method__step-body">Identity work only counts if it holds under pressure. The final phase is integration: taking everything you've built and making it structurally permanent. Life's inevitable disruptions will not pull you back to who you were. Weeks 10–12.</p>
       </div>
     </div>
     <div style="text-align:center;margin-top:3.5rem" data-r="up">
       <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-dark-outline" style="max-width:500px">Apply to Work Through This With Me →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSIDE THE PROGRAM ══ -->
+<section class="inside-program">
+  <div class="inside-program__inner">
+    <div class="inside-program__header">
+      <span class="method__eyebrow" data-r="up">The Curriculum</span>
+      <h2 class="method__title" data-r="up">What You'll Actually Learn</h2>
+      <p class="method__sub" data-r="up">This is not a vague transformation experience. Here is exactly what you are building, week by week, inside the 12 weeks.</p>
+    </div>
+    <div class="inside-phases sg">
+      <div class="inside-phase" data-r="up">
+        <div class="inside-phase__label">Phase 1 · Weeks 1–4</div>
+        <h3 class="inside-phase__title">Deconstruct</h3>
+        <p class="inside-phase__desc">We excavate the exact stories keeping you in the smaller version and permanently end their authority over your choices.</p>
+        <ul class="inside-list">
+          <li>Identity Ceiling Audit: every invisible cap you've been living under, mapped</li>
+          <li>Root Story Excavation: the inherited narrative keeping you small, named</li>
+          <li>Belief System Mapping: tracing where every limiting story actually came from</li>
+          <li>Pattern Interrupt Installation: break the cycles that keep you performing instead of being</li>
+          <li>AI-Powered Reflection Journal: between-session prompts designed to go deeper than surface journaling</li>
+        </ul>
+      </div>
+      <div class="inside-phase" data-r="up">
+        <div class="inside-phase__label">Phase 2 · Weeks 5–9</div>
+        <h3 class="inside-phase__title">Become</h3>
+        <p class="inside-phase__desc">We build the new self-concept from the inside out using embodiment practices and identity architecture frameworks.</p>
+        <ul class="inside-list">
+          <li>New Self-Concept Architecture: design the exact identity you are stepping into</li>
+          <li>Embodiment Practice Library: somatic tools that make the shift felt in your body, not just your head</li>
+          <li>Identity Tracking Template: a weekly system to measure how much she is actually showing up</li>
+          <li>Relationship Identity Redesign: show up as her in the rooms that have kept you smallest</li>
+          <li>AI Identity Check-In System: daily prompts that anchor your new self-concept between sessions</li>
+        </ul>
+      </div>
+      <div class="inside-phase" data-r="up">
+        <div class="inside-phase__label">Phase 3 · Weeks 10–12</div>
+        <h3 class="inside-phase__title">Live as Her</h3>
+        <p class="inside-phase__desc">Integration. You complete your Becoming Her Blueprint and build the protocols that keep this identity as your permanent default.</p>
+        <ul class="inside-list">
+          <li>Becoming Her Blueprint: your fully personalized identity document, yours permanently</li>
+          <li>Decision-Making From Identity: a repeatable framework for choosing as her every time</li>
+          <li>Pressure Integration Protocol: what to do when life tries to pull you back to who you were</li>
+          <li>30-Day Post-Program Plan: a structured guide for integration after the container closes</li>
+          <li>Graduate Identity Maintenance System: the tools to keep her as your default long after we finish</li>
+        </ul>
+      </div>
+    </div>
+    <div class="inside-tools" data-r="up">
+      <h3 class="inside-tools__title">The tools you get inside</h3>
+      <div class="inside-tools__grid">
+        <div class="inside-tool">
+          <span class="inside-tool__icon">◆</span>
+          <strong>AI Reflection Journal System</strong>
+          <p>A curated AI-powered prompting system for between-session reflection. Not generic journaling. Identity-specific prompts designed to move the needle session to session.</p>
+        </div>
+        <div class="inside-tool">
+          <span class="inside-tool__icon">◆</span>
+          <strong>Becoming Her Blueprint Template</strong>
+          <p>A living identity document built across 12 weeks. Who she is. How she thinks. How she decides. How she moves. Personalized to you and yours permanently.</p>
+        </div>
+        <div class="inside-tool">
+          <span class="inside-tool__icon">◆</span>
+          <strong>Identity Architecture Workbooks</strong>
+          <p>Four structured workbooks covering the full deconstruct-to-integration arc. Not content to consume. Working documents you return to throughout and after the program.</p>
+        </div>
+        <div class="inside-tool">
+          <span class="inside-tool__icon">◆</span>
+          <strong>Guest Expert Sessions</strong>
+          <p>Curated experts in nervous system regulation, embodiment, relationship identity, and money as an identity conversation. Each session chosen because it directly serves the work we are doing together.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -862,17 +968,17 @@
       <span class="c-card__check">◆</span>
       <p class="c-card__title">Become</p>
       <p class="c-card__weeks">Weeks 5–9</p>
-      <p class="c-card__body">We build the new self-concept from the inside out. Not affirmations — actual embodied identity shifts that change how you show up in every room you enter. She stops being a goal and starts being a felt reality.</p>
+      <p class="c-card__body">We build the new self-concept from the inside out. Not affirmations. Actual embodied identity shifts that change how you show up in every room you enter. She stops being a goal and starts being a felt reality.</p>
     </div>
     <div class="c-card" data-r="up">
       <span class="c-card__check">◆</span>
       <p class="c-card__title">Live as Her</p>
       <p class="c-card__weeks">Weeks 10–12</p>
-      <p class="c-card__body">Integration. We make the new identity your default — in your relationships, your decisions, your presence. The gap closes. She isn't who you're working toward. She's who you are.</p>
+      <p class="c-card__body">Integration. We make the new identity your default, in your relationships, your decisions, your presence. The gap closes. She isn't who you're working toward. She's who you are.</p>
     </div>
   </div>
   <div class="curriculum__manifesto" data-r="up">
-    <p>Most women trying to change their lives are hiding the very thing that would set them free. They have more information than they could ever use, and still feel stuck in who they've always been. Become Her Anyway teaches you to close the gap at the root — not with more strategy, but with a complete reconstruction of your self-concept, sustained by a community of women doing the same work.</p>
+    <p>Most women trying to change their lives are hiding the very thing that would set them free. They have more information than they could ever use, and still feel stuck in who they've always been. Become Her Anyway teaches you to close the gap at the root. Not with more strategy, but with a complete reconstruction of your self-concept, sustained by a community of women doing the same work.</p>
   </div>
   <div style="text-align:center" data-r="up">
     <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline">Apply Now →</a>
@@ -890,7 +996,7 @@
     </div>
     <div class="feat" data-r="up">
       <div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Voice Memo Support Between Sessions</p></div>
-      <p class="feat__body">Between calls, questions don't wait. Neither does your growth. Send a voice memo and receive a real response — not an auto-reply.</p>
+      <p class="feat__body">Between calls, questions don't wait. Neither does your growth. Send a voice memo and receive a real response. Not a form email.</p>
     </div>
     <div class="feat" data-r="up">
       <div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Weekly Identity Exercises</p></div>
@@ -902,7 +1008,7 @@
     </div>
     <div class="feat" data-r="up">
       <div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Your Becoming Her Blueprint</p></div>
-      <p class="feat__body">A personalized identity document built over the 12 weeks — specific to you, your patterns, your self-concept. Yours permanently. Return to it every time you need to remember who she is.</p>
+      <p class="feat__body">A personalized identity document built over the 12 weeks, specific to you, your patterns, your self-concept. Yours permanently. Return to it every time you need to remember who she is.</p>
     </div>
     <div class="feat" data-r="up">
       <div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Integration Workbooks</p></div>
@@ -928,11 +1034,11 @@
   <p class="outcomes__sub" data-r="up">These are not aspirations. These are outcomes.</p>
   <div class="outcomes__grid sg">
     <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">A self-concept that no longer apologizes for who you are</p></div>
-    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">Your Becoming Her Blueprint — a permanent record of who she is and how to return to her</p></div>
-    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">The ability to walk into any room as the fullest version of yourself — not a performance of her</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">Your Becoming Her Blueprint: a permanent record of who she is and how to return to her</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">The ability to walk into any room as the fullest version of yourself. Not a performance of her.</p></div>
     <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">Relationships that reflect who you actually are, not who you thought you needed to be</p></div>
     <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">A clarity about your own identity that doesn't waver under pressure or other people's expectations</p></div>
-    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">The internal authority to make decisions from her — not from fear, people-pleasing, or old patterns</p></div>
+    <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">The internal authority to make decisions from her. Not from fear, people-pleasing, or old patterns.</p></div>
     <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">Every self-sabotage pattern named, interrupted, and replaced with something that serves who she is</p></div>
     <div class="outcome" data-r="up"><span class="outcome__check">◆</span><p class="outcome__text">A community of women who will hold you to the version of you that showed up inside this container</p></div>
   </div>
@@ -956,13 +1062,13 @@
       <span class="c-card__check">◆</span>
       <p class="c-card__title">Become Module</p>
       <p class="c-card__weeks">Weeks 5–9</p>
-      <p class="c-card__body">The new identity architecture framework, embodiment practices, the self-concept installation exercises, and every tool we use to make her your felt reality — not just your intention.</p>
+      <p class="c-card__body">The new identity architecture framework, embodiment practices, the self-concept installation exercises, and every tool we use to make her your felt reality. Not just your intention.</p>
     </div>
     <div class="c-card" data-r="up">
       <span class="c-card__check">◆</span>
       <p class="c-card__title">Live as Her Module</p>
       <p class="c-card__weeks">Weeks 10–12</p>
-      <p class="c-card__body">Integration frameworks, the relationship redesign exercises, the default identity protocol, and the Becoming Her Blueprint template — personalized across the full 12 weeks.</p>
+      <p class="c-card__body">Integration frameworks, the relationship redesign exercises, the default identity protocol, and the Becoming Her Blueprint template, personalized across the full 12 weeks.</p>
     </div>
   </div>
   <div style="text-align:center" data-r="up">
@@ -975,13 +1081,13 @@
   <div class="community__header">
     <span style="font-size:.64rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--chestnut);display:block;margin-bottom:1rem" data-r="up">The Container</span>
     <h2 class="community__title" data-r="up">The room matters as much as the work.</h2>
-    <p class="community__p" data-r="up">The women in this cohort are not beginners. They are accomplished, self-aware women who are choosing — for the first time — to stop managing themselves and start becoming themselves. You are not just getting access to Destinee for 12 weeks. You are getting access to each other.</p>
-    <p class="community__p" data-r="up">Peer-level community — women doing the same work at the same altitude — is something you cannot manufacture. It only happens when the room is curated on purpose.</p>
+    <p class="community__p" data-r="up">The women in this cohort are not beginners. They are accomplished, self-aware women who are choosing, for the first time, to stop managing themselves and start becoming themselves. You are not just getting access to Destinee for 12 weeks. You are getting access to each other.</p>
+    <p class="community__p" data-r="up">Peer-level community, women doing the same work at the same altitude, is something you cannot manufacture. It only happens when the room is curated on purpose.</p>
   </div>
   <div class="community__grid sg">
     <div class="feat" data-r="up">
       <div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Collective Witnessing</p></div>
-      <p class="feat__body">Being truly seen by other women doing this exact work is a fundamental part of the transformation. The container creates conditions for that to happen — consistently, over 12 weeks.</p>
+      <p class="feat__body">Being truly seen by other women doing this exact work is a fundamental part of the transformation. The container creates conditions for that to happen. Consistently. Over 12 weeks.</p>
     </div>
     <div class="feat" data-r="up">
       <div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Peer Support &amp; Accountability</p></div>
@@ -989,7 +1095,7 @@
     </div>
     <div class="feat" data-r="up">
       <div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Live Coaching Twice a Week</p></div>
-      <p class="feat__body">Two sessions every week where we work together in real time on what is actually coming up — not on what we planned to cover. Real coaching meets real life.</p>
+      <p class="feat__body">Two sessions every week where we work together in real time on what is actually coming up, not what we planned to cover. Real coaching meets real life.</p>
     </div>
     <div class="feat" data-r="up">
       <div class="feat__head"><span class="feat__check">◆</span><p class="feat__title">Graduate Access Forever</p></div>
@@ -1019,7 +1125,7 @@
           <li>You feel the gap between who you are in private and who you show up as publicly</li>
           <li>You've tried to change before and you know the approach has to be fundamentally different this time</li>
           <li>You're done consuming content about becoming someone. You want to actually become her.</li>
-          <li>You are ready for the work to be uncomfortable — and you're ready anyway</li>
+          <li>You are ready for the work to be uncomfortable. You're doing it anyway.</li>
           <li>You want transformation that holds, not a temporary mindset shift that fades when life gets hard</li>
           <li>You are ready to invest in yourself at the level that actually changes things</li>
           <li>You want to be in a room with women who are taking themselves seriously</li>
@@ -1030,10 +1136,10 @@
       <div class="fit-section__card" data-r="left">
         <span class="fit-section__card-title">This is not the right fit if…</span>
         <ul class="fit-list fit-list--no">
-          <li>You are looking for a quick fix or a shortcut — this program requires real work between sessions</li>
+          <li>You are looking for a quick fix or a shortcut. This program requires real work between sessions.</li>
           <li>You expect to be given tools without doing the internal work to use them</li>
           <li>You are not in a position to make a meaningful investment in yourself right now</li>
-          <li>You want a formula that works for everyone — this is a personalized transformation, not a template</li>
+          <li>You want a formula that works for everyone. This is a personalized transformation, not a template.</li>
           <li>You're not yet willing to be honest about what is actually keeping you stuck</li>
           <li>You treat coaching programs as content to consume rather than containers to show up in</li>
         </ul>
@@ -1052,7 +1158,7 @@
 <!-- ══ FOR / NOT FOR ══ -->
 <section class="qualify">
   <div style="max-width:1060px;margin:0 auto">
-    <h2 class="qualify__title" data-r="up">This Is — and Isn't — for Everyone</h2>
+    <h2 class="qualify__title" data-r="up">Who This Is For. And Who It's Not.</h2>
     <div class="qualify__grid sg">
       <div data-r="left">
         <span class="q-col__label">This IS for you if…</span>
@@ -1061,7 +1167,7 @@
           <li>You can commit fully and consistently for 12 weeks</li>
           <li>You take radical ownership of your outcomes</li>
           <li>You're willing to be uncomfortable to grow</li>
-          <li>You want transformation at the root — not a temporary mindset shift</li>
+          <li>You want transformation at the root. Not a temporary mindset shift.</li>
           <li>You invest in yourself when it actually matters</li>
         </ul>
       </div>
@@ -1094,7 +1200,7 @@
     </div>
     <div class="obj-card" data-r="up">
       <div class="obj-card__q">"I've tried coaching before and it didn't stick."</div>
-      <p class="obj-card__a">Most coaching works at the strategy layer — what you do. This works at the identity layer — who you believe you are. If your foundation hasn't changed, no strategy built on top of it will hold. That is why this is different. We go to the root.</p>
+      <p class="obj-card__a">Most coaching works at the strategy layer: what you do. This works at the identity layer: who you believe you are. If your foundation hasn't changed, no strategy built on top of it will hold. That is why this is different. We go to the root.</p>
     </div>
     <div class="obj-card" data-r="up">
       <div class="obj-card__q">"I don't have time right now."</div>
@@ -1110,7 +1216,7 @@
     </div>
     <div class="obj-card" data-r="up">
       <div class="obj-card__q">"What if I'm not the right fit?"</div>
-      <p class="obj-card__a">Apply and let's find out. The application process exists precisely so you know before you invest — not after. If this isn't the right fit or the right time, I'll tell you honestly and point you somewhere that actually serves you. No pressure. Real clarity.</p>
+      <p class="obj-card__a">Apply and let's find out. The application process exists precisely so you know before you invest. Not after. If this isn't the right fit or the right time, I'll tell you honestly and point you somewhere that actually serves you. No pressure. Real clarity.</p>
     </div>
   </div>
 </section>
@@ -1126,20 +1232,20 @@
     <div class="invest__card" data-r="scale">
       <div class="invest__spotlight"></div>
       <span class="invest__tag">By Application Only</span>
-      <h3 class="invest__name">Become Her Anyway — 12-Week Intensive</h3>
+      <h3 class="invest__name">Become Her Anyway: 12-Week Intensive</h3>
       <ul class="invest__list">
         <li>24 Live Group Coaching Calls (2× per week)</li>
         <li>Private Community + Accountability Pod</li>
         <li>Weekly Identity Exercises &amp; Workbooks</li>
         <li>Voice Memo Support Between Sessions</li>
-        <li>Your Becoming Her Blueprint — personalized</li>
+        <li>Your Becoming Her Blueprint, personalized</li>
         <li>Lifetime Access to all replays &amp; materials</li>
         <li>Guest Expert Sessions</li>
       </ul>
       <p class="invest__price-from">Starting at</p>
       <p class="invest__amount" id="priceEl">$2,997</p>
       <p class="invest__period">Pay in full · or 3 monthly payments of $1,099</p>
-      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">Apply Now — Spots Are Limited</a>
+      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">Apply Now. Spots Are Limited.</a>
       <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:.9rem">Your application is completely free. You pay nothing until your application is approved <em>and</em> you choose to move forward.</p>
     </div>
   </div>
@@ -1160,7 +1266,7 @@
       </div>
       <div class="next-steps__item">
         <span class="next-steps__n">02</span>
-        <div><strong>Destinee reviews it personally</strong><span>You'll hear back within 48 hours — not from a bot.</span></div>
+        <div><strong>Destinee reviews it personally</strong><span>You'll hear back within 48 hours. Not from a bot.</span></div>
       </div>
       <div class="next-steps__item">
         <span class="next-steps__n">03</span>
@@ -1193,13 +1299,13 @@
           <option>I'm ready for a complete identity transformation</option>
         </select>
       </div>
-      <div class="fg"><label for="block">What's your biggest block right now?</label><textarea id="block" placeholder="Be honest — this is where the real work starts." required></textarea></div>
+      <div class="fg"><label for="block">What's your biggest block right now?</label><textarea id="block" placeholder="Be honest. This is where the real work starts." required></textarea></div>
       <div class="fg"><label for="why">Why now? What's shifted?</label><textarea id="why" placeholder="Tell us what brought you here…"></textarea></div>
       <div class="fg">
         <label for="inv">Are you ready and able to make this investment?</label>
         <select id="inv" required>
           <option value="" disabled selected>Select one</option>
-          <option>Yes — I'm ready to invest in my transformation</option>
+          <option>Yes, I'm ready to invest in my transformation</option>
           <option>I need to understand the payment options first</option>
           <option>I'm not sure yet</option>
         </select>
@@ -1209,7 +1315,7 @@
     <div id="success" style="display:none;text-align:center;padding:2.5rem 0">
       <div style="font-family:'Great Vibes',cursive;font-size:3.2rem;color:var(--brown);margin-bottom:1rem">She showed up.</div>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--brown);margin-bottom:.8rem">Your application is in.</h3>
-      <p style="color:var(--muted);font-size:.93rem;line-height:1.78;margin-bottom:1.8rem">Check your inbox — we'll be in touch within 48 hours. The fact that you hit submit? That's already her showing up.</p>
+      <p style="color:var(--muted);font-size:.93rem;line-height:1.78;margin-bottom:1.8rem">Check your inbox. We'll be in touch within 48 hours. The fact that you hit submit? That's already her showing up.</p>
       <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto;max-width:320px">Visit My Stan Store →</a>
     </div>
   </div>
@@ -1220,15 +1326,15 @@
   <div style="max-width:1060px;margin:0 auto">
     <h2 class="faq__title" data-r="up">Frequently Asked Questions</h2>
     <div class="faq__list">
-      <div class="faq-item"><button class="faq-q">I've tried programs before and they didn't work. Why is this different? <span class="faq-v">∨</span></button><div class="faq-a">Most programs give you strategy without touching identity. If the foundation — your self-concept — is built on fear, people-pleasing, or inherited beliefs, no strategy will stick. We go to the root. This works where other things haven't because we are not giving you more information. We are changing who you believe you are.</div></div>
+      <div class="faq-item"><button class="faq-q">I've tried programs before and they didn't work. Why is this different? <span class="faq-v">∨</span></button><div class="faq-a">Most programs give you strategy without touching identity. If the foundation (your self-concept) is built on fear, people-pleasing, or inherited beliefs, no strategy will stick. We go to the root. This works where other things haven't because we are not giving you more information. We are changing who you believe you are.</div></div>
       <div class="faq-item"><button class="faq-q">Is this for beginners? <span class="faq-v">∨</span></button><div class="faq-a">This is for women who are fundamentally okay but ready to go from okay to fully themselves. You don't need to have everything figured out. You need to be willing to look honestly at what is keeping you stuck and do the work to change it.</div></div>
-      <div class="faq-item"><button class="faq-q">How much time do I need each week? <span class="faq-v">∨</span></button><div class="faq-a">Plan for 4–6 hours per week — two live group coaching calls (90 minutes each), integration work between sessions, and your weekly exercises. The women who get the most out of this treat it as a non-negotiable.</div></div>
-      <div class="faq-item"><button class="faq-q">What if I can't make a live call? <span class="faq-v">∨</span></button><div class="faq-a">All calls are recorded and uploaded within 24 hours. We still ask you to attend live as much as possible — the energy of a live call is core to the transformation. But life happens, and you are covered.</div></div>
-      <div class="faq-item"><button class="faq-q">Is this therapy or coaching? <span class="faq-v">∨</span></button><div class="faq-a">This is coaching — focused on the present and future, not processing the past. We look at your patterns, beliefs, and choices right now and shift them. If you need trauma-specific support, I'll always recommend a licensed therapist alongside this program.</div></div>
-      <div class="faq-item"><button class="faq-q">How many women are in the group? <span class="faq-v">∨</span></button><div class="faq-a">Intentionally small. I keep cohort sizes limited so every woman in the room gets real presence, real accountability, and real transformation — not a crowded course experience.</div></div>
-      <div class="faq-item"><button class="faq-q">What does "By Application Only" mean? <span class="faq-v">∨</span></button><div class="faq-a">It means I review every application personally before extending an offer. The application process ensures everyone in the container is fully committed and ready — which protects the experience for the entire group.</div></div>
+      <div class="faq-item"><button class="faq-q">How much time do I need each week? <span class="faq-v">∨</span></button><div class="faq-a">Plan for 4–6 hours per week: two live group coaching calls (90 minutes each), integration work between sessions, and your weekly exercises. The women who get the most out of this treat it as a non-negotiable.</div></div>
+      <div class="faq-item"><button class="faq-q">What if I can't make a live call? <span class="faq-v">∨</span></button><div class="faq-a">All calls are recorded and uploaded within 24 hours. We still ask you to attend live as much as possible. The energy of a live call is core to the transformation. But life happens, and you are covered.</div></div>
+      <div class="faq-item"><button class="faq-q">Is this therapy or coaching? <span class="faq-v">∨</span></button><div class="faq-a">This is coaching, focused on the present and future, not processing the past. We look at your patterns, beliefs, and choices right now and shift them. If you need trauma-specific support, I always recommend working with a licensed therapist. This program and therapy can run alongside each other beautifully.</div></div>
+      <div class="faq-item"><button class="faq-q">How many women are in the group? <span class="faq-v">∨</span></button><div class="faq-a">Intentionally small. I keep cohort sizes limited so every woman in the room gets real presence, real accountability, and real transformation. Not a crowded course experience.</div></div>
+      <div class="faq-item"><button class="faq-q">What does "By Application Only" mean? <span class="faq-v">∨</span></button><div class="faq-a">It means I review every application personally before extending an offer. The application process ensures everyone in the container is fully committed and ready. That protects the experience for the entire group.</div></div>
       <div class="faq-item"><button class="faq-q">Can I pay in installments? <span class="faq-v">∨</span></button><div class="faq-a">Yes. There is a pay-in-full option and a 3-month payment plan. Payment details are shared after your application is approved.</div></div>
-      <div class="faq-item"><button class="faq-q">When does the next cohort start? <span class="faq-v">∨</span></button><div class="faq-a">Next cohort dates are shared with approved applicants. Apply now to be considered — spots are limited and applications close when the cohort is full.</div></div>
+      <div class="faq-item"><button class="faq-q">When does the next cohort start? <span class="faq-v">∨</span></button><div class="faq-a">Next cohort dates are shared with approved applicants. Apply now to be considered. Spots are limited and applications close when the cohort is full.</div></div>
     </div>
   </div>
 </section>
@@ -1257,7 +1363,7 @@
   <div class="closing-overlap__card" data-r="right">
     <h2 class="closing-overlap__title">You already know you are meant for <em>more than this.</em></h2>
     <p class="closing-overlap__body">You know who she is. You know you have something real inside you. You feel the gap between how you move through the world today and who you were always meant to be. And you are tired of living in that gap.</p>
-    <p class="closing-overlap__body"><strong>Become Her Anyway was built for the woman who is done waiting to feel ready.</strong> Who is done watching other women — women who are no more capable or worthy than she is — step into the life she knows is hers.</p>
+    <p class="closing-overlap__body"><strong>Become Her Anyway was built for the woman who is done waiting to feel ready.</strong> Who is done watching other women, women who are no more capable or worthy than she is, step into the life she knows is hers.</p>
     <p class="closing-overlap__body">Your story is not the thing keeping you back. Your story, honestly told, is the whole thing. Stop waiting. Become her anyway.</p>
     <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline">Apply Now →</a>
   </div>
@@ -1269,7 +1375,7 @@
   <div class="final__ghost" aria-hidden="true">HER</div>
   <span class="final__script" data-r="up">She's waiting.</span>
   <blockquote class="final__quote" data-r="up">"You've been becoming her your entire life. The question is whether you'll let yourself arrive."</blockquote>
-  <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline" data-r="up" style="margin:0 auto;display:inline-block">Become Her Anyway — Apply Now</a>
+  <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-outline" data-r="up" style="margin:0 auto;display:inline-block">Become Her Anyway. Apply Now.</a>
 </section>
 
 <!-- ══ FOOTER ══ -->
