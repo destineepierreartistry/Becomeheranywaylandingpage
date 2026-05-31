@@ -590,6 +590,65 @@
       .ticker-item { padding:0 2rem; }
       .invest__amount { font-size:3rem; }
     }
+
+    /* ─── HERO TRANSFORMATION LINE ─── */
+    .hero-transform {
+      font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+      color:var(--chestnut);margin:0 auto 2.2rem;
+      opacity:0;animation:fadeUp .8s ease 1.25s forwards;
+    }
+    .hero-scroll-link {
+      font-size:.75rem;color:var(--muted);text-decoration:none;letter-spacing:.06em;
+      border-bottom:1px solid rgba(122,104,80,.28);padding-bottom:.2rem;cursor:none;
+      transition:color .25s,border-color .25s;
+    }
+    .hero-scroll-link:hover { color:var(--brown);border-color:var(--brown); }
+
+    /* ─── PROOF STRIP ─── */
+    .proof-strip {
+      background:var(--parchment);padding:3rem 5%;
+      border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;
+    }
+    .proof-item { text-align:center;padding:1rem 3rem; }
+    .proof-item strong { display:block;font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,5vw,3.4rem);color:var(--brown);line-height:1; }
+    .proof-item span { font-size:.62rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.45rem; }
+    .proof-divider { width:1px;height:50px;background:var(--border);flex-shrink:0; }
+    @media(max-width:600px) { .proof-divider{display:none} .proof-item{padding:.8rem 1.5rem} }
+
+    /* ─── BEFORE/AFTER TESTIMONIAL ─── */
+    .testi-before { margin-bottom:1.6rem;padding:1rem 1.3rem;background:rgba(92,51,24,.06);border-left:3px solid var(--border); }
+    .testi-before__label { font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.45rem; }
+    .testi-before__text { font-size:.85rem;color:var(--muted);line-height:1.72;font-style:italic; }
+    .testi-after-label { font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--chestnut);display:block;margin-bottom:.8rem; }
+
+    /* ─── IDENTITY ARCHITECT METHOD ─── */
+    .method { background:var(--parchment);padding:8rem 5%; }
+    .method__inner { max-width:1060px;margin:0 auto; }
+    .method__header { text-align:center;max-width:700px;margin:0 auto 5rem; }
+    .method__eyebrow { font-size:.62rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--chestnut);display:block;margin-bottom:1rem; }
+    .method__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4.5vw,3.5rem);color:var(--brown);line-height:1.08;margin-bottom:1rem; }
+    .method__sub { font-size:.95rem;color:var(--muted);line-height:1.82; }
+    .method__steps { display:grid;grid-template-columns:repeat(3,1fr);gap:2rem; }
+    .method__step {
+      padding:2.4rem;border-top:3px solid var(--chestnut);background:var(--cream);
+      position:relative;overflow:hidden;
+      transition:box-shadow .4s,transform .4s;
+    }
+    .method__step:hover { box-shadow:0 14px 45px rgba(92,51,24,.1);transform:translateY(-4px); }
+    .method__num { font-family:'Playfair Display',serif;font-weight:900;font-size:3.5rem;color:rgba(139,94,60,.1);line-height:1;margin-bottom:.8rem; }
+    .method__step-title { font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--brown);margin-bottom:.9rem; }
+    .method__step-body { font-size:.88rem;color:var(--muted);line-height:1.88; }
+    @media(max-width:900px) { .method__steps { grid-template-columns:1fr; } }
+
+    /* ─── WHAT HAPPENS NEXT ─── */
+    .next-steps { max-width:600px;margin:0 auto 3rem;padding:2rem 2.2rem;background:rgba(139,94,60,.05);border:1px solid var(--border); }
+    .next-steps__label { font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--chestnut);margin-bottom:1.5rem;display:block; }
+    .next-steps__items { display:flex;flex-direction:column;gap:1.2rem; }
+    .next-steps__item { display:flex;gap:1.1rem;align-items:flex-start; }
+    .next-steps__n { font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:rgba(139,94,60,.25);flex-shrink:0;line-height:1;margin-top:.1rem; }
+    .next-steps__item strong { font-size:.88rem;font-weight:700;color:var(--brown);display:block;margin-bottom:.22rem; }
+    .next-steps__item span { font-size:.8rem;color:var(--muted);line-height:1.6; }
   </style>
 </head>
 <body>
@@ -636,8 +695,10 @@
       Stop being the woman you <span class="highlight">almost</span> are.
     </h1>
     <p class="hero-desc">A 12-week private coaching intensive for women who are done closing the gap between who they are and who they were always meant to be.</p>
+    <p class="hero-transform">In 12 weeks, she will be your default — not your aspiration.</p>
     <div class="hero-actions">
       <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary">Apply Now →</a>
+      <a href="#method" class="hero-scroll-link">↓ See exactly how this works</a>
       <span class="hero-fine">Application only · Reviewed within 48 hours · Limited spots per cohort</span>
     </div>
   </div>
@@ -646,6 +707,17 @@
     <div class="scroll-cue__line"></div>
   </div>
 </section>
+
+<!-- ══ PROOF STRIP ══ -->
+<div class="proof-strip">
+  <div class="proof-item" data-r="up"><strong>12</strong><span>Weeks</span></div>
+  <div class="proof-divider"></div>
+  <div class="proof-item" data-r="up"><strong>24</strong><span>Live Sessions</span></div>
+  <div class="proof-divider"></div>
+  <div class="proof-item" data-r="up"><strong>3</strong><span>Core Pillars</span></div>
+  <div class="proof-divider"></div>
+  <div class="proof-item" data-r="up"><strong>1</strong><span>New Identity</span></div>
+</div>
 
 <!-- ══ VIDEO ══ -->
 <div class="video-block">
@@ -680,6 +752,11 @@
       </div>
     </div>
     <div data-r="right">
+      <div class="testi-before">
+        <span class="testi-before__label">Before she started</span>
+        <p class="testi-before__text">Replace this with your client's starting point — e.g., "I knew exactly who I wanted to be. I just couldn't seem to become her in the rooms that mattered."</p>
+      </div>
+      <span class="testi-after-label">After 12 weeks</span>
       <blockquote class="testimonial-quote">"I walked into this program knowing who I was <em>supposed</em> to be. I walked out actually being her."</blockquote>
       <p class="testimonial-attr">— Replace with your client's name &amp; result</p>
     </div>
@@ -734,6 +811,37 @@
       background-image:url('destinee-headshot.jpg'); background-size:cover; background-position:center top;
     -->
     <span class="photo-hint">Your Headshot Here</span>
+  </div>
+</section>
+
+<!-- ══ IDENTITY ARCHITECT METHOD ══ -->
+<section class="method" id="method">
+  <div class="method__inner">
+    <div class="method__header">
+      <span class="method__eyebrow" data-r="up">The Framework</span>
+      <h2 class="method__title" data-r="up">The Identity Architect Method</h2>
+      <p class="method__sub" data-r="up">Most coaching changes what you do. This changes who you believe you are. Three phases. One outcome: her — as your permanent default, not your best day.</p>
+    </div>
+    <div class="method__steps sg">
+      <div class="method__step" data-r="up">
+        <div class="method__num">01</div>
+        <h3 class="method__step-title">Excavate the Gap</h3>
+        <p class="method__step-body">We go beneath the behavior to the belief. Every pattern keeping you in the smaller version has a root story — an inherited narrative about what you are allowed to be. We find it, name it, and end its authority over your life. Weeks 1–4.</p>
+      </div>
+      <div class="method__step" data-r="up">
+        <div class="method__num">02</div>
+        <h3 class="method__step-title">Install the New Self-Concept</h3>
+        <p class="method__step-body">We don't set goals. We build identity. Through embodied exercises, live coaching, and a structured framework, we make "her" your default orientation — the woman you wake up as, not the one you're trying to become by end of day. Weeks 5–9.</p>
+      </div>
+      <div class="method__step" data-r="up">
+        <div class="method__num">03</div>
+        <h3 class="method__step-title">Lock It In for Life</h3>
+        <p class="method__step-body">Identity work only counts if it holds under pressure. The final phase is integration — taking everything you've built and making it structurally permanent, so life's inevitable disruptions don't pull you back to who you were. Weeks 10–12.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3.5rem" data-r="up">
+      <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-dark-outline" style="max-width:500px">Apply to Work Through This With Me →</a>
+    </div>
   </div>
 </section>
 
@@ -1032,7 +1140,7 @@
       <p class="invest__amount" id="priceEl">$2,997</p>
       <p class="invest__period">Pay in full · or 3 monthly payments of $1,099</p>
       <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">Apply Now — Spots Are Limited</a>
-      <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:.9rem">Investment confirmed only after your application is reviewed and approved</p>
+      <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:.9rem">Your application is completely free. You pay nothing until your application is approved <em>and</em> you choose to move forward.</p>
     </div>
   </div>
 </section>
@@ -1042,6 +1150,27 @@
   <div class="apply__header" data-r="up">
     <h2 class="apply__title">Fill Out the Form Below to <em>Apply</em></h2>
     <p class="apply__sub">This application is designed to see if this is the right next step for you, and if you're the right fit for the container. If you're approved, you'll receive next steps within 48 hours.</p>
+  </div>
+  <div class="next-steps" data-r="up">
+    <span class="next-steps__label">What happens after you submit</span>
+    <div class="next-steps__items">
+      <div class="next-steps__item">
+        <span class="next-steps__n">01</span>
+        <div><strong>Submit your application</strong><span>Takes about 5 minutes. Completely free.</span></div>
+      </div>
+      <div class="next-steps__item">
+        <span class="next-steps__n">02</span>
+        <div><strong>Destinee reviews it personally</strong><span>You'll hear back within 48 hours — not from a bot.</span></div>
+      </div>
+      <div class="next-steps__item">
+        <span class="next-steps__n">03</span>
+        <div><strong>A brief conversation to confirm fit</strong><span>If approved, we schedule a short call to answer your questions and confirm we're the right match before you invest a single dollar.</span></div>
+      </div>
+      <div class="next-steps__item">
+        <span class="next-steps__n">04</span>
+        <div><strong>You begin</strong><span>Portal access, start date, and a room full of women who are ready for the same thing you are.</span></div>
+      </div>
+    </div>
   </div>
   <div class="apply__card" data-r="scale">
     <h3>Apply for Become Her Anyway</h3>
@@ -1151,8 +1280,6 @@
     <a href="#">Terms</a>
     <a href="#">Contact</a>
     <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener">Stan Store</a>
-    <a href="#">Instagram</a>
-    <a href="#">Podcast</a>
   </div>
   <p class="footer-copy">© 2026 Become Her Anyway. All rights reserved.</p>
 </footer>
