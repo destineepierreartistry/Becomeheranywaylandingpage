@@ -6,7 +6,7 @@
   <title>Become Her Anyway | Apply Now</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Serif+Display:ital@0;1&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -273,7 +273,7 @@
       font-size:clamp(2.4rem,4.5vw,4.2rem);color:var(--cream);line-height:1.08;margin-bottom:2.5rem;
     }
     .editorial-dark__title em { color:var(--chestnut);font-style:italic; }
-    .editorial-dark__body p { color:var(--sand);font-size:.97rem;line-height:1.95;margin-bottom:1.4rem; }
+    .editorial-dark__body p { font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--sand);line-height:1.88;margin-bottom:1.5rem;font-weight:400; }
     .editorial-dark__body p strong { color:var(--cream);font-weight:700; }
     .editorial-dark__statement {
       font-family:'Playfair Display',serif;font-weight:900;font-style:italic;
@@ -290,13 +290,14 @@
       display:flex;align-items:flex-end;justify-content:center;padding-bottom:3rem;
     }
     .photo-hint { font-family:'Great Vibes',cursive;font-size:1.8rem;color:rgba(204,191,152,.3);text-align:center; }
-    .bio-editorial__name { font-family:'Great Vibes',cursive;font-size:2.8rem;color:var(--chestnut);margin-bottom:.4rem; }
+    .bio-editorial__name { font-family:'Great Vibes',cursive;font-size:2.8rem;color:var(--chestnut);margin-bottom:.4rem;line-height:1.1; }
+    .bio-intro-line { display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--muted);letter-spacing:.1em;margin-bottom:.25em;line-height:1; }
     .bio-editorial__title-lg {
       font-family:'Playfair Display',serif;font-weight:900;
       font-size:clamp(2rem,4vw,3.4rem);color:var(--brown);line-height:1.08;margin-bottom:2.5rem;
     }
     .bio-editorial__title-lg em { color:var(--chestnut);font-style:italic; }
-    .bio-editorial__body p { font-size:.96rem;color:var(--ink);line-height:1.92;margin-bottom:1.3rem; }
+    .bio-editorial__body p { font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);line-height:1.85;margin-bottom:1.4rem;font-weight:400; }
     .bio-pull {
       font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--brown);
       line-height:1.5;border-left:3px solid var(--chestnut);padding-left:1.4rem;margin:2.2rem 0;
@@ -335,7 +336,7 @@
 
     /* ─── FEATURES ─── */
     .features { background:var(--cream);padding:8rem 5%; }
-    .features__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,5vw,4rem);color:var(--brown);text-align:center;margin-bottom:.9rem;line-height:1.08; }
+    .features__title { font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,5vw,4.2rem);color:var(--brown);text-align:center;margin-bottom:.9rem;line-height:1.08; }
     .features__title em { color:var(--chestnut);font-style:italic; }
     .features__sub { text-align:center;font-size:.9rem;color:var(--muted);margin-bottom:3.5rem; }
     .features__grid { display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:1060px;margin:0 auto 3.5rem; }
@@ -382,7 +383,7 @@
     /* ─── COMMUNITY ─── */
     .community { background:var(--cream);padding:8rem 5%; }
     .community__header { max-width:800px;margin:0 auto 3.5rem;text-align:center; }
-    .community__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);color:var(--brown);line-height:1.12;margin-bottom:1.3rem; }
+    .community__title { font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.2vw,3.4rem);color:var(--brown);line-height:1.1;margin-bottom:1.3rem; }
     .community__p { font-size:.93rem;color:var(--muted);line-height:1.88;margin-bottom:.9rem; }
     .community__grid { display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:1060px;margin:0 auto 3.5rem; }
 
@@ -404,12 +405,12 @@
     .fit-list li:last-child { border-bottom:none; }
     .fit-list--yes li::before { content:'◆';color:var(--chestnut);font-size:.55rem;flex-shrink:0;margin-top:.42rem; }
     .fit-list--no  li::before { content:'✕';color:rgba(120,114,96,.55);flex-shrink:0;font-weight:700; }
-    .fit-section__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.3rem);color:var(--cream);line-height:1.08;margin-bottom:2.5rem; }
+    .fit-section__title { font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.2vw,3.5rem);color:var(--cream);line-height:1.06;margin-bottom:2.5rem; }
     .fit-section__title em { color:var(--chestnut);font-style:italic; }
 
     /* ─── QUALIFY ─── */
     .qualify { background:var(--cream);padding:8rem 5%; }
-    .qualify__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);color:var(--brown);text-align:center;margin-bottom:3.5rem; }
+    .qualify__title { font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.2vw,3.4rem);color:var(--brown);text-align:center;margin-bottom:3.5rem; }
     .qualify__grid { display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:880px;margin:0 auto 4.5rem; }
     .q-col__label { font-size:.64rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:block; }
     .q-list { list-style:none; }
@@ -420,7 +421,7 @@
 
     /* ─── OBJECTIONS ─── */
     .objections { background:var(--parchment);padding:8rem 5%; }
-    .objections__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.3rem);color:var(--brown);text-align:center;line-height:1.12;margin-bottom:.9rem; }
+    .objections__title { font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.2vw,3.5rem);color:var(--brown);text-align:center;line-height:1.1;margin-bottom:.9rem; }
     .objections__title em { color:var(--chestnut);font-style:italic; }
     .objections__sub { text-align:center;font-size:.9rem;color:var(--muted);max-width:580px;margin:0 auto 3.5rem;line-height:1.75; }
     .objections__grid { display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1060px;margin:0 auto; }
@@ -490,7 +491,7 @@
 
     /* ─── FAQ ─── */
     .faq { background:var(--parchment);padding:8rem 5%; }
-    .faq__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.2rem,4.5vw,4rem);color:var(--brown);text-align:center;margin-bottom:3.5rem; }
+    .faq__title { font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,4.5vw,4rem);color:var(--brown);text-align:center;margin-bottom:3.5rem; }
     .faq__list { max-width:720px;margin:0 auto; }
     .faq-item { border-bottom:1px solid var(--border); }
     .faq-q { width:100%;background:none;border:none;cursor:none;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 0;font-family:'Inter',sans-serif;font-size:.93rem;font-weight:600;color:var(--brown);text-align:left;gap:1rem;transition:color .25s; }
@@ -634,7 +635,7 @@
     .method__inner { max-width:1060px;margin:0 auto; }
     .method__header { text-align:center;max-width:700px;margin:0 auto 5rem; }
     .method__eyebrow { font-size:.62rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--chestnut);display:block;margin-bottom:1rem; }
-    .method__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4.5vw,3.5rem);color:var(--brown);line-height:1.08;margin-bottom:1rem; }
+    .method__title { font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.8vw,3.7rem);color:var(--brown);line-height:1.06;margin-bottom:1rem; }
     .method__sub { font-size:.95rem;color:var(--muted);line-height:1.82; }
     .method__steps { display:grid;grid-template-columns:repeat(3,1fr);gap:2rem; }
     .method__step {
@@ -703,7 +704,7 @@
     .manifesto__inner { max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1.35fr;gap:6rem;align-items:start; }
     @media(max-width:900px) { .manifesto__inner { grid-template-columns:1fr;gap:3.5rem; } }
     .manifesto__label { font-size:.62rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--chestnut);display:block;margin-bottom:1.6rem; }
-    .manifesto__title { font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4.5vw,3.6rem);color:var(--cream);line-height:1.08;letter-spacing:-.01em; }
+    .manifesto__title { font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.8vw,3.8rem);color:var(--cream);line-height:1.06;letter-spacing:-.01em; }
     .manifesto__title em { color:var(--chestnut);font-style:italic; }
     .manifesto__right { display:flex;flex-direction:column;gap:2.8rem; }
     .manifesto__col-label { font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;display:block;margin-bottom:1rem; }
@@ -884,7 +885,7 @@
     <p class="hero-desc">A 12-week private coaching intensive for the woman who is done living like the smaller version of herself is the permanent version.</p>
     <p class="hero-transform">In 12 weeks, she will be your default. Not your aspiration.</p>
     <div class="hero-actions">
-      <a href="#" class="btn-primary" onclick="openQuiz();return false;">Find Your Identity Bottleneck →</a>
+      <a href="#" class="btn-primary" onclick="openQuiz();return false;">Discover Your Identity Pattern →</a>
       <a href="#method" class="hero-scroll-link">↓ See exactly how this works</a>
       <span class="hero-fine">3-question diagnostic · Free · Takes 2 minutes</span>
     </div>
@@ -988,8 +989,7 @@
     </div>
     <div data-r="right">
       <div class="testi-before">
-        <span class="testi-before__label">Before she started</span>
-        <p class="testi-before__text">Replace this with your client's starting point, e.g., "I knew exactly who I wanted to be. I just couldn't seem to become her in the rooms that mattered."</p>
+        <p class="testi-before__text">"I knew exactly who I wanted to be. I just couldn't seem to become her in the rooms that mattered."</p>
       </div>
       <span class="testi-after-label">After 12 weeks</span>
       <blockquote class="testimonial-quote">"I walked into this program knowing who I was <em>supposed</em> to be. I walked out actually being her."</blockquote>
@@ -1030,13 +1030,13 @@
     "The version of you that exists in private<br>
     is the version the <span class="gold-word">world deserves</span> to see."
   </blockquote>
-  <span class="statement-moment__attr">Destinee Pierre · Become Her Anyway</span>
+  <span class="statement-moment__attr">my name is Destinee Pierre · Become Her Anyway</span>
 </section>
 
 <!-- ══ BIO EDITORIAL ══ -->
 <section class="bio-editorial">
   <div class="bio-editorial__content">
-    <p class="bio-editorial__name" data-r="up">Destinee Pierre</p>
+    <p class="bio-editorial__name" data-r="up"><span class="bio-intro-line">my name is</span>Destinee Pierre</p>
     <h2 class="bio-editorial__title-lg" data-r="up">For a long time, I performed who I thought I was <em>supposed</em> to be.</h2>
     <div class="bio-editorial__body">
       <p data-r="up">Which is funny, because in private I was always her. The woman I wanted to be. She showed up in the quiet moments, in the conversations no one else heard, in the decisions I made when no one was watching. But the moment it counted, I gave people the smaller version.</p>
@@ -1602,8 +1602,8 @@
   <p class="footer-copy">© 2026 Become Her Anyway. All rights reserved.</p>
 </footer>
 
-<!-- ══ IDENTITY BOTTLENECK QUIZ ══ -->
-<div class="quiz-overlay" id="quizOverlay" role="dialog" aria-modal="true" aria-label="Identity Bottleneck Quiz">
+<!-- ══ IDENTITY CLARITY QUIZ ══ -->
+<div class="quiz-overlay" id="quizOverlay" role="dialog" aria-modal="true" aria-label="Identity Clarity Quiz">
   <div class="quiz-modal">
     <button class="quiz-close" onclick="closeQuiz()" aria-label="Close quiz">×</button>
     <div id="quizContent"></div>
@@ -1793,7 +1793,7 @@ function handleSubmit(e) {
   }, 800);
 }
 
-/* ─── IDENTITY BOTTLENECK QUIZ ─── */
+/* ─── IDENTITY CLARITY QUIZ ─── */
 const QUIZ_DATA = {
   questions: [
     {
@@ -1829,22 +1829,22 @@ const QUIZ_DATA = {
   ],
   results: {
     PERFORMER: {
-      label: "Your Identity Bottleneck",
+      label: "Your Identity Blueprint",
       title: "The Visibility Gap",
       desc: "You know exactly who she is. You have been her in private. The gap is not in your vision of her. It is in your permission to be her publicly, consistently, without shrinking the moment it counts. That is the specific thing we close in 12 weeks."
     },
     SABOTEUR: {
-      label: "Your Identity Bottleneck",
+      label: "Your Identity Blueprint",
       title: "The Proximity Block",
       desc: "You get close, then something pulls you back to the old version. Every time. This is not a discipline problem or a motivation problem. It is an identity problem. We go to the root story underneath the pattern and permanently end its authority over you."
     },
     SEEKER: {
-      label: "Your Identity Bottleneck",
+      label: "Your Identity Blueprint",
       title: "The Information Trap",
       desc: "You have done the work. You have the knowledge. What you don't have is a reconstructed self-concept underneath all of it. More tools will not solve this. A new foundation will. That is what the 12 weeks builds."
     },
     DISCONNECTED: {
-      label: "Your Identity Bottleneck",
+      label: "Your Identity Blueprint",
       title: "The Identity Drift",
       desc: "You have been so focused on becoming someone that you have lost touch with who you already are. We do not add a new identity on top of the confusion. We excavate what is already there, name it clearly, and build from solid ground."
     }
