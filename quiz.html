@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Which Woman of the Word Are You Becoming? | Become Her Anyway™</title>
+  <meta name="description" content="Six real women in Scripture stood exactly where you're standing now. Eight honest questions. Find out which one is your blueprint." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:       #FAF8F2;
+      --parchment:   #EDE6D0;
+      --sand:        #CCBF98;
+      --chestnut:    #4E6030;
+      --brown:       #2E3A1A;
+      --darkbrown:   #0E0C06;
+      --ink:         #18160A;
+      --gold:        #C49428;
+      --gold-lt:     #DDB84E;
+      --olive:       #5A6835;
+      --olive-lt:    #7A8848;
+      --muted:       #787260;
+      --border:      rgba(70,60,18,.15);
+      --border-soft: rgba(70,60,18,.09);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+      cursor: none;
+      min-height: 100vh;
+    }
+
+    /* ── GRAIN ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 8000;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      opacity: .028;
+      mix-blend-mode: multiply;
+    }
+
+    /* ── CURSOR ── */
+    .cursor {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--chestnut);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width .22s, height .22s, background .22s;
+      box-shadow: 0 0 14px rgba(196,148,40,.4);
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid var(--chestnut);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      opacity: .35;
+      transition: width .28s, height .28s, opacity .28s;
+    }
+    .cursor.big      { width: 18px; height: 18px; background: var(--brown); }
+    .cursor-ring.big { width: 56px; height: 56px; opacity: .16; }
+
+    /* ── HEADER ── */
+    .quiz-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .9rem 5%;
+      background: rgba(250,248,242,.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .quiz-logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.75rem;
+      color: var(--brown);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .quiz-logo:hover { color: var(--chestnut); }
+    .quiz-header-right {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── PROGRESS ── */
+    #quizProgressWrap {
+      position: fixed;
+      top: 56px; left: 0; right: 0;
+      z-index: 499;
+      height: 3px;
+      background: var(--parchment);
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    #quizProgressWrap.visible { opacity: 1; }
+    #progressFill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--chestnut), var(--gold-lt));
+      transition: width .55s cubic-bezier(.16,1,.3,1);
+      width: 0%;
+    }
+
+    /* ── MAIN WRAP ── */
+    .quiz-main {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7rem 5% 4rem;
+    }
+
+    /* ── SCREEN BASE ── */
+    .screen {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .screen-enter {
+      animation: scrIn .44s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    .screen-exit {
+      animation: scrOut .26s ease forwards;
+    }
+    @keyframes scrIn  { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+    @keyframes scrOut { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-14px); } }
+
+    /* ── SHARED TYPOGRAPHY ── */
+    .eyebrow {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--chestnut);
+      margin-bottom: 1.4rem;
+    }
+    .divider-gold {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.6rem 0;
+    }
+    .divider-center { margin-left: auto; margin-right: auto; }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: block;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .77rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      padding: 1.18rem 2rem;
+      background: var(--darkbrown);
+      color: var(--cream);
+      border: none;
+      border-radius: 1px;
+      cursor: none;
+      transition: background .28s, box-shadow .28s, transform .15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.07) 50%, transparent 65%);
+      transform: translateX(-120%);
+      transition: transform .48s ease;
+    }
+    .btn-primary:hover::after { transform: translateX(120%); }
+    .btn-primary:hover { background: var(--brown); box-shadow: 0 10px 40px rgba(14,12,6,.28); }
+    .btn-primary:active { transform: scale(.988); }
+    .btn-center { margin: 0 auto; }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: none;
+      border: none;
+      cursor: none;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: .4rem 0;
+      margin-bottom: 1.8rem;
+      transition: color .2s;
+    }
+    .btn-back:hover { color: var(--brown); }
+    .btn-back svg { width: 13px; height: 13px; stroke-width: 2; }
+
+    /* ── INTRO SCREEN ── */
+    .intro-wrap { text-align: center; }
+    .intro-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.1rem, 6vw, 4.6rem);
+      line-height: 1.07;
+      color: var(--brown);
+      margin-bottom: 1.5rem;
+    }
+    .intro-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 48%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .intro-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 540px;
+      margin: 0 auto 1rem;
+    }
+    .intro-meta {
+      font-size: .63rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ARCHETYPE CHIPS ── */
+    .archetype-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+    .arch-chip {
+      border: 1px solid var(--border);
+      padding: .75rem .6rem;
+      text-align: center;
+      transition: border-color .2s, background .2s;
+    }
+    .arch-chip:hover { border-color: var(--chestnut); background: rgba(90,104,53,.03); }
+    .arch-chip__name {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--brown);
+      margin-bottom: .2rem;
+    }
+    .arch-chip__role {
+      font-size: .6rem;
+      letter-spacing: .06em;
+      color: var(--muted);
+    }
+
+    /* ── QUESTION SCREEN ── */
+    .q-meta {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--chestnut);
+      margin-bottom: 1.3rem;
+    }
+    .q-meta::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+    .q-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1.25rem, 3.4vw, 1.95rem);
+      color: var(--brown);
+      line-height: 1.32;
+      margin-bottom: 1.8rem;
+    }
+
+    /* ── OPTION CARDS ── */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+    }
+    .opt-card {
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      padding: .95rem 1.15rem;
+      border: 1.5px solid var(--border);
+      border-radius: 2px;
+      background: transparent;
+      cursor: none;
+      text-align: left;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      transition: border-color .22s, background .22s, transform .18s, box-shadow .22s;
+    }
+    .opt-card:hover {
+      border-color: rgba(90,104,53,.5);
+      background: rgba(90,104,53,.03);
+      transform: translateX(4px);
+    }
+    .opt-card:focus-visible {
+      outline: 2px solid var(--chestnut);
+      outline-offset: 2px;
+    }
+    .opt-card.selected {
+      border-color: var(--chestnut);
+      background: rgba(90,104,53,.07);
+      box-shadow: 0 3px 18px rgba(90,104,53,.1);
+    }
+    .opt-dot {
+      width: 19px;
+      height: 19px;
+      min-width: 19px;
+      border-radius: 50%;
+      border: 1.5px solid var(--sand);
+      margin-top: 2px;
+      position: relative;
+      transition: background .2s, border-color .2s;
+    }
+    .opt-card.selected .opt-dot {
+      background: var(--chestnut);
+      border-color: var(--chestnut);
+    }
+    .opt-dot::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cream);
+      opacity: 0;
+      transition: opacity .18s;
+    }
+    .opt-card.selected .opt-dot::after { opacity: 1; }
+    .opt-label {
+      font-size: .9rem;
+      line-height: 1.6;
+      color: var(--ink);
+      transition: color .2s;
+    }
+    .opt-card.selected .opt-label { color: var(--brown); font-weight: 500; }
+
+    /* ── EMAIL SCREEN ── */
+    .email-wrap { text-align: center; }
+    .email-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(1.75rem, 4.5vw, 2.9rem);
+      line-height: 1.15;
+      color: var(--brown);
+      margin-bottom: .9rem;
+    }
+    .email-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .email-form {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .field-label {
+      display: block;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .35rem;
+    }
+    .field-input {
+      width: 100%;
+      padding: .88rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 1px;
+      background: rgba(255,255,255,.55);
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .22s, box-shadow .22s;
+      cursor: text;
+    }
+    .field-input:focus {
+      border-color: var(--chestnut);
+      box-shadow: 0 0 0 3px rgba(90,104,53,.09);
+    }
+    .field-input.error { border-color: #b85c38; }
+    .field-error {
+      display: none;
+      font-size: .68rem;
+      color: #b85c38;
+      margin-top: .25rem;
+      letter-spacing: .04em;
+    }
+    .field-error.show { display: block; }
+    .form-fine {
+      font-size: .64rem;
+      color: var(--muted);
+      text-align: center;
+      letter-spacing: .04em;
+      line-height: 1.5;
+    }
+
+    /* ── RESULT SCREEN ── */
+    .result-eyebrow { text-align: center; }
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--darkbrown);
+      color: var(--sand);
+      font-size: .57rem;
+      font-weight: 700;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      padding: .42rem 1rem;
+      margin-bottom: 1.3rem;
+    }
+    .result-badge::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: .5rem;
+    }
+    .result-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      color: var(--brown);
+      line-height: .96;
+      text-align: center;
+      margin-bottom: .5rem;
+      letter-spacing: -.01em;
+    }
+    .result-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      color: var(--muted);
+      text-align: center;
+    }
+    .result-body-wrap {
+      margin-top: 2.5rem;
+    }
+    .result-p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      line-height: 1.88;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+    .result-p em   { font-style: italic; }
+    .result-p strong { color: var(--brown); font-weight: 700; }
+    .result-section {
+      margin-bottom: 1.6rem;
+      padding-left: 1.1rem;
+      border-left: 2px solid var(--chestnut);
+    }
+    .result-section-lbl {
+      display: block;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--chestnut);
+      margin-bottom: .45rem;
+    }
+    .result-section p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.06rem;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+    .result-section p em     { font-style: italic; }
+    .result-section p strong { color: var(--brown); font-weight: 700; }
+    .result-scripture {
+      background: var(--parchment);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
+    }
+    .result-scripture blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+      color: var(--brown);
+      line-height: 1.42;
+      margin-bottom: .55rem;
+    }
+    .result-scripture cite {
+      font-family: 'Inter', sans-serif;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: normal;
+    }
+    .result-cta {
+      background: var(--darkbrown);
+      padding: 2.2rem 2.5rem;
+      text-align: center;
+      margin-top: 2.2rem;
+    }
+    .result-cta-copy {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--sand);
+      line-height: 1.72;
+      margin-bottom: 1.4rem;
+    }
+    .result-cta-copy strong { color: var(--cream); }
+    .result-cta-copy em { font-style: italic; }
+    .btn-cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .74rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: 1.05rem 2.4rem;
+      background: var(--chestnut);
+      color: var(--cream);
+      border: none;
+      border-radius: 1px;
+      cursor: none;
+      text-decoration: none;
+      transition: background .28s, box-shadow .28s;
+    }
+    .btn-cta:hover { background: var(--olive); box-shadow: 0 8px 28px rgba(90,104,53,.32); }
+    .retake-btn {
+      display: block;
+      text-align: center;
+      margin-top: 1.6rem;
+      background: none;
+      border: none;
+      cursor: none;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .retake-btn:hover { color: var(--brown); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 560px) {
+      .quiz-main { padding: 6rem 1.4rem 3rem; }
+      .archetype-grid { grid-template-columns: repeat(2, 1fr); gap: .55rem; }
+      .intro-title { font-size: 1.95rem; }
+      .result-name { font-size: 2.5rem; }
+      .result-cta { padding: 1.6rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- HEADER -->
+  <header class="quiz-header">
+    <a href="index.html" class="quiz-logo">Become Her Anyway</a>
+    <span class="quiz-header-right" id="headerStatus">The Quiz</span>
+  </header>
+
+  <!-- PROGRESS BAR -->
+  <div id="quizProgressWrap">
+    <div id="progressFill"></div>
+  </div>
+
+  <!-- QUIZ APP -->
+  <main class="quiz-main">
+    <div id="quizApp"></div>
+  </main>
+
+<script>
+// ── CURSOR ────────────────────────────────────────────────────────────────
+const $cursor = document.getElementById('cursor');
+const $ring   = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  $cursor.style.left = e.clientX + 'px';
+  $cursor.style.top  = e.clientY + 'px';
+  $ring.style.left   = e.clientX + 'px';
+  $ring.style.top    = e.clientY + 'px';
+});
+document.addEventListener('mousedown', () => { $cursor.classList.add('big'); $ring.classList.add('big'); });
+document.addEventListener('mouseup',   () => { $cursor.classList.remove('big'); $ring.classList.remove('big'); });
+
+// ── DATA ──────────────────────────────────────────────────────────────────
+const QUESTIONS = [
+  {
+    text: 'Where are you actually standing in your life right now?',
+    options: [
+      { text: 'People already treat me like the leader. I just haven\'t built the thing.', score: 'A' },
+      { text: 'Something is forming around me, but I keep shrinking from being seen.', score: 'B' },
+      { text: 'I\'m starting over after a loss or an ending. New ground.', score: 'C' },
+      { text: 'I\'m waiting on something I\'ve prayed about for a long time.', score: 'D' },
+      { text: 'I\'m leaving an old version of myself behind for good.', score: 'E' },
+      { text: 'I\'m the steady one. Everyone leans on my judgment while my own life waits.', score: 'F' },
+    ]
+  },
+  {
+    text: 'When you imagine being fully visible — seen, known, out loud:',
+    options: [
+      { text: 'It feels overdue. I was built for it.', score: 'A' },
+      { text: 'I want it and I\'m terrified of it in equal measure.', score: 'B' },
+      { text: 'Let them see what I\'m building now, not who I used to be.', score: 'C' },
+      { text: 'I\'ll believe it when the thing I\'ve waited for finally comes.', score: 'D' },
+      { text: 'Part of me still flinches, like I have to earn the right.', score: 'E' },
+      { text: 'I\'d rather be respected than watched.', score: 'F' },
+    ]
+  },
+  {
+    text: 'What do people already come to you for?',
+    options: [
+      { text: 'Truth and direction — the hard thing said plainly.', score: 'A' },
+      { text: 'Honestly, not yet. But they will.', score: 'B' },
+      { text: 'Loyalty. I show up and I stay.', score: 'C' },
+      { text: 'Prayer, or a shoulder. I hold space well.', score: 'D' },
+      { text: 'My story — what I came through.', score: 'E' },
+      { text: 'Wisdom. I see the angle no one else caught.', score: 'F' },
+    ]
+  },
+  {
+    text: 'How do you make a big decision?',
+    options: [
+      { text: 'Quickly, from conviction. I usually already know.', score: 'A' },
+      { text: 'Slowly, second-guessing, asking everyone first.', score: 'B' },
+      { text: 'I commit and I don\'t look back.', score: 'C' },
+      { text: 'I take it to God and wait for peace before I move.', score: 'D' },
+      { text: 'I weigh it against who I\'m becoming now.', score: 'E' },
+      { text: 'I read the whole room, then act before it breaks.', score: 'F' },
+    ]
+  },
+  {
+    text: 'What\'s the quiet thing you\'re carrying?',
+    options: [
+      { text: 'A calling bigger than my current life.', score: 'A' },
+      { text: 'A gift I keep hiding because I\'m "not ready."', score: 'B' },
+      { text: 'The weight of beginning again from little.', score: 'C' },
+      { text: 'A longing I haven\'t said out loud in a while.', score: 'D' },
+      { text: 'A past I\'m finally done letting define me.', score: 'E' },
+      { text: 'Everyone else\'s chaos, while staying composed.', score: 'F' },
+    ]
+  },
+  {
+    text: 'When everything falls apart, you…',
+    options: [
+      { text: 'Stand up and rally the people.', score: 'A' },
+      { text: 'Go quiet and disappear for a while.', score: 'B' },
+      { text: 'Roll up your sleeves and rebuild.', score: 'C' },
+      { text: 'Get on your knees before anything else.', score: 'D' },
+      { text: 'Treat it as the death of the old me.', score: 'E' },
+      { text: 'Assess fast and make the wise move.', score: 'F' },
+    ]
+  },
+  {
+    text: 'What\'s your honest prayer this season?',
+    options: [
+      { text: '"Use me. Put me where I\'m meant to be."', score: 'A' },
+      { text: '"Give me courage to stop hiding."', score: 'B' },
+      { text: '"Provide for me as I start over."', score: 'C' },
+      { text: '"Remember me. Don\'t forget your promise."', score: 'D' },
+      { text: '"Free me from who I used to be."', score: 'E' },
+      { text: '"Give me wisdom for what\'s in front of me."', score: 'F' },
+    ]
+  },
+  {
+    text: 'The transformation you most want this year:',
+    options: [
+      { text: 'To lead out loud and let people find me.', score: 'A' },
+      { text: 'To be seen, to stop playing small.', score: 'B' },
+      { text: 'To build something real on new ground.', score: 'C' },
+      { text: 'To finally receive what I\'ve believed for.', score: 'D' },
+      { text: 'To fully become the new woman — no apology.', score: 'E' },
+      { text: 'To move from the background into my own brilliance.', score: 'F' },
+    ]
+  },
+];
+
+const ARCHETYPES = {
+  A: {
+    name: 'Deborah',
+    subtitle: 'The Sovereign',
+    intro: `Deborah was a prophetess and a judge of Israel. The people literally came up to her, where she sat, for judgment (Judges 4:4–5). She didn't campaign for the room; the room came to her. And when it was time to move, she's the one who said <em>"Up! For this is the day,"</em> and led an army out with Barak, who wouldn't even go without her (Judges 4:8, 4:14).`,
+    that: `That's you. You're the woman others already defer to — the one with the answer, the read, the final word in the group chat. You don't lack authority. You lack the <strong>seat.</strong>`,
+    gift: `Clarity. You say the true thing plainly and people thank you for it.`,
+    edge: `You keep waiting to feel "qualified" before you build the thing, but Deborah was already judging Israel before she ever summoned a soldier (Judges 4:4). The credential you're waiting on, you already have. You're not early. You've been late to your own seat.`,
+    invitation: `Stop preparing to lead and start presiding. Let them come.`,
+    verse: `"Up! For this is the day…"`,
+    ref: `Judges 4:14`,
+    cta: `Calling this exact woman out of hiding is what <strong>Become Her Anyway™</strong> is built for.`,
+  },
+  B: {
+    name: 'Esther',
+    subtitle: 'The Hidden Queen',
+    intro: `Esther was made queen, and she hid who she really was. Scripture says plainly she had not made known her people or her family, because she'd been told to keep it concealed (Esther 2:10). She had the crown, the favor, the access — and the realest part of her stayed covered. It took Mordecai's words, <em>"who knows whether you have not come to the kingdom for such a time as this?"</em> to move her. And even then she went to the king knowing it could cost her life: <em>"if I perish, I perish"</em> (Esther 4:14, 4:16).`,
+    that: `That's you, Heaven. You have the platform forming, the respect, the room's attention — and you keep tucking away the truest, boldest part of yourself.`,
+    gift: `Influence you haven't fully claimed. People are more ready for you than you believe.`,
+    edge: `You're hiding and calling it humility. Esther's concealment almost cost a whole people their lives. Playing small isn't safe. It's just quiet. The world doesn't need a more careful you.`,
+    invitation: `Be seen before you feel ready. The visibility <em>is</em> the courage.`,
+    verse: `"…for such a time as this."`,
+    ref: `Esther 4:14`,
+    cta: `Becoming her <em>out loud</em> is the heart of <strong>Become Her Anyway™</strong>.`,
+  },
+  C: {
+    name: 'Ruth',
+    subtitle: 'The Rebuilder',
+    intro: `Ruth was widowed and far from home, and instead of going back, she said <em>"Where you go I will go… your people shall be my people, and your God my God"</em> (Ruth 1:16). Then she got to work. She went out and gleaned in the fields to survive (Ruth 2:2–3). And that grit didn't just keep her alive — she was noticed, redeemed, married to Boaz, and became the great-grandmother of King David (Ruth 4:13, 4:17). The woman who started over with nothing ended up in the royal line.`,
+    that: `That's you. You're rebuilding on new ground after an ending, and you're doing it with your hands and your loyalty.`,
+    gift: `Devotion and follow-through. You stay. You build. You don't quit the field half-gleaned.`,
+    edge: `You're so braced for survival that you've forgotten you're meant to be <strong>chosen</strong> in this season, not just hardworking. Ruth didn't only labor; she was seen and elevated. You keep proving you can carry it alone. You weren't meant to.`,
+    invitation: `Build like a woman who knows redemption is part of the plan — not just the grind.`,
+    verse: `"Where you go I will go…"`,
+    ref: `Ruth 1:16`,
+    cta: `Rebuilding on purpose is exactly the season <strong>Become Her Anyway™</strong> is built for.`,
+  },
+  D: {
+    name: 'Hannah',
+    subtitle: 'The One Still Waiting',
+    intro: `Hannah longed for a child for years, wept, and prayed so intensely at the house of the Lord that the priest Eli thought she was drunk. She was praying in her heart with only her lips moving (1 Samuel 1:12–13). She was misread in her longing. But she kept showing up, made her vow, and in time God remembered her: <em>"For this child I prayed, and the Lord has granted me my petition"</em> (1 Samuel 1:27). And then He gave her more (1 Samuel 2:21).`,
+    that: `That's you, Heaven. Composed on the outside, admired even — while privately you're still believing for the thing you've stopped saying out loud. People think you're fine. They've misread the wait.`,
+    gift: `A depth of faith most people never build, because they never had to wait this long.`,
+    edge: `You've started reading the delay as a denial. It isn't. But Hannah didn't <em>only</em> wait; she moved, she vowed, she acted inside the longing. Stillness and building aren't enemies.`,
+    invitation: `Keep believing, and build quietly <em>while</em> you wait. The promise and the preparation arrive together.`,
+    verse: `"For this child I prayed, and the Lord has granted me my petition."`,
+    ref: `1 Samuel 1:27`,
+    cta: `<strong>Become Her Anyway™</strong> helps you build the her you're praying toward — now, not after.`,
+  },
+  E: {
+    name: 'Mary Magdalene',
+    subtitle: 'The Freed Witness',
+    intro: `Mary Magdalene was a woman Jesus set completely free. Scripture says seven demons had gone out of her (Luke 8:2). She followed Him, supported the ministry, stayed at the cross, and then became the <em>first person</em> to see Him risen and the first sent to tell the others: <em>"I have seen the Lord"</em> (John 20:18). The woman delivered from the most became the first trusted with the most.`,
+    that: `That's you. You've done the deep work. You've been healed of things people don't even know about. And now you're being handed a voice — but you keep flinching at the old story.`,
+    gift: `A testimony with weight. When you speak about coming through, people feel it — because you lived it.`,
+    edge: `You treat your past like a debt you have to keep paying. You don't. The risen Lord didn't appear first to the qualified; He appeared first to the freed, and sent her to preach. Stop auditioning to be worthy of a calling you've already been handed.`,
+    invitation: `Turn the testimony into a voice. Your becoming <em>is</em> the message.`,
+    verse: `"I have seen the Lord."`,
+    ref: `John 20:18`,
+    cta: `Turning your story into your voice is exactly what <strong>Become Her Anyway™</strong> does.`,
+  },
+  F: {
+    name: 'Abigail',
+    subtitle: 'The Discerning One',
+    intro: `Abigail is described as discerning and beautiful, married to a harsh, foolish man (1 Samuel 25:3). When his foolishness was about to get her whole household killed, she read the situation perfectly, moved fast, and met David with wisdom and provision. She talked him out of bloodshed so skillfully that he said <em>"Blessed be your discretion… who have kept me this day from bloodguilt"</em> (1 Samuel 25:32–33). And right after, her own season turned: she was elevated (1 Samuel 25:39–42).`,
+    that: `That's you. You're the sharp, steady one — the woman everyone trusts to keep her head and fix the room.`,
+    gift: `Discernment. You see the risk, the angle, and the right move before anyone else.`,
+    edge: `You spend that brilliance on everyone else's life and stall on your own. Abigail didn't only save the room; she stepped into her own elevation right after. Your wisdom is supposed to build <strong>your</strong> life too, not just steady everyone else's.`,
+    invitation: `Point the discernment inward. Strategize your own becoming the way you strategize for everyone you love.`,
+    verse: `"Blessed be your discretion."`,
+    ref: `1 Samuel 25:33`,
+    cta: `<strong>Become Her Anyway™</strong> is where your wisdom finally gets aimed at your own life.`,
+  },
+};
+
+const TIEBREAK = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+// ── STATE ─────────────────────────────────────────────────────────────────
+const state = {
+  screen: 'intro',
+  qIndex: 0,
+  scores: { A:0, B:0, C:0, D:0, E:0, F:0 },
+  answers: [],          // answers[i] = score letter for question i
+  shuffled: [],         // shuffled options for current question
+  userName: '',
+  userEmail: '',
+};
+
+// ── UTILS ─────────────────────────────────────────────────────────────────
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getWinner() {
+  let max = -1, winner = 'A';
+  for (const k of TIEBREAK) {
+    if (state.scores[k] > max) { max = state.scores[k]; winner = k; }
+  }
+  return winner;
+}
+
+// ── RENDERING ENGINE ──────────────────────────────────────────────────────
+const $app  = document.getElementById('quizApp');
+const $prog = document.getElementById('quizProgressWrap');
+const $fill = document.getElementById('progressFill');
+const $hdr  = document.getElementById('headerStatus');
+
+function setProgress(show, pct) {
+  if (show) { $prog.classList.add('visible'); $fill.style.width = pct + '%'; }
+  else      { $prog.classList.remove('visible'); }
+}
+
+function go(renderFn) {
+  const old = $app.firstElementChild;
+  if (old) {
+    old.classList.add('screen-exit');
+    setTimeout(() => { $app.innerHTML = ''; renderFn(); }, 260);
+  } else {
+    renderFn();
+  }
+}
+
+function mount(html) {
+  $app.innerHTML = html;
+  $app.firstElementChild.classList.add('screen-enter');
+}
+
+// ── INTRO ─────────────────────────────────────────────────────────────────
+function renderIntro() {
+  setProgress(false, 0);
+  $hdr.textContent = 'The Quiz';
+
+  mount(`<div class="screen">
+    <div class="intro-wrap">
+      <div class="eyebrow">Become Her Anyway™ · The Quiz</div>
+      <h1 class="intro-title">Which <em>Woman of the Word</em><br>Are You Becoming?</h1>
+      <div class="divider-gold divider-center"></div>
+      <p class="intro-sub">Six real women in Scripture stood exactly where you're standing now: rebuilding, waiting, hiding, leading. One of them is the blueprint for who you're becoming. Eight honest questions. Find out which.</p>
+      <p class="intro-meta" style="margin-top:.9rem;">8 Questions · Takes 3 minutes</p>
+      <div class="archetype-grid">
+        <div class="arch-chip"><span class="arch-chip__name">Deborah</span><span class="arch-chip__role">The Sovereign</span></div>
+        <div class="arch-chip"><span class="arch-chip__name">Esther</span><span class="arch-chip__role">The Hidden Queen</span></div>
+        <div class="arch-chip"><span class="arch-chip__name">Ruth</span><span class="arch-chip__role">The Rebuilder</span></div>
+        <div class="arch-chip"><span class="arch-chip__name">Hannah</span><span class="arch-chip__role">The One Still Waiting</span></div>
+        <div class="arch-chip"><span class="arch-chip__name">Mary Magdalene</span><span class="arch-chip__role">The Freed Witness</span></div>
+        <div class="arch-chip"><span class="arch-chip__name">Abigail</span><span class="arch-chip__role">The Discerning One</span></div>
+      </div>
+      <button class="btn-primary btn-center" id="startBtn">Show me her →</button>
+    </div>
+  </div>`);
+
+  document.getElementById('startBtn').addEventListener('click', startQuiz);
+}
+
+// ── QUESTION ──────────────────────────────────────────────────────────────
+function startQuiz() {
+  state.qIndex  = 0;
+  state.scores  = { A:0, B:0, C:0, D:0, E:0, F:0 };
+  state.answers = [];
+  state.shuffled = shuffle(QUESTIONS[0].options);
+  go(renderQuestion);
+}
+
+function renderQuestion() {
+  const q    = QUESTIONS[state.qIndex];
+  const num  = state.qIndex + 1;
+  const pct  = (state.qIndex / 8) * 100;
+  setProgress(true, pct);
+  $hdr.textContent = `Question ${num} of 8`;
+
+  const backBtn = state.qIndex > 0
+    ? `<button class="btn-back" id="backBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>`
+    : '';
+
+  const opts = state.shuffled.map((o, i) =>
+    `<button class="opt-card" data-score="${o.score}" data-i="${i}">
+      <span class="opt-dot"></span>
+      <span class="opt-label">${o.text}</span>
+    </button>`
+  ).join('');
+
+  mount(`<div class="screen">
+    ${backBtn}
+    <div class="q-meta">Question ${num} of 8</div>
+    <h2 class="q-text">${q.text}</h2>
+    <div class="options-list">${opts}</div>
+  </div>`);
+
+  if (state.qIndex > 0)
+    document.getElementById('backBtn').addEventListener('click', goBack);
+
+  document.querySelectorAll('.opt-card').forEach(card =>
+    card.addEventListener('click', () => pickOption(card))
+  );
+}
+
+function pickOption(card) {
+  document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+
+  const score = card.dataset.score;
+
+  // Undo prior answer for this question if re-answering
+  const prev = state.answers[state.qIndex];
+  if (prev !== undefined) state.scores[prev]--;
+
+  state.answers[state.qIndex] = score;
+  state.scores[score]++;
+
+  setTimeout(() => {
+    if (state.qIndex < 7) {
+      state.qIndex++;
+      state.shuffled = shuffle(QUESTIONS[state.qIndex].options);
+      go(renderQuestion);
+    } else {
+      go(renderEmail);
+    }
+  }, 460);
+}
+
+function goBack() {
+  // Undo the previous question's answer
+  const prev = state.answers[state.qIndex - 1];
+  if (prev !== undefined) {
+    state.scores[prev]--;
+    delete state.answers[state.qIndex - 1];
+  }
+  state.qIndex--;
+  state.shuffled = shuffle(QUESTIONS[state.qIndex].options);
+  go(renderQuestion);
+}
+
+// ── EMAIL ─────────────────────────────────────────────────────────────────
+function renderEmail() {
+  setProgress(true, 100);
+  $hdr.textContent = 'Almost there';
+
+  mount(`<div class="screen">
+    <div class="email-wrap">
+      <div class="eyebrow" style="text-align:center;">Your result is ready</div>
+      <h2 class="email-title">Where should I send her?</h2>
+      <div class="divider-gold divider-center" style="margin-bottom:1.2rem;"></div>
+      <p class="email-body">Enter your name and email and I'll reveal which woman of the Word you're becoming — plus a short letter on what her season is teaching you right now.</p>
+      <div class="divider-gold divider-center" style="margin-bottom:1.8rem; margin-top:0;"></div>
+      <form id="emailForm" class="email-form" novalidate>
+        <div>
+          <label class="field-label" for="fieldName">First Name</label>
+          <input class="field-input" type="text" id="fieldName" name="name" placeholder="Your first name" autocomplete="given-name" />
+          <span class="field-error" id="errName">Please enter your name.</span>
+        </div>
+        <div>
+          <label class="field-label" for="fieldEmail">Email</label>
+          <input class="field-input" type="email" id="fieldEmail" name="email" placeholder="your@email.com" autocomplete="email" />
+          <span class="field-error" id="errEmail">Please enter a valid email.</span>
+        </div>
+        <button type="submit" class="btn-primary btn-center" style="margin-top:.4rem;">Reveal her →</button>
+        <p class="form-fine">No spam. Just the letter she needs you to read.</p>
+      </form>
+    </div>
+  </div>`);
+
+  document.getElementById('emailForm').addEventListener('submit', submitEmail);
+}
+
+function submitEmail(e) {
+  e.preventDefault();
+  const name  = document.getElementById('fieldName').value.trim();
+  const email = document.getElementById('fieldEmail').value.trim();
+  let valid   = true;
+
+  document.getElementById('fieldName').classList.remove('error');
+  document.getElementById('fieldEmail').classList.remove('error');
+  document.getElementById('errName').classList.remove('show');
+  document.getElementById('errEmail').classList.remove('show');
+
+  if (!name) {
+    document.getElementById('fieldName').classList.add('error');
+    document.getElementById('errName').classList.add('show');
+    valid = false;
+  }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('fieldEmail').classList.add('error');
+    document.getElementById('errEmail').classList.add('show');
+    valid = false;
+  }
+  if (!valid) return;
+
+  state.userName  = name;
+  state.userEmail = email;
+
+  // ── INTEGRATION POINT ──────────────────────────────────────────────────
+  // Wire to Kit / Flodesk / your email platform here:
+  // fetch('/api/subscribe', {
+  //   method: 'POST',
+  //   headers: {'Content-Type':'application/json'},
+  //   body: JSON.stringify({ name, email, archetype: getWinner(), scores: state.scores })
+  // });
+  // ───────────────────────────────────────────────────────────────────────
+
+  go(renderResult);
+}
+
+// ── RESULT ────────────────────────────────────────────────────────────────
+function renderResult() {
+  setProgress(false, 0);
+  const key  = getWinner();
+  const arch = ARCHETYPES[key];
+  $hdr.textContent = arch.name;
+
+  mount(`<div class="screen">
+    <div class="result-eyebrow">
+      <span class="result-badge">Your result</span>
+    </div>
+    <div class="result-name">${arch.name}.</div>
+    <div class="result-role">${arch.subtitle}</div>
+    <div class="divider-gold divider-center" style="margin-top:1.4rem;"></div>
+
+    <div class="result-body-wrap">
+      <p class="result-p">${arch.intro}</p>
+      <p class="result-p">${arch.that}</p>
+
+      <div class="result-section">
+        <span class="result-section-lbl">Your Gift</span>
+        <p>${arch.gift}</p>
+      </div>
+
+      <div class="result-section">
+        <span class="result-section-lbl">Your Honest Edge</span>
+        <p>${arch.edge}</p>
+      </div>
+
+      <div class="result-section">
+        <span class="result-section-lbl">Your Invitation</span>
+        <p>${arch.invitation}</p>
+      </div>
+
+      <div class="result-scripture">
+        <blockquote>${arch.verse}</blockquote>
+        <cite>${arch.ref}</cite>
+      </div>
+
+      <div class="result-cta">
+        <p class="result-cta-copy">${arch.cta} <strong>Take the next step.</strong></p>
+        <a href="index.html" class="btn-cta">I'm ready →</a>
+      </div>
+
+      <button class="retake-btn" id="retakeBtn">Take it again ↺</button>
+    </div>
+  </div>`);
+
+  document.getElementById('retakeBtn').addEventListener('click', () => {
+    state.screen = 'intro';
+    go(renderIntro);
+  });
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+renderIntro();
+</script>
+</body>
+</html>
