@@ -693,6 +693,58 @@
     .gold-top { border-top:1px solid rgba(196,148,40,.18); }
     .gold-bottom { border-bottom:1px solid rgba(196,148,40,.18); }
 
+    /* ─── DISRUPTION STRIP ─── */
+    .disruption { background:var(--ink);padding:9rem 5%;text-align:center;position:relative;border-top:1px solid rgba(196,148,40,.1); }
+    .disruption__label { display:block;font-size:.58rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:2.2rem; }
+    .disruption__hl {
+      font-family:'DM Serif Display',serif;font-style:italic;
+      font-size:clamp(2.2rem,6.5vw,5.5rem);color:var(--cream);
+      line-height:1.1;letter-spacing:-.02em;max-width:960px;margin:0 auto 2.2rem;
+    }
+    .disruption__hl em {
+      background:linear-gradient(135deg,var(--gold) 0%,var(--gold-lt) 50%,var(--gold) 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:inherit;
+    }
+    .disruption__sub { font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.7; }
+
+    /* ─── REALITY CHECK CARD ─── */
+    .reality-check {
+      background:var(--darkbrown);border-left:3px solid var(--gold);
+      padding:2.2rem 2.4rem 2.2rem 2.8rem;margin:3rem 0;position:relative;
+      grid-column:1 / -1;
+    }
+    .reality-check__flag {
+      position:absolute;top:0;left:0;
+      font-size:.5rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+      background:var(--gold);color:var(--black);padding:.22rem .7rem;
+    }
+    .reality-check__text {
+      font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;
+      color:var(--cream);line-height:1.72;margin-bottom:1rem;margin-top:.8rem;
+    }
+    .reality-check__close {
+      font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--chestnut);
+    }
+
+    /* ─── ARCHITECT NOTE ─── */
+    .architect-note-wrap { background:var(--parchment);padding:6rem 5%;display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap; }
+    .architect-note-card {
+      background:var(--cream);max-width:540px;width:100%;
+      padding:3rem 3.2rem 2.4rem;
+      box-shadow:5px 7px 40px rgba(14,12,6,.13);
+      outline:1px solid rgba(196,148,40,.22);
+      transform:rotate(-1.5deg);
+      position:relative;
+    }
+    .architect-note-card::before {
+      content:'';position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+      width:44px;height:14px;background:rgba(196,148,40,.3);border-radius:2px;
+    }
+    .architect-note-label { display:block;font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--olive);margin-bottom:1.4rem; }
+    .architect-note-text { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--ink);line-height:1.74;margin-bottom:1.6rem; }
+    .architect-note-sig { display:block;font-family:'Great Vibes',cursive;font-size:2rem;color:var(--chestnut);margin-bottom:.3rem; }
+    .architect-note-date { font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted); }
+
     /* ─── MANIFESTO ─── */
     .manifesto { background:var(--darkbrown);padding:8rem 5%;position:relative;overflow:hidden; }
     .manifesto::before {
@@ -885,9 +937,7 @@
     <p class="hero-desc">A 12-week private coaching intensive for the woman who is done living like the smaller version of herself is the permanent version.</p>
     <p class="hero-transform">In 12 weeks, she will be your default. Not your aspiration.</p>
     <div class="hero-actions">
-      <a href="#" class="btn-primary" onclick="openQuiz();return false;">Discover Your Identity Pattern →</a>
       <a href="#method" class="hero-scroll-link">↓ See exactly how this works</a>
-      <span class="hero-fine">3-question diagnostic · Free · Takes 2 minutes</span>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true">
@@ -920,6 +970,13 @@
     <span>Community Members</span>
   </div>
 </div>
+
+<!-- ══ DISRUPTION STRIP ══ -->
+<section class="disruption">
+  <span class="disruption__label" data-r="up">The Inconvenient Truth</span>
+  <h2 class="disruption__hl" data-r="up">Stop "optimizing" your chaos.<br>Start <em>choosing</em> your identity.</h2>
+  <p class="disruption__sub" data-r="up">More strategy on top of an unchanged self-concept is just rearranging the furniture in a house you hate living in.</p>
+</section>
 
 <!-- ══ MANIFESTO ══ -->
 <section class="manifesto" style="position:relative">
@@ -1034,11 +1091,11 @@
 <section class="bio-editorial">
   <div class="bio-editorial__content">
     <p class="bio-editorial__name" data-r="up"><span class="bio-intro-line">my name is</span>Destinee Pierre</p>
-    <h2 class="bio-editorial__title-lg" data-r="up">For a long time, I performed who I thought I was <em>supposed</em> to be.</h2>
+    <h2 class="bio-editorial__title-lg" data-r="up">I followed every rule they gave me. Then I <em>stopped</em>.</h2>
     <div class="bio-editorial__body">
-      <p data-r="up">In private, I was always her. But in the rooms that mattered, I kept offering the smaller version — waiting for permission I was never going to be given.</p>
+      <p data-r="up">Get certified. Build credibility. Optimize your offer. I did all of it — and watched it turn me into someone I didn't recognize. Polished on the outside. A stranger to herself behind closed doors.</p>
       <blockquote class="bio-pull" data-r="up">"The work isn't becoming someone new. It's finally letting yourself be who you already are."</blockquote>
-      <p data-r="up">I built this program because this is the work I actually did. Not packaged. Not polished. The real work of choosing to be her anyway — and then showing other women how to do the same.</p>
+      <p data-r="up">I built this program not because I found the "right" framework — but because I stopped waiting for permission to be her. That's the work I do now. And it's the only work I was made for.</p>
     </div>
     <div style="margin-top:2.8rem" data-r="up">
       <a href="https://stan.store/DestineePierreArtistry" target="_blank" rel="noopener" class="btn-dark-outline">Apply to Work With Me →</a>
@@ -1053,6 +1110,16 @@
   </div>
 </section>
 
+<!-- ══ NOTE FROM THE ARCHITECT ══ -->
+<div class="architect-note-wrap">
+  <div class="architect-note-card" data-r="scale">
+    <span class="architect-note-label">A Note from the Architect</span>
+    <p class="architect-note-text">"The women who need this most are the ones who've already tried everything else. You're not starting from zero — you're finishing something. And that's exactly when this work clicks."</p>
+    <span class="architect-note-sig">— Destinee</span>
+    <span class="architect-note-date">Updated regularly</span>
+  </div>
+</div>
+
 <!-- ══ IDENTITY ARCHITECT METHOD ══ -->
 <section class="method gold-top" id="method">
   <div class="method__inner">
@@ -1060,6 +1127,11 @@
       <span class="method__eyebrow" data-r="up">The Framework</span>
       <h2 class="method__title" data-r="up">The Identity Architect Method</h2>
       <p class="method__sub" data-r="up">Three phases. One outcome: her as your permanent default — not your best day.</p>
+    </div>
+    <div class="reality-check" data-r="up">
+      <span class="reality-check__flag">Reality Check</span>
+      <p class="reality-check__text">"You've read the books. Done the journaling. Paid for the retreats. And you still walk into that room and feel like a stranger in your own skin."</p>
+      <span class="reality-check__close">This is the gap. This is exactly what we close.</span>
     </div>
     <div class="method__steps sg">
       <div class="method__step" data-r="up">
@@ -1641,7 +1713,7 @@ document.querySelectorAll('a, button').forEach(el => {
   el.addEventListener('mouseenter', () => { cur.classList.add('big'); ring.classList.add('big'); });
   el.addEventListener('mouseleave', () => { cur.classList.remove('big'); ring.classList.remove('big'); });
 });
-document.querySelectorAll('.editorial-dark, .curriculum, .outcomes, .portal, .fit-section, .final').forEach(el => {
+document.querySelectorAll('.editorial-dark, .disruption, .curriculum, .outcomes, .portal, .fit-section, .final').forEach(el => {
   el.addEventListener('mouseenter', () => { cur.classList.add('invert'); ring.classList.add('invert'); });
   el.addEventListener('mouseleave', () => { cur.classList.remove('invert'); ring.classList.remove('invert'); });
 });
